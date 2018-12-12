@@ -43,6 +43,32 @@
 三、webSocket:
 	需服务端配合：
 	websocket是HTML5的一个持久化的协议，它实现了浏览器与服务器的全双工通信。
+	服务端：		
+		npm install socket.io --save	//安装
+
+			//可以直接写express框架下www里
+		var socketPackage = require('socket.io'); //引入包
+		var io = socketPackage(server); //生成socket.IO 实例对象，依赖http server 
+			
+		//socket连接
+		io.on( "connection", function( socket ){
+		    console.log( "一个新连接" );
+		    socket.emit('msg', '欢迎来到xxx');
+
+		    socket.on('msg', function (data) {
+		        console.log(data);
+		        var answer = findAnswer(data);	//findAnswer是自定义的逻辑函数
+		        if(null !== answer){
+		            socket.emit('msg', answer);
+		        }else {
+		            socket.emit('msg', data);
+		        }
+		    });
+		});
+		
+		
+
+		
 	前端代码：
 	<script src="./socket.io.js">//原生webSocket API不好用，使用Socket.io
 	var socket = io('http://www.domain2.com:8080');
@@ -53,14 +79,7 @@
         	console.log('data from server: ---> ' + msg); 
     	});
  
-	// 监听服务端关闭
-    	socket.on('disconnect', function() { 
-        	console.log('Server socket has closed.'); 
-    	});
-	});
-	document.getElementsByTagName('input')[0].onblur = function() {
-    	socket.send(this.value);
-	};
+	
 		
 
 
