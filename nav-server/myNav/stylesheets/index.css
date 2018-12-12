@@ -100,7 +100,13 @@ body {
     cursor: default;
     background: white;
 }
-
+#searchResult li>.txt{
+    display: inline-block;
+    width: 445px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 #searchResult li.active {
     background: #f3f3f3;
 }
@@ -145,7 +151,12 @@ body {
     padding: 3px 7px;
     margin-right: 6px;
 }
-
+.tab-bar .local-search{
+    background: #000;
+    color: #fff;
+    /*font-weight: 900;*/
+    font-size: 16px;
+}
 .tab-bar > span:hover {
     cursor: pointer;
     color: red;
@@ -602,4 +613,4 @@ section.main a:hover {
 .docs .more li:hover{
     background: #ddd;
 }
-/*左边栏*/
+

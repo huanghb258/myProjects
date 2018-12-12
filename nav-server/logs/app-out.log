@@ -1,0 +1,32 @@
+[0mGET / [36m304 [0m69.628 ms - -[0m
+[0mGET /stylesheets/common.css [36m304 [0m2.937 ms - -[0m
+[0mGET /stylesheets/index.css [36m304 [0m8.630 ms - -[0m
+[0mGET /stylesheets/footer.css [36m304 [0m3.859 ms - -[0m
+[0mGET /stylesheets/asideL.css [36m304 [0m5.007 ms - -[0m
+[0mGET /javascripts/jquery.min.js [36m304 [0m4.617 ms - -[0m
+[0mGET /images/baidu-logo.gif [36m304 [0m4.767 ms - -[0m
+[0mGET /javascripts/BDSearch.js [36m304 [0m0.805 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m2.254 ms - -[0m
+[0mGET /javascripts/rightSide.js [36m304 [0m1.166 ms - -[0m
+[0mGET /javascripts/mainCon.js [36m304 [0m2.355 ms - -[0m
+[0mGET /javascripts/leftSide.js [32m200 [0m8.110 ms - 18571[0m
+[0mGET /images/bg1.jpg [36m304 [0m1.164 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m1.479 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m1.101 ms - -[0m
+[0mGET /fsReaddir?callback=jQuery11130171653562578872_1544603671440&path=.%2FmyNav%2FmyJsNote&_=1544603671441 [32m200 [0m83.720 ms - 16552[0m
+[0mGET /images/ico/douyu.ico [36m304 [0m4.264 ms - -[0m
+[0mGET /images/ico/music163.ico [36m304 [0m4.024 ms - -[0m
+[0mGET /images/ico/github.ico [36m304 [0m4.265 ms - -[0m
+[0mGET /images/ico/vue.png [36m304 [0m4.554 ms - -[0m
+[0mGET /images/ico/5sing.ico [36m304 [0m4.973 ms - -[0m
+[0mGET /images/ico/opgg.ico [36m304 [0m6.445 ms - -[0m
+[0mGET /images/ico/nodejs.png [36m304 [0m2.089 ms - -[0m
+[0mGET /images/ico/sanguosha.ico [36m304 [0m0.994 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m18.038 ms - 1087[0m
+[0mGET /myJsNote/node/node%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD.txt [36m304 [0m1.168 ms - -[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fnormal+H%3A%5CmyProjects%5Cnav-server%5CmyNav%5CmyJsNote%5Cnode%5Cnode%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD.txt [36m304 [0m227.373 ms - -[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fdpatch+H%3A%5CmyProjects%5Cnav-server%5CmyNav%5CmyJsNote%5Cnode [32m200 [0m243.725 ms - 109[0m

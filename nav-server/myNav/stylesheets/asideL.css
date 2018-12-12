@@ -322,6 +322,8 @@
 #weather {
   padding-left: 10px;
   line-height: 30px;
+  cursor: pointer;
+  margin-top: 30px;
 }
 #weather .isRain {
   color: #00CC00;

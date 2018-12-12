@@ -38,5 +38,9 @@ $(function(){
 		});		
 	}
 	reqWeather(URL,city_code);
-	setInterval(reqWeather,1000*60*5,URL,city_code);
+	setInterval(reqWeather,1000*60*10,URL,city_code);	//十分钟更新一次
+    $('#weather').on('click',function(){
+		window.open('https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd=厦门天气');
+	})
+
 })

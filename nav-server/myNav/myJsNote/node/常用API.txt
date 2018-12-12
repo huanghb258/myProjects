@@ -1,0 +1,88 @@
+﻿子进程：
+	//可以执行cmd命令，或直接执行bat文件
+	const {exec} = require('child_process');
+
+	语法：	
+	exec('命令','utf-8',function (error,stdout,stderr) {
+		//参数1:cmd命令		参数2、3可选
+ 	})
+
+	几个常用的cmd命令：
+		打开文件：start /normal H:/1.txt
+		打开目录：start /dpatch H:
+		运行程序：H:/xx.exe
+
+	注意点：
+		不同平台可能命令不一样，注意'\'的转义，文件名路径带空格记得用双引号包起来
+
+
+文件模块写入：
+	引入模块：
+		const fs=require('fs');
+
+	fs.open(path,flags,[mode],callback)	 //用于打开文件，以便fs.read()读取
+	      参数说明：
+		pach:路径		
+		flags：可选值String类型   ###a 看官方文档：http://nodejs.cn/api/fs.html#fs_file_system_flags;		
+
+		[mode]：权限，少用，不了解
+		回调两个参数：1.err	2.fd：描述
+
+	   fs.close(fd,[callback])		//关闭文件
+
+	简单文件写入:
+		//一次性写入，封装好了打开和关闭
+		fs.writeFile("d:/hello.txt","写入内容",{flag:'w'} , function (err) {
+			//参数flag：可不写，默认w
+		});
+
+	流式写入：
+		//持续写入
+	
+	var ws = fs.createWriteStream("b.mp3"):
+	   //创建一个可写流
+
+	ws.wirte('写入内容'):
+	   //可无限调用
+
+	
+	
+	ws.once('open',function()(){	//给可写流ws绑定一次性事件
+		//监听打开事件
+	})
+
+	ws.end():
+	   //流关闭
+	注意：ws.colse()也能关闭，但是只写入一次就会被关，即使ws.wirte()在它之前
+
+	
+文件模块读取：
+	注意：因为可读取任意类型文件，所以返回的是buffer数据，可以调用.toString()
+
+	简单文件读取：
+		fs.readFile("an.jpg" , function (err , data) {
+			//data即读取的数据
+			fs.writeFile("x.jsp",data , err=>{..})	//顺便写入
+		})
+
+	流式文件读取：
+		var rs = fs.createReadStream("./笔记.mp3")   //创建一个可读流
+		rs.once('open',()={监听打开});	//colse监听关闭
+
+	要读取可读流中的数据：
+
+		rs.on("data", function (data) { 绑定一个data事件，事件绑定完自动开始读取
+	   	  //每次都取length长:65535
+	  	   ws.write(data);	//将读取到的数据写入到可写流中
+
+		});
+
+		rs.pipe(ws)   //可以将可读流中的内容，直接输出到可写流中
+		
+	  
+
+
+		
+	
+	
+	

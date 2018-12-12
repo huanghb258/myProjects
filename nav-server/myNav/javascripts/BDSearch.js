@@ -208,7 +208,7 @@ $(function(){
 		var li=data.del?'<span class="del"></span></li>':'</li>';
 
 		for(var i=0;i<len&&i<10;i++){
-			lis+='<li>'+data.s[i]+li;
+			lis+='<li><span class="txt">'+data.s[i]+'</span>'+li;
 		}
 
 		if(!data.lastLi){					
