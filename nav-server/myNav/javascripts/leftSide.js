@@ -470,7 +470,6 @@ $(function () {
             reg: '(([\t {2,20}]\/\/.+)[\r\n])', count: 2,
             method(arg) {
                 console.log(_escape(arg[this.indexs[0]]));
-                debugger
                 return `\t<span class="color-green">${_escape(arg[this.indexs[0]])}</span>\r`;
             }
         });

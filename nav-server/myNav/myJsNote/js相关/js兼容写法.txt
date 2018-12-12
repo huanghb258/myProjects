@@ -1,10 +1,10 @@
-添加事件方法：
+﻿添加事件方法：
 	addHandler：function(element,type,handler){
 	    if(element.addEventListener){//检测是否为DOM2级方法
 	        element.addEventListener(type, handler, false);
-	    }else if (element.attachEvent){//检测是否为IE级方法
+	    }else if (element.attachEvent){	//检测是否为IE级方法
 	        element.attachEvent("on" + type, handler);
-	    } else {//检测是否为DOM0级方法
+	    } else {	//检测是否为DOM0级方法
 	        element["on" + type] = handler;
 	    }
 	}
