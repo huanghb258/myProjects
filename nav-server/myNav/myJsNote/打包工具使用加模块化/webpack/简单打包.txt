@@ -1,0 +1,61 @@
+﻿一、安装
+	1.我们通常会先建立一个package.json文件: npm init -y
+
+	2. npm install -g webpack//全局安装
+	
+	或 npm install --save-dev webpack//安装到你的项目目录
+
+	增：需全局安装webpack-cli  ->npm install webpack-cli -g
+
+二、创建package.json文件
+	
+	npm init  \\填写信息，可以一直回车跳过    
+
+
+三、使用webpack命令打包
+	
+	方案1.
+		webpack {main.js的路径} {打包文件存放的路径} 
+
+		例：cmd cd到目录执行下面代码
+			webpack	app/main.js public/bundle.js       //bundle.js会自动创建
+
+		注意： webpack非全局安装的情况下，要指定其在node_modules中的地址
+		node_modules/.bin/webpack app/main.js public/bundle.js
+
+	方案2.
+		根目录下新建一个webpack.config.js文件，大致内容如下
+
+		module.exports = {
+  		  entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
+  		  output: {
+    		    path: __dirname + "/public",//打包后的文件存放的地方
+    		    filename: "bundle.js"//打包后输出文件的文件名
+  		  }
+		}
+		// 注：“__dirname”是node.js中的一个全局变量，它指向当前执行脚本所在的目录。
+
+		然后在命令行下直接执行:webpack  即可
+
+	方案3.
+		配制json文件，直接用npm start打包  方案2的步骤不能少
+	
+
+
+四、多入口文件
+	webpack.config.js配置：
+	{
+ 		entry: {
+    		  app: './src/app.js', 		 \\入口文件1
+    		  search: './src/search.js' 	  \\入口文件2
+  		},
+  		output: {
+    		  filename: '[name].js',	\\[name]会自动获取入口文件名
+    		  path: __dirname + '/dist'
+  		}
+	}\\结果：在dist文件夹内生成app.js和search.js两个文件
+
+	注意：练习的时候因为文件不在根目录，所以路径与成./可能会报错，看报错提示就知道原因了
+
+	小技巧：输出时，输出文件名或路径用'[hash]'，会自动生成随机文件名代替，''不能省
+	

@@ -1,0 +1,20 @@
+﻿定时器：
+	setTimeout(console.log(1),8000)  //可以立即执行代码或函数，不会延时8秒
+
+	定时器即使延时0秒执行，也会被放到最后
+
+	setInterval():写轮播图时可以用递归代替，更好控制，可以解决不能马上停止问题
+	    例：var timeout = false; //启动及关闭按钮  
+		function time() { 		  
+  			if(timeout) return;  
+  			Method();  
+  			setTimeout(time,100); //延时递归调用自己  
+		}
+
+
+分享按钮：http://www.jiathis.com/
+	网易侧边栏：添加下行标签就行
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r1.gif" charset="utf-8"></script>
+ 
+端口被占用：在命令行中输入netstat -ano，得到端口号对应的PID
+

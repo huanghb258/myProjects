@@ -1,0 +1,95 @@
+﻿包列表：
+
+	//本地安装webpack
+	npm install --save-dev webpack
+
+	//如果你使用 webpack 4+ 版本，你还需要安装 CLI
+	npm install --save-dev webpack-cli
+
+	//webpack-dev-server 为你提供了一个简单的 web 服务器
+	npm install --save-dev webpack-dev-server
+
+	//自动生成html插件，生成后会自动引入打包后的js
+	npm install --save-dev html-webpack-plugin
+
+	//打包前删除之前的文件
+	npm install --save-dev clean-webpack-plugin
+
+	//css样式热替换
+	npm install --save-dev style-loader css-loader
+
+	//图片加载，base64转换
+	 npm install url-loader file-loader --save-dev
+
+详细步骤：
+
+	1.初始化package.json
+		npm init -yes //创建默认配置
+
+	2.安装包，需要用的包都可以选安装好
+
+	3.配置webpack.config.js
+		  const path = require('path');
+		  const HtmlWebpackPlugin = require('html-webpack-plugin');
+		  const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+		  module.exports = {
+		    mode: 'development',//不加这句热加载内存中bundle.js会变得非常大，导致很慢
+		    devtool: false,
+		    entry: {
+		      app: './src/index.js'  //要打包的文件路径		     
+		    },
+		    devtool: 'inline-source-map',
+		    devServer: {
+		      contentBase: './dist' //将 dist 目录下的文件，作为可访问文件。
+		    },
+		    plugins: [
+		      new CleanWebpackPlugin(['dist']),
+		      new HtmlWebpackPlugin({
+		        title: 'Development'
+		      })
+		    ],
+		    output: {
+		      filename: '[name].bundle.js',
+		      path: path.resolve(__dirname, 'dist')
+		    }
+		  };
+
+	4.package.json下增加一行命令
+
+		"scripts": {//npm run xxx命令配置
+	      	"start": "webpack-dev-server --open",	//--open：同时打开浏览器
+		"build": "webpack"
+    	},
+
+    5.第三步配置里入口js目录是./src/index.js,创建一个吧
+    	//建好后在命令行运行npm start试试，不出意外的话应该可以正常启动了
+    	//启动后浏览器会自动打开，也可以手动登录：http://localhost:8080
+    	//修改js后需要5秒左右才会自动更新好
+
+    6.配置index.html模板
+    	webpack.config.js：
+    		new HtmlWebpackPlugin下增加一行： template:'./index.html'
+
+    6.css样式
+    	1.config.js增加：
+    		module: {
+		     	rules: [
+			       {
+			         test: /\.css$/,
+			         use: ['style-loader', 'css-loader']
+			       }
+		     	]
+		    }
+
+		2.index.js增加一行：import './styles.css';
+
+
+
+
+
+常见错误：
+
+	1.测试时，全局安装过webpack和cli,可以尝试全局也安装一下
+
+	2.仔细确认目录名及文件名与配置是否相符，如js入口配置，index.html模板路径等

@@ -1,0 +1,38 @@
+﻿先给全局取消：
+	document.addEventListener("touchstart",function(e){
+		e=e||event;
+		e.preventDefault();
+	}, { passive: false });
+
+如果某个元素需要这种行为：
+	阻止冒泡即可
+	el.addEventListener("touchstart",function(e){
+		ev=ev||event;
+		ev.stopPropagation();
+	});
+
+也就是说：当某个元素阻止了冒泡，不被其父级元素取消默认行为影响
+
+原理：是否触发默认行为先看其本身有没阻止，然后再看其父级向上找，父组设置了阻止，那么不触发，
+	但是当遇到阻止冒泡，终止继续向上查找
+
+但是a标签不能跳转了：
+	解决：移动端a标签的跳转方案  解决误触
+			var aNodes = document.querySelectorAll("a");
+			for(var i=0;i<aNodes.length;i++){
+				aNodes[i].addEventListener("touchstart",function(){
+					this.isMoved=false;
+				})
+				
+				
+				aNodes[i].addEventListener("touchmove",function(){
+					this.isMoved=true;
+				})
+				
+				
+				aNodes[i].addEventListener("touchend",function(){
+					if(!this.isMoved){
+						location.href=this.href;
+					}
+				})
+			}

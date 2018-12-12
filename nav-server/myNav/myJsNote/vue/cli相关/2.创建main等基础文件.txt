@@ -1,0 +1,49 @@
+﻿注：以下内容新建好的模板里都有,这里只是拆分讲解
+main.js:
+	import Vue from 'vue'  //引入vue
+	import App from './App.vue'
+
+	mew Vue({
+		el:'#app',
+		components:{App},	//将App映射为标签
+		template:'<App/>'	//<App/>会自动添加到index.html	
+	})
+
+
+	
+App.vue（组件）:
+	1.vue文件主要三部分组成：<template>	<scritp>	<style>
+	2.App.vue引入其它.vue组件：
+		import xx1 from './xx/xx.vue'
+		export default{
+		 components:{
+			 xx1,	//映射为标签
+			 xx2
+			 }
+		}
+
+	3.在<template>标签里直接使用<xx1/>..
+	
+	4.组件间数据通讯：
+		数据存放在App.vue下
+		export default{		//写法与new Vue()一致
+			data(){return {comments:[]}}
+		}
+
+	5.数据互传：<xx1 :comments:'comments'/>		//传给xx1.vue
+		\\:comments不是固定的，名称跟参数一样  例：:msg='msg'
+		小提示：定义的methods方法也是这样传递，调用时要用this
+
+	6.xx1.vue接收：
+		export default{
+			props:['comments','fn',..]	//声明接收
+
+			\\或写成  
+			props:{  //声明接收并指写类型
+				comments:Object,
+				fn:Function
+			}
+		}
+		
+	
+

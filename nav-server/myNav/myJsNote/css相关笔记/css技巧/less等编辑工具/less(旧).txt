@@ -1,0 +1,54 @@
+
+webstorm 支持less:
+	1.需node环境
+	2.npm install -g less
+	3.settings - tools - file watchers -添加less
+	使用方法：创建css时kind选择less
+
+
+1.变量：
+	@nice-blue: #5B83AD;
+	@light-blue: @nice-blue + #111;
+	@var: red;
+	#page {
+  	#header {
+    	color: @var; // white
+  	}
+  	@var: white;
+	}
+	.c{
+  	color:@var; //red
+	}
+	注：变量不但声明提前，值也提前;如上例变量有作用域
+
+	变量跟字符串拼接：
+		@mySelector: banner;   .@{mySelector}{...}  //.banner
+		@images: "../img";   background: url("@{images}/white-sand.png");
+
+
+2.混合（mixin）:
+	#menu a {
+  	  color: #111;
+  	  .bordered;      //复制.bordered的样式
+	}
+
+3.嵌套：  略
+	嵌套里&相当于this,例如  &:after
+
+4.运算：
+	@base: 5%;
+	@filler: @base * 2;
+	@other: @base + @filler;
+	color: #888 / 4;
+	background-color: @base-color + #111;
+	height: 100% / 2 + @filler;
+	@var: 1px + 5;    //6px
+
+5.函数：
+	 width: percentage(0.5); // returns `50%`
+  	 color: saturate(#888, 5%);// #8e8282
+  	 background-color: spin(lighten(#888, 25%), 8);// #c8c8c8;
+
+6.注释：   /*内容*/    //单行
+
+7.导入：@import "library"; // library.less

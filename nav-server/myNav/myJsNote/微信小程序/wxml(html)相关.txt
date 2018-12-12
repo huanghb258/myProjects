@@ -1,0 +1,34 @@
+﻿开发文档url:https://developers.weixin.qq.com/ebook?action=get_post_info&token=935589521&volumn=1&lang=zh_CN&book=miniprogram&docid=0008aeea9a8978ab0086a685851c0a&continue=1
+
+数据绑定：
+	<view> {{ message }} </view>
+
+列表渲染：
+	<view wx:for="{{array}}">
+
+条件渲染：
+	<view wx:if="{{length > 5}}"> 1 </view>
+	<view wx:elif="{{length > 2}}"> 2 </view>
+
+事件：
+	官方文档：https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html
+	点击事件：
+		<view bindtap="tapName"> Click me! </view>
+		Page({
+ 	 	tapName: function(event) {
+    	    	console.log(event)
+  	 	 }
+		})
+
+
+引入：
+
+	import：只引入xx文件中的temlate
+		示例：<import src="a.wxml"/>  //如果a页面引入b页面的模板，b引入c，a还是只用调用b定义的模板
+
+	include：与import相反，相当于复制，但不含template
+		<include src="header.wxml"/>  //看src就知道什么作用了
+
+
+
+

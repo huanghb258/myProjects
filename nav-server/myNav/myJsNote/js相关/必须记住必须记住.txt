@@ -1,0 +1,24 @@
+﻿鼠标位置：
+	e.screenX/Y:相对于屏幕
+	e.clientX/Y:相对于鼠标距离内容区左上角，与滚动条有着，
+	e.pageX/Y:相对于body
+	el.offset.top/left:元素相对于已定位父元素的偏移
+
+
+instanceof:判断一个对象是否属于某个实例（a instanceof Person）
+
+JSON.stringify(obj)-->对象转Json   JSON.parse(json)-->转成对象
+
+数字转换：
+
+	parseInt:不管小数，只取整数，支持数字加字符串
+		parseInt(1.9)//1	parseInt('1a')//1	parseInt('a1');
+NaN
+
+		注意：据说老版本parseInt('08'); // 0  
+
+	toFixed(保留位数):保留指定小数位数，少则加零，多则四舍五入，如下
+		例：5.6.toFixed(2)  //5.60	5.456.toFixed(2)   //5.46
+
+		注意：只接受小数（整数或字符串等会报错），且返回的是字符串
+		

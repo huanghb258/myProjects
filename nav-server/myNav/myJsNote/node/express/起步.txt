@@ -1,0 +1,27 @@
+﻿1.安装：npm install express --save
+2.创建骨架：npm install express-generator -g
+3.生成模板：
+	express --view=ejs myapp	//项目目录为myapp，并设置为ejs(html模式)模板引擎
+	cd myapp	
+	npm install
+	SET DEBUG=myapp:* & npm start	//window下启动命令
+	npm start	//启动服务：127.0.0.1:3000
+
+生成的目录说明：
+	bin
+		www
+	node_modules
+	public		//存放静态资源(css/js等)
+		images
+		javascripts
+		stylesheets
+			style.css
+	routes		//存放路由文件
+		index.js
+		users.js
+	views		//存放模板文件
+		error.ejs
+		index.ejs
+	app.js		//入口文件
+	package.json	
+	

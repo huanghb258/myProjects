@@ -1,0 +1,29 @@
+
+Object.keys(obj) //返回一个数组，内容是obj的键
+
+hasOwnProperty():用于指示一个对象自身(不包括原型链)是否具有指定名称的属性
+	\\obj.hasOwnProperty('a')  如果obj里有'a'这个键，返回true
+
+Object.defineProperty():IE8+
+	\\vue计算属性和数据代理都是用它实现的
+	语法：Object.defineProperty(obj,prop,descriptor)	
+	例：
+	const obj={
+		firstName:'A',
+		lastName:'B'
+	}	
+	Object.defineProperty(obj,'fullName',{
+		//还有描述属性这里省略没写
+		get(){
+			return this.firstName+'-'+this.lastName
+		},
+		set(value){
+			const names=value.split('-');
+			this.firstName=names[0];
+			this.lastName=names[1];
+		}
+	})
+	obj.fullName	//A-B
+	obj.firstName='C'
+	obj.lastName='D'
+	obj.fullName	//C-D	说明改变其中任何一个属性，所有属性都会跟着变

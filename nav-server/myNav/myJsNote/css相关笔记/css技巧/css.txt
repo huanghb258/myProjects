@@ -1,0 +1,34 @@
+﻿@font-face  自定义字体，早在IE4就支持了
+
+    @font-face {
+            font-family: 'NeuesBauenDemo';//字体名
+            src: url('fonts/FortunatesDecember.ttf') format('truetype');
+        }
+	
+	//format：此值指的是你自定义的字体的格式，如：ttf,eot等。
+
+   调用：.dome{font-family: NeuesBauenDemo;}
+   注意：为考虑兼容性，正常使用字体需要多种格式。
+
+
+背景透明文字不透明:
+	父容器：background-color: rgba(0,0,0,0.5);  //ie9+
+
+	子容器：position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
+
+	注意：是设置背景透明，而不是容器透明
+
+	@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+ 	 .demo{
+   	 background-color:#000000;
+    	filter:Alpha(opacity=50);
+   	 position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+   	 *zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  	}
+
+
+实现纯css点击来回切换： 
+	核心： :checked伪类   //兼容性不是很好
+	代码：.toggle:checked +label{color:red}   \\checkbox按钮改变兄弟元素
+	\\可以给按钮定位，然后opacity:0  
+		

@@ -1,0 +1,21 @@
+﻿1. 设置viewport
+
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+2.引入基础样式
+
+	<link rel="stylesheet" href="/static/css/reset.css">
+
+3.解决点击0.3S响应延时问题
+	
+	 <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+ 	 <script>
+    		if ('addEventListener' in document) {
+      			document.addEventListener('DOMContentLoaded', function() {
+       			 FastClick.attach(document.body);
+      			}, false);
+    		}
+  		  if(!window.Promise) {
+      			document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-			promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+    		}
+  	</script>

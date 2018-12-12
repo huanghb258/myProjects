@@ -1,0 +1,77 @@
+1.直接传递： 
+	1.父组件：<TodoHeader :addTodo='addTodo'/>	//传递addTodo
+	2.子组件(TodoHeader.vue):props:['addTodo',..]	//字组件接收，简单写法
+		完整写法：props:{addTodo:{type:Array,..},..}
+	3.子组件调用：this.addTodo
+
+
+2.自定义事件方法（只适用函数）：
+	优先：使用简单
+	缺点：不能多层传递	即A传给B,B不能再传给C 
+
+	1.自定义事件： 父组件：<TodoHeader @addTodo='addTodo'/>		//相当于原先的传递
+
+	2.触发自定义事件
+		this.$emit('addTodo',todo)	//不用接收，要调用时直接$emit API去触发
+		//addTodo：要调用的函数名    todo：参数
+
+
+
+3.订阅与发布：订阅==绑定事件	发布==触发事件
+	需要一个库：pubsub-js 	可以用npm info pubsub-js查看有没这个库
+	如果没有：npm install --save pubsub-js
+
+	优点：不受组件层数限制，父子，兄弟，爷孙都可以
+
+	发布消息:
+		1.import PubSub from 'pubsub-js'
+		2.mounted(){	//定义在mounted里
+			PubSub.subscribe('消息名'，(msg,index)=>{	//不用箭头函数this指向就不对
+				this.deleteTodo(index)	//调用
+
+				//msg用不上，但必需传，有点像event占第一个参数位置
+				//消息名直接写与函数名一样（deleteTodo），好记不乱
+			})
+		}
+
+	订阅（接收）：
+		1.引入pubsub-js
+		2.触发事件里：PubSub.publish('消息名',参数)
+
+
+
+4.slot: 
+	适用于父组件向子组件传递‘标签数据’
+	
+	//如下：可以把slot看成插槽，等待插入标签
+	//子组件todo-footer
+	<div>	
+		<slot name='xx'>不确定标签结构</slot>
+		<div>确定的标签结构</div>
+		<slot name='yy'>不确定标签结构</slot>	
+	</div>	
+	//父组件
+	<todo-footer>
+		<input slot='xx' v-model=''>	//此input插入到name='xx'的slot标签里
+	</todo-footer>
+	
+	此时就用不到通讯了，因为这些标签定义在父组件，数据也直接从父组件里获取
+
+	使用场景，比如这个子组件使用次数多，且结构有所变化，是不是很适用？
+
+5.别一种方法：少用
+	父组件：
+	1.<TodoHeader ref:'header'/>		//相当于id
+
+	2.mounted(){//生命周期事件
+		this.$refs.header.$on('addTodo',this.addTodo)	//将addTodo传递给header
+		//this.$refs.header:获取ref=header的标签
+		//$on()参数1.定义函数名	参数2.要传递的函数
+	}
+
+
+6.父组件调用子组件：
+	1.子组件定义fer属性(ref相当于id)，例：<Food ref='food'/>
+	2.this.$refs.food.toggleShow()	//直接调用子组件food的toggleShow方法
+
+

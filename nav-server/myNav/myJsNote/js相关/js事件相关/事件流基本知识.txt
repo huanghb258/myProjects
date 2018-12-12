@@ -1,0 +1,14 @@
+﻿DOM标准规定事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段
+	捕获阶段：实际目标（div）在捕获阶段不会接收事件
+	目标阶段：事件在div上发生并处理。但事件处理会被看成是冒泡阶段的一部分
+	冒泡阶段：事件又传播回文档
+
+DOM0,DOM2,DOM3事件：
+	DOM0就是直接通过 onclick写在html里面的事件，例：<input onclick="alert(1)" />
+	DOM2是通过addEventListener绑定的事件, 还有IE下的DOM2事件通过attachEvent绑定
+	DOM3是一些新的事件
+
+
+在冒泡型事件流中click事件传播顺序为<div>—》<body>—》<html>—》document
+
+在捕获型事件流中click事件传播顺序为document—》<html>—》<body>—》<div>(老版本不支持捕获)

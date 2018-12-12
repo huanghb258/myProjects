@@ -1,0 +1,13 @@
+﻿去除输入URL的控件条：
+	setTimeout(scrollTo,0,0,0);
+	注意，这句代码必须放在window.onload里才能够正常的工作，而且你的当前文档的内容高度必须是高于窗口
+	的高度时，这句代码才能有效的执行
+
+如何禁止用户旋转设备:
+	做不了
+
+如何检测用户是通过主屏启动你的webapp：
+	IOS:
+		navigator.standalone=true时，从主屏启动
+
+	Android没有主屏这个说法！

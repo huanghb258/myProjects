@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>css可继承与不可继承</title>
+    <!--<link rel="stylesheet" href="stylesheets/bootstrap.stylesheets"/>-->
+    <style>
+        .container{
+            width: 80%;
+            padding: 10px;
+            padding-left: 25px;
+            background: #FEFEF2;
+            margin: 0 auto;
+        }
+    </style>  
+</head>
+<body>
+<div class="container">
+    <h3 style="color:#075DB3;text-align: center">CSS中可以和不可以继承的属性</h3>
+    <div id="cnblogs_post_body"><p><strong><span style="font-family: 宋体;">一、无继承性的属性</span></strong></p>
+        <p>1<span style="font-family: 宋体;">、</span><span style="font-family: Calibri;">display</span><span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">规定元素应该生成的框的类型</span></p>
+        <p>2、<span style="font-family: 宋体;">文本属性：</span></p>
+        <p>vertical-align<span style="font-family: 宋体;">：垂直文本对齐</span></p>
+        <p>text-decoration<span style="font-family: 宋体;">：规定添加到文本的装饰</span></p>
+        <p>text-shadow<span style="font-family: 宋体;">：文本阴影效果</span></p>
+        <p>white-space<span style="font-family: 宋体;">：空白符的处理</span></p>
+        <p>unicode-bidi<span style="font-family: 宋体;">：设置文本的方向</span></p>
+        <p>3<span style="font-family: 宋体;">、盒子模型的属性：</span><span style="font-family: verdana,geneva;">width、height、margin 、margin-top、margin-right、margin-bottom、margin-left、border、border-style、border-top-style、border-right-style、border-bottom-style、border-left-style、border-width、border-top-width、border-right-right、border-bottom-width、border-left-width、border-color、border-top-color、border-right-color、border-bottom-color、border-left-color、border-top、border-right、border-bottom、border-left、padding、padding-top、padding-right、padding-bottom、padding-left</span></p>
+        <p>4<span style="font-family: 宋体;">、背景属性：</span><span style="font-family: verdana,geneva;">background、background-color、background-image、background-repeat、background-position、background-attachment</span></p>
+        <p>5<span style="font-family: 宋体;">、定位属性：</span><span style="font-family: verdana,geneva;">float、clear、position、top、right、bottom、left、min-width、min-height、max-width、max-height、overflow、clip、z-index</span></p>
+        <p>6<span style="font-family: 宋体;">、生成内容属性：</span><span style="font-family: verdana,geneva;">content、counter-reset、counter-increment</span></p>
+        <p>7<span style="font-family: 宋体;">、轮廓样式属性：</span><span style="font-family: verdana,geneva;">outline-style、outline-width、outline-color、outline</span></p>
+        <p>8<span style="font-family: 宋体;">、页面样式属性：</span><span style="font-family: verdana,geneva;">size、page-break-before、page-break-after</span></p>
+        <p>9<span style="font-family: 宋体;">、声音样式属性：</span><span style="font-family: verdana,geneva;">pause-before、pause-after、pause、cue-before、cue-after、cue、play-during</span></p>
+        <p>&nbsp;</p>
+        <p><strong><span style="font-family: 宋体;">二、有继承性的属性</span></strong></p>
+        <p>1<span style="font-family: 宋体;">、字体系列属性</span></p>
+        <p>font<span style="font-family: 宋体;">：组合字体</span></p>
+        <p>font-family<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">规定元素的字体系列</span></p>
+        <p>font-weight<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">设置</span><span style="font-family: 宋体;">字体</span><span style="font-family: 宋体;">的粗细</span></p>
+        <p>font-size<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">设置字体的尺寸</span></p>
+        <p>font-style<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">定义字体的风格</span></p>
+        <p>font-variant<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小。</span></p>
+        <p>font-stretch<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">对当前的</span> font-family 进行伸缩变形。所有主流浏览器都不支持<span style="font-family: 宋体;">。</span></p>
+        <p>font-size-adjust<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">为某个元素规定一个</span> aspect 值，这样就可以保持首选字体的 x-height。</p>
+        <p>2<span style="font-family: 宋体;">、文本系列属性</span></p>
+        <p>text-indent<span style="font-family: 宋体;">：文本缩进</span></p>
+        <p>text-align<span style="font-family: 宋体;">：文本水平对齐</span></p>
+        <p>line-height<span style="font-family: 宋体;">：行高</span></p>
+        <p>word-spacing<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">增加或减少单词间的空白（即字间隔）</span></p>
+        <p>letter-spacing<span style="font-family: 宋体;">：</span><span style="font-family: 宋体;">增加或减少字符间的空白（字符间距）</span></p>
+        <p>text-transform<span style="font-family: 宋体;">：控制文本大小写</span></p>
+        <p>direction<span style="font-family: 宋体;">：规定文本的书写方向</span></p>
+        <p>color<span style="font-family: 宋体;">：文本颜色</span></p>
+        <p>3<span style="font-family: 宋体;">、元素可见性：</span><span style="font-family: verdana,geneva;">visibility</span></p>
+        <p>4<span style="font-family: 宋体;">、表格布局属性：</span><span style="font-family: verdana,geneva;">caption-side、border-collapse、border-spacing、empty-cells、table-layout</span></p>
+        <p>5<span style="font-family: 宋体;">、列表布局属性：</span><span style="font-family: verdana,geneva;">list-style-type、list-style-image、list-style-position、list-style</span></p>
+        <p>6<span style="font-family: 宋体;">、生成内容属性：</span><span style="font-family: verdana,geneva;">quotes</span></p>
+        <p>7<span style="font-family: 宋体;">、光标属性：</span><span style="font-family: verdana,geneva;">cursor</span></p>
+        <p>8<span style="font-family: 宋体;">、页面样式属性：</span><span style="font-family: verdana,geneva;">page、page-break-inside、windows、orphans</span></p>
+        <p>9<span style="font-family: 宋体;">、声音样式属性：</span><span style="font-family: verdana,geneva;">speak、speak-punctuation、speak-numeral、speak-header、speech-rate、volume、voice-family、pitch、pitch-range、stress、richness、、azimuth、elevation</span></p>
+        <p>&nbsp;</p>
+        <p>三、<strong><span style="font-family: 宋体;">所有元素可以继承的属性</span></strong></p>
+        <p align="justify">1、<span style="font-family: 宋体;">元素可见性：</span>visibility</p>
+        <p align="justify">2、<span style="font-family: 宋体;">光标属性：</span>cursor</p>
+        <p align="justify">&nbsp;</p>
+        <p>四、<strong><span style="font-family: 宋体;">内联元素可以继承的属性</span></strong></p>
+        <p>1、<span style="font-family: 宋体;">字体系列属性</span></p>
+        <p>2、<span style="font-family: 宋体;">除</span><span style="font-family: verdana,geneva;">text-indent、</span><span style="font-family: verdana,geneva;">text-align</span><span style="font-family: 宋体;">之外的文本系列属性</span></p>
+        <p align="justify">&nbsp;</p>
+        <p align="justify">五、<strong><span style="font-family: 宋体;">块级元素可以继承的属性</span></strong></p>
+        <p align="justify">1、text-indent<span style="font-family: verdana,geneva;">、text-align</span></p>
+        <p align="justify">&nbsp;</p>
+        <p align="justify">&nbsp;</p></div>
+</div>
+
+</body>
+</html>

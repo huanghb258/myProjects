@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+
+        }
+        .nav-bar{
+            width: 800px;
+            margin: 0 auto;
+            background: #ccc;
+            border: 1px solid #cccccc;
+        }
+        .nav-bar>a{
+            display: inline-block;
+            padding: 0 10px;
+            text-align: center;
+            border-right: orangered;
+            color: white;
+            text-decoration: none;
+        }
+        .nav-bar>a:last-child{
+            border-right: none;
+        }
+        .item-con{
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #cccccc;
+        }
+        .item-con>div{
+            padding-top: 30px;
+            line-height: 30px;
+            display: none;
+            opacity: 0;
+            top: 0;
+            left: 0;
+        }
+        #item1{
+            display: block;
+            opacity: 1;
+        }
+    </style>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <!--<script src="javascripts/vue.min.javascripts"></script>-->
+
+</head>
+<body>
+<h3>如果不能切换，检查是否正常加载jquery</h3>
+<div class="container">
+    <div class="nav-bar">
+        <a href="#item1" >项目1</a>
+        <a href="#item2">项目2</a>
+        <a href="#item3">项目3</a>
+        <a href="#item4">项目4</a>
+    </div>
+    <div class="item-con">
+        <div id="item1">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eligendi exercitationem perspiciatis quas similique, vel velit? Autem corporis earum esse exercitationem illo illum incidunt ipsa ipsam, obcaecati perferendis sequi velit?</div>
+        <div id="item2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae commodi consectetur consequatur corporis debitis deleniti eaque, eos error esse explicabo fugit harum iure optio perferendis praesentium quas qui, quod similique.</div>
+        <div id="item3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aspernatur at debitis excepturi expedita fugiat in ipsa laboriosam, laborum magnam, maxime molestias optio quasi saepe tenetur totam? Et, fugit?</div>
+        <div id="item4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam animi aspernatur, consequatur eaque ex illo ipsum iste laboriosam molestias natus necessitatibus neque nobis odit porro quibusdam ratione veniam voluptatibus.</div>
+    </div>
+</div>
+
+
+<script>
+    $('.nav-bar').on('click','a',function(e){
+        e.preventDefault();
+        var href=$(this).attr('href');
+        $(href).css({display:'block',opacity:'1'})
+                .siblings().css({display:'none',opaccity:'0'});
+    })
+
+</script>
+</body>
+</html>

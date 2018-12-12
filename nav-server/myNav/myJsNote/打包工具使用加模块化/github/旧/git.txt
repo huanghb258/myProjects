@@ -1,0 +1,98 @@
+来源：https://www.liaoxuefeng.com  廖雪峰git教程
+
+第一次使用时遇到的报错及解决办法在文末
+
+注意：每次操作完后要执行 git commit -m '说明' 命令。
+
+1.创建一个本地仓库	//就是新建一个文件夹
+	$ mkdir learngit	//创建目录
+	$ cd learngit		//cd 到目录
+	$ pwd			//显示目录
+
+2.初始化
+	git init
+
+3.用命令git add告诉Git，把文件添加到暂存区
+	git add readme.txt
+	\\很多个文件不用一直add 可以这样：git add .  .或*代表所有
+
+4.用命令git commit告诉Git，把文件提交到仓库
+	git commit -m "改动说明"
+
+5.1  当你修改内容后，用git status查看结果，可省略
+
+5.2	git diff查看修改的内容
+
+5.3 提交修改：
+	重复第3和第4步
+
+5.4 git log查看修改历史
+
+5.5 返回上一版本
+	git reset --hard HEAD^
+	如果两个^，表示上上个， HEAD~100表示上100个
+	如果要返回最新的版本：如果命令窗口还没关闭，在记录里找到他的commit id
+	如果窗口已关，还可以用git reflog查看历史修改记录  
+	 \\然后 git reset --hard 0ded537
+	
+
+6.删除
+	git rm test.txt  //删除文件
+	git rm -r '文件夹'	//删除文件夹要带-r
+
+	取消远程仓库： git remote rm origin
+	
+	
+7.克隆文件到本地
+	 git clone git@github.com:huanghb258/gitskills.git
+
+
+关联远程仓库：
+	0.先看users/Administrator 里有没.ssh目录，里面有id_rsa和id_rsa.pub文件
+	如果没有：ssh-keygen -t rsa -C "邮箱地址"
+	登陆GitHub，打开“Account settings”，“SSH Keys”页面：
+	点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容	
+
+	1.登陆GitHub，在右上角“Create a new repo”按钮，创建一个新仓库
+
+	2.R name填learngit，其他保持默认，点击“Create repository”按钮.
+
+	3.与本地关联：git remote add origin git@github.com:huanghb258/learngit.git
+
+	4.远程库默认名是origin	
+	
+	5.把本地库的所有内容推送到远程库上
+		git push -u origin master
+	说明：把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。
+	由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+
+
+
+常见问题的解决办法：
+
+解决fatal: Not a git repository
+	在git bash执行一下 git init
+
+上传时出现error: src refspec master does not match any解决：
+
+	引起该错误的原因是，目录中没有文件，空目录是不能提交上去的
+	解决：执行下面的语句
+	touch README
+	git add README 
+	git commit -m 'first commit'
+	git push origin master
+
+报错：failed to push some refs to 
+
+	原因是github中的README.md文件不在本地代码目录中
+	解决：git pull --rebase origin master  
+	\\执行完目录下就会多出一个readme.md文件	
+
+解决：fatal: remote origin already exists.
+	原因：已经关联远程仓库
+	
+	解决方法： git remote rm origin
+
+
+

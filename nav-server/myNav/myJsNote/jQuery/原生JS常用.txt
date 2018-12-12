@@ -1,0 +1,7 @@
+ul.addEventListener('click',fn)  //事件绑定
+
+document.createElement("LI")	//创建标签
+
+body.appendChild(el)    //body里追加el节点（在最后面）
+
+ul.insertBefore(li,ul.childNodes[0]) //把li插入到ul下第0个节点前

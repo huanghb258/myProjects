@@ -1,0 +1,37 @@
+﻿ES5给Object扩展了一些静态方法, 常用的2个:
+  1. Object.create(prototype, [descriptors])
+    * 作用: 以指定对象为原型创建新的对象
+    * 为新的对象指定新的属性, 并对属性进行描述
+      - value : 指定值
+      - writable : 标识当前属性值是否是可修改的, 默认为false
+      - configurable: 标识当前属性是否可以被删除 默认为false
+      - enumerable： 标识当前属性是否能用for in 枚举 默认为false
+    例:
+      var obj={name:'damu',age:30};
+      var obj1={};
+      obj1=Object.create(obj,{sex:{value:'男'，writable:true,...}})
+
+  2. Object.defineProperties(object, descriptors)
+    * 作用: 为指定对象定义扩展多个属性
+      * get ：用来获取当前属性值得回调函数
+
+      * set ：修改当前属性值得触发的回调函数，并且实参即为修改后的值
+     * 存取器属性：setter,getter一个用来存值，一个用来取值
+
+      例：var obj={fname:'kobe',lname:'brynt'};
+          Object.defineProperties(obj,{
+            fullName:{
+              get:function(){return this.fname+' '+this.lname;},
+              set:function(data){console.log(data)}
+            }
+          })
+          obj.fullName='tim duncan'  //如果没设置set方法，改不了
+          //如果设置了，会自动调用fullName的set方法，set方法的data参数就是'tim duncan'
+
+          console.log(obj.fullName); //每获取一次fullNume，就执行一次fullName的get方法
+          注意： console.log(obj);   
+            //此时并不会去调用get,在控制台fullName显示省略号，你点它就会调用get
+
+      其实对象本身也是有get/set方法的：
+        var obj={firstName:'a',lastName:'b',get fullName(){..}} 
+        //get/set用法和效果跟defineProperties完全一样。

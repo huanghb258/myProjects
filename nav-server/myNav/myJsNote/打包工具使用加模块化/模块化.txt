@@ -1,0 +1,83 @@
+﻿基础概念：
+	1.CommonJS规范:
+		在服务器端运行时是同步加载的，在浏览器端要提前编译打包处理(打包工具)
+
+		暴露模块：module.exports=xx	exports.xx=xx	
+
+	2.AMD规范：
+		暴露模块：define(['module1','module2'...,function(m1,m2){return 模块}])
+打包工具:
+	browserify:
+		CommonJS规范	
+		安装：
+			npm install browserify -g 
+			npm install browserify --save-dev	//全局、本地都要求安装
+
+		打包：
+			命令下运行browserify xx/xx.js -o dist/bundle.js
+
+	require.js
+		AMD规范
+		安装：直接下载require.js
+			引入：<script data-main='js/app.js' src='js/libs/require.js'>
+
+		打包：app.js里执行
+			requirejs.config({
+				//不设baseUrl以require.js文件所在的文件夹位置为基础路径,一般js/libs
+				baseUrl:'js/'
+				paths:{//配制路径		
+					模块名：'./xx/xx'	//注意不要加.js
+					jquery:'./xx.jquery.10.1'//jquery模块名是jq内部设定的，不要改
+				}，
+				shim:{//假如angular内部没像jq一样设定ADM模块名，可以这种方式
+					angular:{exports:'angular'}
+				}
+			})
+			requirejs(['模块名'],function(m1){}
+
+Es6加Babel加Browserify使用：
+	
+	1.安装babel-cli, babel-preset-es2015和browserify(参照上面)
+		npm install babel-cli browserify -g
+		npm install babel-preset-es2015 --save-dev
+
+	2.定义.babelrc文件
+		根目录下创建一个.babelrc文件，内容{ "presets": ["es2015"]}
+		//1.新建文本文档取名：.babelrc.		2.命令行echo a > .babelrc
+
+	3.暴露模块
+		1.分别暴露：export xx1={...}	export xx2={...}
+		2.统一暴露：export{xx1,xx2}
+		//上两种都只有对象方式引入 import {xx1} from './xx'
+		3.export default{}
+
+	4.es6引入模块：import xx from './xx'
+
+	5.用babel编译：babel js/src -d js/dist	//将js/src下的所有文件转换
+		打包：browserify xx/main.js -o dist/bundle.js
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		

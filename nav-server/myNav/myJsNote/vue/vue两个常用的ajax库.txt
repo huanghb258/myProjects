@@ -1,0 +1,32 @@
+﻿1.vue-resource		已经淘汰了	
+	import Resource from 'vue-resource'
+	声明使用：
+	Vue.use(Resource)	//内部会给vm对象和组件添加一个属性：$http
+	mouted(){	//成在mouted里是页面加载时就调用
+		const url=`https://api.github.com/search/repositories?q=vu&sort=stars`
+		this.$http.get(url).then(
+				response=>{
+					//成功
+					const result=response.data
+					},
+				reponse=>{
+					alert('失败')
+				}			
+			)
+		}
+	
+	
+
+
+2.vue-axios	
+	//用法跟resource一样，失败方法可以写成catch
+	mouted(){	//成在mouted里是页面加载时就调用
+		this.$http.get(url).then(
+				response=>{
+					//成功
+					const result=response.data
+				}	
+			).catch(error=>{
+				alert('失败')
+			})
+		}

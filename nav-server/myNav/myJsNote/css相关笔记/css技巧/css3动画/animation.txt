@@ -1,0 +1,35 @@
+﻿语法：animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+	1.name:动画名
+
+	2.duration:过程时间，默认是0秒
+
+	3.timing-function:如何完成周期，默认ease(慢快慢)
+		linear:均速   ease-in:低速开始   ease-out:低速结束   ease-in-out:低速开始和结束
+
+	4.delay:启动前的延迟，默认0	如2s:2秒后开始动画	-2s:直接播放，但直接跳过前2秒动画
+	
+	5.iteration-count：动画播放次数，默认1次   infinite代表无限
+
+	6.direction：是否应该轮流反向播放
+	...后面的很少用到
+
+
+示例：
+	1.创建动画
+		@keyframes myfirst
+		{
+			0% {background:red;}
+			50% {background:green;}
+			100% {background:yellow;}
+		}
+
+	2.调用
+		.test{background:red;animation:myfirst 5s;}
+		元素class存在.test就会自动播放,所以可用js动态添加或删除来控制播放时机
+
+
+
+
+		
+		
+		

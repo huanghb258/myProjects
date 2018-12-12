@@ -1,0 +1,61 @@
+﻿多个名称相同的混合，less会根据所传的参数进行匹配，把符合的都引入(不覆盖)
+	例：
+		.mixin(@color){w1:1}
+		.mixin(@color; @padding: 2){w2:2}
+		.mixin(@color; @padding; @margin: 2){w3:3}
+
+	引用： 
+		div {  .mixin(#008000);}	//引入了第一和第二个{w1：1;w2:2}
+		//因为第一个和第二个都可以只传一个参数
+
+		div{}.mixin(#008000;5px);	//引入第二和第三
+		//第二个传两个参数也符合，第三可传二至三个参数
+
+		div{}.mixin(#008000;5px，5px);	//只有第三个符合
+
+
+匹配模式：
+	.mixin(top; @color) {...}	//匹配top
+	.mixin(bottom; @color) {...}	
+	.mixin(@_; @color) {...}	//通用符
+	.mixin(@_;) {...}
+
+	引用：.class {  .mixin(top; #888); }	//引用1和3
+	//2是bottom，4是没有参数，所以2、4不匹配
+
+
+
+传参时如果把参数名写上，可以不按顺序来
+
+	.mixin(@color: black; @margin: 10px; @padding: 20px){...}
+
+	引用：
+		 div{.mixin(@margin: 20px; @color: #33acfe);}	//这样顺序不对也没事
+
+		 div{.mixin(#efca44; @padding: 40px);}	//第一个参数没写，按顺序传给color
+
+
+循环：
+	.loop(@i) when (@i > 0) {
+  		.loop((@counter - 1)); 
+ 		 width: (10px * @counter);
+	}
+	引用：div{.loop(5);}	//相当于 i=5;i>0;i--
+
+
+递归循环：
+	.generate-columns(4);
+
+	.generate-columns(@n, @i: 1) when (@i =< @n) {
+ 		 .column-@{i} {
+   		 	width: (@i * 100% / @n);
+  		}
+  		.generate-columns(@n, (@i + 1));	//递归出口：i++
+	}
+
+
+
+
+
+
+	

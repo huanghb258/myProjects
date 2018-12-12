@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<style>
+
+	</style>
+ </head>
+ <body>
+	<ul id="ul">
+		<li>john</li>
+		<li>smith</li>
+		<li>rose</li>
+		<li>eric</li>
+		<li>tom</li>
+		<li>scott</li>
+	</ul>
+	<script type="text/javascript">
+		var str="19831226";
+		str=str.replace(/(\d{4})(\d{2})(\d{2})/,"$1年$2月$3日");
+		console.log(str);
+		ul.innerHTML="<li>"+(ul.innerHTML.replace(/^\s*<li>|<\/li>\s*$/ig,"")
+    .split(/<\/li>\s*<li>/g).sort()).join("</li><li>")+"</li>";
+
+	</script>
+
+ </body>
+</html>

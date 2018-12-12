@@ -1,0 +1,24 @@
+﻿全局：
+  在main.js里：
+
+	1.import Users from './components/Users'  //添加全局组件
+
+	2.Vue.component('users',Users);	 //全局注册组件
+
+	3.App.vue 直接使用users标签
+
+局部组件：
+  在App.vue script里：
+
+	1.import Users from './components/Users'  //添加全局组件
+
+	2.export default里添加components:{'users':Users}
+
+style:
+	如果两个组件里style样式有重复，那么样式会被覆盖,
+	如查要显示各自的样式，需要这样做：
+		给style添加scoped   <style scoped>
+	
+	
+	
+

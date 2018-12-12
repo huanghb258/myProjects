@@ -1,0 +1,8 @@
+﻿1. includes(str) : 判断是否包含指定的字符串，返回boolean
+	例：str.includes('h')
+2. startsWith(str) : 判断是否以指定字符串开头，返回boolean
+	同上
+3. endsWith(str) : 判断是否以指定字符串结尾，返回boolean
+	同上
+4. repeat(count) : 重复指定次数
+	例：var str='ab';	str.repeat(5)	//返回'ababababab'

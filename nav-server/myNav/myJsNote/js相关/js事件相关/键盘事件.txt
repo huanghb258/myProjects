@@ -1,0 +1,8 @@
+﻿onkeydown:按下按键时触发
+	绑定对象：input/document
+	例：document.onkeydown=function (e){ console.log(e.keyCode)}
+
+onkeyup:松开按键时触发
+
+onkeypress:事件会在键盘按键被按下并释放一个键时发生
+

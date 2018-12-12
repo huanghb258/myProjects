@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <base target="_blank"/>
+    <title>我的导航网</title>
+
+    <link rel="stylesheet" href="stylesheets/common.css">
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/asideL.css">
+    <link rel="stylesheet" href="stylesheets/footer.css">
+</head>
+<body>
+<div id="modalBox"></div>
+<div class="container">
+    <aside class="l-aside">
+        <h3 class="title">本 地 文 件</h3>
+        <div class="git-btn">
+            <a href="javascript:;" class="gitPush">同步至远程</a>
+            <a href="javascript:;" class="gitPull">下拉到本地</a>
+        </div>
+        <div class="menu-list">
+            <a title="回到网页顶部" class="toTop">顶部</a>
+            <a title="修改内容后更新" class="upTxt">更新</a>
+            <a title="关闭txt窗口" class="colse">&lt;&lt;收起</a>
+            <a title="打开txt文件修改内容" class="alert">修改</a>
+            <a title="滚动到文章底部" class="toBottom">末尾</a>
+        </div>
+        <!--<div id="cmdWindow">-->
+            <!--<div class="title"><i>关闭</i></div>-->
+            <!--<div class="content">-->
+                <!--<p class="hint">命令正在执行，可能有点久....</p>-->
+                <!--<p>下面是成功或失败后的返回信息</p>-->
+                <!--<pre class="data-txt">-->
+                    <!--执行中。。。-->
+                <!--</pre>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="list" id="noteList">
+
+        </div>
+        <div class="local-hint">
+            <h4>node服务未启动!</h4>
+            <div>
+                <p>如果对文件进行了修改,记得手动git push</p>
+                <p>使用缓存html片段文件结构可能对不上,并且文件内容将从新窗口打开</p>
+                <a href="javascript:;" class="load-html">
+                    加载片段
+                </a>
+            </div>
+        </div>
+        <div id="txt-view">
+            <ul>
+                <li></li>
+            </ul>
+            <pre style="white-space:pre-wrap;"></pre>
+        </div>
+        <div id="contextmenu">
+            <ul>
+                <li class="open-txt">打开文件<span class="rf">命令窗口</span></li>
+                <li class="open-folder">打开文件目录<span class="rf">会闪一下</span></li>
+                <li class="disabled"><span class="lf">重命名</span>  <span class="rf">Shift+没弄</span></li>
+                <li class="disabled"><span class="lf">打开目录</span> <span class="rf">Ctrl+还没</span></li>
+                <li class="disabled"><span class="lf">新建文件</span> <span class="rf">Alt+没好</span></li>
+                <li class="disabled"><span class="lf">删除文件</span> <span class="rf">Alt+还没弄好</span></li>
+            </ul>
+            <ul class="help">
+                <li><span class="lf">帮助 </span><span class="rf">帮不了</span></li>
+            </ul>
+        </div>
+    </aside>
+
+    <aside class="r-aside">
+        <div id="weather">
+            <div class="w-today">今天：<span></span></div>
+            <div class="w-tomorrow">明天：<span></span></div>
+            <div class="isRain warn"></div>
+        </div>
+    </aside>
+    <div id="baidu">
+        <div class="child-center">
+            <form class="">
+                <div class="tab-bar">
+						<span class="active" data-txt='百度一下' href="https://www.baidu.com/"
+                              data-url='https://www.baidu.com/s?ie=utf-8&wd=' domain='www'>
+							网页
+						</span>
+                    <span data-txt='百度图片' href="http://image.baidu.com"
+                          data-url='https://image.baidu.com/search/index?word=' domain='image'>
+							图片
+						</span>
+                    <span data-txt='百度贴吧' href="https://tieba.baidu.com"
+                          data-url='https://tieba.baidu.com/f?ie=utf-8&fr=search&kw=' domain='tieba'>
+							贴吧
+						</span>
+                    <span data-txt='百度地图' href="https://map.baidu.com" data-url='http://map.baidu.com/?fr='
+                          domain='map'>
+							地图
+						</span>
+                </div>
+                <div class="clearFix">
+                    <a class="logo lf" href="https://www.baidu.com" target="_block">
+                        <img src="images/baidu-logo.gif">
+                    </a>
+                    <div class="sInput lf">
+                        <input type="text" id="searchText" autocomplete="off">
+                        <ul id="searchResult" style="display: none">
+
+                        </ul>
+                    </div>
+                    <span class="search lf">百度一下</span>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <section class="main">
+        <div class="group-often">
+            <div class="group">
+                <div class="title">常用网站</div>
+                <div id="often">
+
+                </div>
+                <form class="alertBox js-setBox" id="alertBox">
+                    <div class="title"><i>关闭</i></div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><input placeholder="http://" class="js-addUrl" name="addUrl"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="js-autoIco" name="autoIco" placeholder="ico图标地址"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="js-urlName" placeholder="站点名称" name="urlName"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="js-urlOrder onlyNum" placeholder="输入数值，越小越靠前，不写排最后" name="urlOrder"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="hint">
+                                    <em>提示：</em>1.ico地址如果自动获取错误，须动手更改。
+                                    <br>
+                                    <em></em>2.排序序号相同情况下，新增加的排后面
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                    <div class="btns">
+                        <div class="js-rOrDel" style="display: none">
+                            <span class="myButton js-end">确认修改</span>
+                            <span class="myButton dull-red js-del">删除站点</span>
+                        </div>
+                       <div class="js-addList" style="display: none">
+                           <span class="js-addEnd">添加</span>
+                       </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div id="group-docs">
+            <div class="group-docs">
+                <div class="group">
+                    <div class="title">js相关</div>
+                    <div class="docs">
+                        <div class="clearFix">
+                            <div class="sub-title">
+                                官方文档
+                            </div>
+                            <ul class="list js-jsDocs">
+
+                            </ul>
+                            <a href="javascript:;" class="js-addOrdel" data-label="jsDocs">增删改</a>
+                        </div>
+                        <div class="clearFix">
+                            <div class="sub-title">
+                                js常用
+                            </div>
+                            <ul class="list js-jsVaried">
+
+                            </ul>
+                            <a href="javascript:;" class="js-addOrdel" data-label="jsVaried">增删改</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="group-docs">
+                <div class="group">
+                    <div class="title">C<br>S<br>S<br></div>
+                    <div class="docs">
+                        <div class="clearFix">
+                            <div class="sub-title">
+                                官方文档
+                            </div>
+                            <ul class="list js-cssDocs">
+
+                            </ul>
+                            <a href="javascript:;" class="js-addOrdel" data-label="cssDocs">增删改</a>
+                        </div>
+                        <div class="clearFix">
+                            <div class="sub-title">
+                                css常用
+                            </div>
+                            <ul class="list js-cssVaried">
+
+                            </ul>
+                            <a href="javascript:;" class="js-addOrdel" data-label="cssVaried">增删改</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="examine" style="display: none" class="js-setBox">
+                <span class="close">关闭</span>
+                <p class="hint">
+                    选中输入框按上下键可调整顺序，直接关闭不保存修改
+                </p>
+                <div class="title">
+
+                </div>
+                <ul class="item">
+
+                </ul>
+                <div>
+                    <a href="javascript:;" class="js-add">新增</a>
+                    <a href="javascript:;" class="js-save">保存</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+<footer class="foot">
+    <div class="warp">
+        <div class="content">
+            <div style="position: absolute;top: 20px;">开始</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    !function (document, undefined) {
+        if (isPc() !== 'PC') {
+           err();
+            var meta = document.createElement('meta');
+            var bodyNode = document.createElement('body');
+            var h2 = document.createElement('h2');
+
+            meta.name = 'viewport';
+            meta.content = 'width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0';
+
+            h2.innerText = '不支持非PC端';
+            h2.style.textAlign = 'center';
+            h2.style.marginTop = '50px';
+
+            document.querySelector('head').appendChild(meta);
+            document.documentElement.appendChild(bodyNode);
+            document.body.appendChild(h2);
+        }else if(!window.localStorage){
+            err();
+            var bodyNode = document.createElement('body');
+            var styleNode=document.createElement('style');
+            styleNode.innerText=`
+                .alert-danger{
+                    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                    font-size: 14px;
+                    color: #a94442;
+                    background-color: #f2dede;
+                    border-color: #ebccd1;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                    border: 1px solid transparent;
+                    border-radius: 4px;
+                    line-height: 20px;
+                }
+            `;
+            var div = document.createElement('div');
+            div.className='alert-danger';
+            div.innerText = `糟糕！你的浏览器不支持localStorage，原因是浏览器版本过低或者不支持本地存储(IE及Edge)。建议使用chrome浏览器，或者你可以升级浏览器。IE用户需开启http-server服务且版本至少IE8+`;
+            document.documentElement.appendChild(bodyNode);
+           document.head.appendChild(styleNode);
+           document.body.appendChild(div);
+        }
+
+        function isPc() {
+            var ua = navigator.userAgent;
+            if ((ua.match(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone)/i))) {
+                if (/iPhone|iPad|iPod/.test(ua)) {
+                    return 'ios'
+                } else if (/Android/.test(ua)) {
+                    return 'android'
+                }
+            } else {
+                return 'PC'
+            }
+        }
+        function err() {
+            document.documentElement.removeChild(document.body);
+            var linkNode = document.getElementsByTagName('link');
+            for (var i = 0; i < linkNode.length; i++) {
+                !function(i){
+                    setTimeout(function () {
+                        document.head.removeChild( document.getElementsByTagName('link')[0]);
+                    },i*10)
+                }(i)
+
+            }
+        }
+    }(document, undefined);
+
+</script>
+<script src="javascripts/jquery.min.js"></script>
+<script src="javascripts/common.js"></script>
+<script src="javascripts/BDSearch.js"></script>
+<script src="javascripts/mainCon.js"></script>
+<script src="javascripts/rightSide.js"></script>
+<script src="javascripts/leftSide.js"></script>
+<script>
+    $(function () {
+        if(!document.documentElement.clientHeight){return false}
+        var wh = document.documentElement.clientHeight;
+        if (wh <= 600) {
+            document.documentElement.style.minHeight = '720px';
+            // document.getElementById('baidu').style.margin = '35px 0';
+            // document.getElementById('group-docs').style.marginTop = '30px';
+        }
+
+        window.addEventListener('resize', function () {
+            var newH = document.documentElement.clientHeight;
+            if (newH > 600 && newH < 640) {
+                document.documentElement.style.minHeight = '610px';
+            } else if (newH <= 600) {
+                document.documentElement.style.minHeight = '720px';
+            }
+        })
+    });
+</script>
+</body>
+</html>

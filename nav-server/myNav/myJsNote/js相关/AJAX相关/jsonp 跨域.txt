@@ -1,0 +1,66 @@
+var obj = JSON.parse(str); //由JSON字符串转换为JSON对象
+var last=JSON.stringify(obj); //将JSON对象转化为JSON字符
+
+
+html:
+	
+    	function jsonpCallback(result) {  
+        	//alert(result);  
+       		for(var i in result) {  
+            	alert(i+":"+result[i]);//循环输出a:1,b:2,etc.  
+        	}  
+    	}  
+    	var oScript=document.createElement("script");  
+    	oScript.type="text/javascript";  
+    	oScript.src="http://crossdomain.com/services.php?callback=jsonpCallback";  
+    	document.body.appendChild(oScript);//添加script标签
+	document.body.removeChild(oScript);//删除script标签  
+	
+
+php:
+	<?php  
+	$arr=array('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5);  
+	$result=json_encode($arr);  
+	//动态执行回调函数  
+	$callback=$_GET['callback'];  
+	echo $callback."($result)";  
+
+
+客户端JS代码在jQuery中的实现方式：
+	
+    	$.ajax({  
+        	url:"http://crossdomain.com/services.php",  
+        	dataType:'jsonp',  
+        	data:'',  
+        	jsonp:'callback',  //必写重要，百度jsonp:'cb'
+        	success:function(result) {  
+            		for(var i in result) {  
+                	   alert(i+":"+result[i]);//循环输出a:1,b:2,etc.  
+            		}  
+        	},  
+        	timeout:3000  
+    	}); 
+
+
+
+
+
+/*********************************
+
+请求豆瓣数据：
+	
+	1.//1.动态生成script标签
+        var script = document.createElement("script");
+        script.src = "https://api.douban.com/v2/book/search?q=javascript&count=1&callback=handleResponse";
+        document.body.insertBefore(script, document.body.firstChild);
+
+	2.调用  注意：当第一步完成后会自动执行
+	function handleResponse(response){
+            console.log(response);
+        }
+	\\百度搜索请求：
+	https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=中味食府&cb=handleResponse
+
+
+
+

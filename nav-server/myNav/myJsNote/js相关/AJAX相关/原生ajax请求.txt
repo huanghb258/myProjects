@@ -1,0 +1,107 @@
+提示：一般在url后面加t=时间戳	// 用于清除缓存
+原生ajax步骤（4步）：
+注意顺序，特别是send一定要写在open之后
+var xhr=new XMLHttpRequest();		
+xhr.onreadystatechange=function(){		
+	if(xhr.readyState===4){
+		if(xhr.status===200){
+			console.log(xhr.responseText);//成功后返回的数据
+		}else{
+			console.log('失败');
+		}
+	}
+}
+//如果是get请求
+//xhr.open('post','./users?t='+ +new Date);
+//xhr.send();
+// 如果是post请求，上两句改成下面这样
+var data = 'userName=acc';
+xhr.open('POST','./users');
+xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhr.send(data+'&t='+ +new Date)
+
+
+
+获取xhr兼容写法：
+function GetXmlHttpObject()  //返回xhr对象
+ {  
+  var xmlHttp=null;  
+  try  
+    {  
+    // Firefox, Opera 8.0+, Safari  
+    xmlHttp=new XMLHttpRequest();  
+    }  
+  catch(e)  
+    {  
+    // Internet Explorer  
+    try  
+      {  
+      xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");  
+      }  
+    catch (e)  
+      {  
+      xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");  
+      }  
+    }  
+	return xmlHttp;  
+ } 
+
+
+封装ajax：
+function Ajax(type, url, data, success, failed){
+    // 创建ajax对象	//创建部分还是用上面的严谨
+    var xhr = null;
+    if(window.XMLHttpRequest){
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject('Microsoft.XMLHTTP')
+    }
+ 
+    var type = type.toUpperCase();
+    // 用于清除缓存
+    var random = Math.random();
+ 
+    if(typeof data == 'object'){
+        var str = '';
+        for(var key in data){
+            str += key+'='+data[key]+'&';
+        }
+        data = str.replace(/&$/, '');
+    }
+ 
+    if(type == 'GET'){
+        if(data){
+            xhr.open('GET', url + '?' + data, true);
+        } else {
+            xhr.open('GET', url + '?t=' + random, true);
+        }
+        xhr.send();
+ 
+    } else if(type == 'POST'){
+        xhr.open('POST', url, true);
+        // 如果需要像 html 表单那样 POST 数据，请使用 setRequestHeader() 来添加 http 头。
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(data);
+    }
+ 
+    // 处理返回数据
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+            if(xhr.status == 200){
+                success(xhr.responseText);
+            } else {
+                if(failed){
+                    failed(xhr.status);
+                }
+            }
+        }
+    }
+}
+ 
+// 测试调用
+var sendData = {name:'asher',sex:'male'};
+Ajax('get', 'data/data.html', sendData, function(data){
+    console.log(data);
+}, function(error){
+    console.log(error);
+});

@@ -1,0 +1,48 @@
+﻿在checkbox按钮上使用v-mobel绑定数据，其数据会跟据checkbox而改变，
+使用计算set属性时,set:function(val)  \\val得到的是其计算属性的值
+
+
+计算属性与deta值有相同时，data的值优先， data:{a:1} computed:{a:{get()}}
+计算属性的get与set方法：
+	get:get方法是返回计算后得到的值
+	set:当值发生变化时要做的事情（可以操作其它元素）
+
+
+异步获取数据时，渲染比获得数据要快，三级表达式会报错（a.b.c）:
+	如设置初始值info:{ }
+	<p>{{info.a}}</p>  //不会报错，此时info是空对象，info.a==undefined
+	<p>{{info.a.b}}</p>	//报错，info.a.b相当于undefined.b
+
+	解决：<p v-if="info">{{info.a}}</p>	//info还没获取到数据时，不渲染
+
+使用轮播等插件时，需等待DOM渲染完成后调用，否则无效：
+	解决方案1：watch监视
+		  watch:{
+    		    xx(value){	//监视异步数据xx的值,有数据后再调用插件
+      		      this.$nextTick(()=>{
+        		  new Swiper('.swiper-container', {...
+
+	方案2：来自Vue项目视频54，第15分钟
+		1.需要使用轮播的vue组件中:
+		mounted(){
+			this.$store.dispatch('getXx',()=>{ new Swiper()..})	
+		}
+		2.actions.js下让getXx去执行
+			async getXx({commit},callback){	//getXx异步获取数据后执行new Swiper
+				...
+				callback && callback()
+			}
+
+新增加的属性没有数据绑定效果：
+	例：有个data数据food:{a:1,b:2}
+	    操作页面时给food添加一个属性c,food.c=3,此时food得到了更新，{{food.c}}却不更新
+
+	解决：Vue.set(food,'c',3)
+
+vue项目61课注意理解,每个商品都有购买数量，如何存储每个商品的购买数量
+
+
+
+
+
+

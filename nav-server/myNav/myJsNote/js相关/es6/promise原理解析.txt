@@ -1,0 +1,21 @@
+﻿###a 来源:https://segmentfault.com/a/1190000009478377;
+
+使用示例：
+    let pr=new Promise((r)=>{... r('完成')})	
+极简promise雏形
+	function Promise(fn) {  //new的时候传入一个函数
+        var value = null,  //这个值会传给then的callback
+            callbacks = [];  //callbacks为数组，因为可能同时有很多个回调
+
+        this.then = function (onFulfilled) {
+            callbacks.push(onFulfilled);
+        };
+
+        function resolve(value) {
+            callbacks.forEach(function (callback) {
+                callback(value);
+            });
+        }
+
+        fn(resolve);
+    }

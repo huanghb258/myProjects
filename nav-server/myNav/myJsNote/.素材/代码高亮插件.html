@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/prettify.css">
+	<script src="js/prettify.js"></script>
+	<style type="text/css">
+		.content{
+			width: 600px;
+			margin: 0 auto;
+			background: #000;
+		}
+		.prettyprint *{font-family:'courier new',monospace;}
+		.prettyprint .com { color: green; }
+		.prettyprint .lit { color: #AE81FF; }
+		.prettyprint .pun,
+		.prettyprint .opn, 
+		.prettyprint .clo { color: #F8F8F2; }
+		.prettyprint .fun { color: #dc322f; }
+		.prettyprint .str, 
+		.prettyprint .atv { color: #E6DB74; }
+		.prettyprint .kwd, 
+		.prettyprint .tag { color: #F92659; }
+		.prettyprint .typ, 
+		.prettyprint .atn, 
+		.prettyprint .dec, 
+		.prettyprint .var { color: #A6E22E; }
+		.prettyprint .pln { color: #66D9EF; }
+	</style>
+</head>
+<body>
+	<p style="text-align: center;">
+		说明：style标签里的样式是自定义颜色，可以省略改为默认颜色.
+		<br>
+		注意给需要代码高亮的pre添加class,增加 linenums 类可以显示行号并隔行添加背景，
+		还有其它的类还没用过。
+	</p>
+	<div class="content">
+	<pre class="prettyprint">
+	//注释
+	var a={name:'LiLei'}
+	function fn(){
+		console.log(1)
+	}
+	</pre>
+	</div>
+	
+	<script type="text/javascript">
+		prettyPrint();
+	</script>
+</body>
+</html>

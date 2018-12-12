@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="UTF-8">
+	<title>inline-block</title>
+	<style>
+		/*方案1：ie8+*/
+		/*.nav {
+		  width: 100%; 
+		  font-size:0;
+		  webkit-text-size-adjust:none;
+		}
+		.nav .nav-item {
+		  display: inline-block;
+		  *display: inline;
+		  *zoom: 1;
+		  font-size:14px
+		}*/
+		/*方案2*/
+		.nav {
+		  width: 100%; 
+		  font-size:0;
+		  webkit-text-size-adjust:none;
+		  [;font-size:12px;];
+		  *font-size:0;
+		  font-family:arial;
+		  [;letter-spacing:-3px;];
+		  *letter-spacing:normal;
+		  *word-spacing:-1px;
+		}
+		.nav .nav-item {
+		  display: inline-block;
+		  *display: inline;
+		  *zoom: 1;
+		  font-size:14px;
+		  letter-spacing:normal;
+		  word-spacing:normal;
+		}
+		.nav-item{background: pink;height: 30px;line-height: 30px;}
+	</style>
+</head>
+<body>
+	<div class="nav">
+        <div class="nav-item">我是导航栏1</div>
+        <div class="nav-item">我是导航栏2</div>
+        <div class="nav-item">我是导航栏3</div>
+        <div class="nav-item">我是导航栏4</div>
+	</div>
+	<p style="width:980px;margin: 0 auto;">
+		说明：
+		<br>
+		方案1：IE8及以上浏览器, Firefox, Opera, Safari6, Chrome18可直接使用此方案；<br>
+		方案2：全浏览器兼容
+		<br>
+			但是在.scss文件中直接写[;font-size:12px;]，sass报错，查资料发现有同行采用将hack中的特殊字符，如”[;”设为变量“l}”加到相应位置
+	</p>
+</body>
+</html>

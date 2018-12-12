@@ -1,0 +1,12 @@
+﻿1. 二进制与八进制数值表示法: 二进制用0b, 八进制用0o，十六进制用0x
+2. Number.isFinite(i) : 判断是否是有限大的数
+	例：Number.isFinite(infinity)	//超出范围,返回true
+
+3. Number.isNaN(i) : 判断是否是NaN
+
+4. Number.isInteger(i) : 判断是否是整数
+	注意：Number.isInteger(123.0) //true,也是整数
+
+5. Number.parseInt(str) : 将字符串转换为对应的数值
+
+6. Math.trunc(i) : 直接去除小数部分

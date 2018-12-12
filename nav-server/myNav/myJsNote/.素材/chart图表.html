@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>chart图表</title>
+    <style>
+
+    </style>
+    <!--<link rel="stylesheet" href="stylesheets/viewer.stylesheets"/>-->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <!--<script src="javascripts/viewer.javascripts"></script>-->
+    <!--<script src="javascripts/vue.min.javascripts"></script>-->
+    <script src="js/Chart.js"></script>
+</head>
+<body>
+<h4 align="center">版本很重要，js版本不对直接报错</h4>
+<canvas id="myChart" width="800" height="400"></canvas>
+<script>
+    var data = {
+        labels : ["January","February","March","April","May","June","July"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                data : [65,59,90,81,56,55,40,50,60,70]
+            },
+            {
+                //最后一个参数是透明度
+                fillColor : "rgba(255,255,255,0.5)",
+                strokeColor : "rgba(226,24,23,1)",
+                pointColor : "rgba(226,24,23,1)",
+                pointStrokeColor : "#fff",
+                data : [28,48,40,19,96,27,100]
+            }
+        ]
+    }
+    var ctx = document.getElementById("myChart").getContext("2d");
+//    var myNewChart = new Chart(ctx).PolarArea(data);  //不知道干嘛用的
+    new Chart(ctx).Bar(data);//柱形
+    new Chart(ctx).Line(data);//线形
+    new Chart(ctx).Radar(data);//蛛网
+    data = [
+        {
+            value : 30,
+            color: "#D97041"
+        },
+        {
+            value : 90,
+            color: "#C7604C"
+        },
+        {
+            value : 24,
+            color: "#21323D"
+        },
+        {
+            value : 58,
+            color: "#9D9B7F"
+        },
+        {
+            value : 82,
+            color: "#7D4F6D"
+        },
+        {
+            value : 8,
+            color: "#584A5E"
+        }
+    ]
+    new Chart(ctx).PolarArea(data);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+localStorage:永久存储（IE8+）5M
+	注意：1.值为string类型，需要json转换	2.隐私模式下不可读
+	
+	写入：  window.localStorage.setItem("c",data);
+	读取：	window.localStorage.getItem("c")
+	清空：	window.localStorage.clear();
+	删除：	window.localStorage.removeItem("c")
+
+	使用示例：
+		var storage=window.localStorage;
+		var data={
+                	name:'xiecanyong',
+                	sex:'man',
+                	hobby:'program'
+           	 };
+       		storage.setItem("data",JSON.stringify(data))	//转json
+        	console.log(JSON.parse(storage.getItem('data')));	//转成对象
+
+
+ sessionStorage：窗口关闭即消失
+	API跟locaStorage一样
+	
+	
+cookie:4K
+	注意：如果删除或修改不成功，可能是1.路径不对(一般定义 path=/)	2.域(domain)
+
+	创建：
+		document.cookie="username=John Doe";
+
+	创建同时设置过期时间（以 UTC 或 GMT 时间）
+		var date=new Date();
+		date.setTime(date.getTime()+10*24*3600*1000);	//将date设置为10天以后
+		document.cookie="userId=John Doe; expires="+date.toGMTString();	//创建
+
+	读取：
+		x = document.cookie;	//得到所有cookie(字符串),需要截取
+
+		封装好的方法：
+
+		function get_cookie(Name) {
+   			var search = Name + "="//查询检索的值
+   			var returnvalue = "";//返回值
+   			if (document.cookie.length > 0) {
+     			  sd = document.cookie.indexOf(search);
+     			  if (sd!= -1) {
+       				sd += search.length;
+        			end = document.cookie.indexOf(";", sd);
+       				if (end == -1)
+         			  end = document.cookie.length;
+         			//unescape() 函数可对通过 escape() 编码的字符串进行解码。
+        			returnvalue=unescape(document.cookie.substring(sd, end))
+      			  }
+  		 	} 
+   			return returnvalue;
+		}
+
+		//使用方式：
+		get_cookie("popped");
+
+	删除Cookie:
+		将过期时间设置为以前的时间即可，跟创建时一样
+
+	
+	修改：
+		跟创建一样，会自动覆盖
+
+	
+	完整的封装：
+
+		var cookie = {
+    set:function(key,val,time){//设置cookie方法
+        var date=new Date(); //获取当前时间
+        var expiresDays=time;  //将date设置为n天以后的时间
+        date.setTime(date.getTime()+expiresDays*24*3600*1000); //格式化为cookie识别的时间
+        document.cookie=key + "=" + val +";expires="+date.toGMTString();  //设置cookie
+    },
+    get:function(key){//获取cookie方法
+        /*获取cookie参数*/
+        var getCookie = document.cookie.replace(/[ ]/g,"");  //获取cookie，并且将获得的cookie格式化，去掉空格字符
+        var arrCookie = getCookie.split(";")  //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+        var tips;  //声明变量tips
+        for(var i=0;i<arrCookie.length;i++){   //使用for循环查找cookie中的tips变量
+            var arr=arrCookie[i].split("=");   //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+            if(key==arr[0]){  //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+                tips=arr[1];   //将cookie的值赋给变量tips
+                break;   //终止for循环遍历
+            }
+        }
+        return tips;
+    },
+	delete:function(key){ //删除cookie方法
+         var date = new Date(); //获取当前时间
+         date.setTime(date.getTime()-10000); //将date设置为过去的时间
+         document.cookie = key + "=v; expires =" +date.toGMTString();//设置cookie
+        }
+}
+
+	使用方式：
+		cookie.set("uesr","sss",24);//设置为24天过期
+		alert(cookie.get("uesr"));//获取cookie
+	
+
+	
+	

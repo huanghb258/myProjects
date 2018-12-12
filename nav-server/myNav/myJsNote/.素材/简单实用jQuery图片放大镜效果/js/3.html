@@ -1,0 +1,32 @@
+<html>
+<head>
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />-->
+    <meta charset="UTF-8"/>
+    <title>js获取鼠标选中的文字</title>
+    <SCRIPT LANGUAGE="JavaScript">
+        <!--
+        function SelectText()
+        {
+            try{
+                var selecter=window.getSelection();
+                if(selecter!=null&&selecter.trim()!=""){
+                    alert(selecter);}
+            }catch(err){
+                var selecter=document.selection.createRange();
+                var s=selecter.text;
+                if(s!=null&&s.trim()!=""){
+                    alert(s)}
+            }
+        }
+        String.prototype.trim=function()
+        {
+            return this.replace(/(^\s*)|(\s*$)/g,"");
+        }
+        //-->
+    </SCRIPT>
+</head>
+<body>
+<span onClick="SelectText()">河中鱼类离奇死亡，下游居民频染怪病，沿岸植物不断变异，是残留农药？还是生化攻击？敬请关注今晚CCTV-10《科学探索》，即将播出的专题节目：《神秘的河边洗脚人--中国男足》</span>
+</body>
+</html>

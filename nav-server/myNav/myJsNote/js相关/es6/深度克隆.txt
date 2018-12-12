@@ -1,0 +1,39 @@
+﻿ 克隆数据：对象/数组
+      1、区别： 浅拷贝/深度拷贝
+        arr1=[1,2,{a:3}];   arr2=arr1.slice();
+        arr2[0]=10; //不会影响arr1
+        但是arr2[2].a=4   //这就影响到了arr     所以叫浅复制
+         
+      2、常用的拷贝技术
+        1). arr.concat(): 数组浅拷贝
+        2). arr.slice(): 数组浅拷贝
+        3). JSON.parse(JSON.stringify(arr/obj)): 数组或对象深拷贝
+            注意：数组或对象里不能有函数，json处理不了函数数据
+
+      
+实现深度克隆：
+    function getObjClass(obj) {
+        let result = Object.prototype.toString.call(obj).slice(8, -1);
+        return result;
+    }
+  
+  function deepClone(obj) {
+    let result, objClass = getObjClass(obj);
+    if(objClass === 'Object'){
+      result = {};
+    }else if(objClass === 'Array'){
+      result = [];
+    }else {
+      return obj; // 如果是其他数据类型不复制，直接将数据返回
+    }
+    // 遍历目标对象
+    for(let key in obj){
+      let value = obj[key];
+      if(getObjClass(value) === "Object" || 'Array'){
+        result[key] = deepClone(value);//如果val是对象或数组，递归调用
+      }else {
+        result[key] = obj[key];
+      }
+    }
+    return result;
+  }

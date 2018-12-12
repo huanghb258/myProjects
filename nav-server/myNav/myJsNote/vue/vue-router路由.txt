@@ -1,0 +1,131 @@
+﻿路由：映射关系	path
+安装：npm install vue-router --save
+
+1.main.js或专门配制路由的js模块，引入模块	
+	import Vue form 'vue'
+	import VueRouter from 'vue-router'
+
+  引入路由页面
+  	import About from '../views/About.vue'
+	import Home from '../views/Home.vue'
+
+2.声明使用路由
+	Vue.use(VueRouter)
+
+3.VueRouter():用于创建路由器的构建函数
+	export default new VueRouter({
+		routes:[
+			{
+				path:'/about',
+				component:About
+			},
+			{
+				path:'/home',
+				component:Home
+			},
+			{	//重定向，默认路径
+				path:'/',
+				redirect:'/about'
+			}
+		]
+	})
+
+4.入口main.js引入路由文件
+	import router from './router'
+		//router是路由文件夹,里面是index.js,可以省略写index.js
+	Vue({
+		el:..
+		router:router
+	})
+
+5.App.vue使用
+	<router-link to='/home'>Home</router-link> //类似a标签
+
+	<router-view></router-view>	//内容显示在这个标签
+
+小提示：当前router-link标签会自动添加class:router-link-active,但样式要自己写
+	如果觉得这个类名太长，可以修改路由配置：linkActiveClass:'active'
+
+
+嵌套路由：
+	1.引入组件
+	import News from '../views/news.vue'
+
+	2.在父路由下添加children,例：
+
+		{
+			path:'/home',
+			component:Home,
+			children:[
+				{
+					path:'/home/news', //省略写法：path:'news'
+					component:News
+				},
+				{	//重定向
+					path:'',
+					redirect:'/home/news'
+				}
+			]
+		}
+
+		3.使用
+			router-link用router-view标签写在父组件，即home.vue 
+
+缓存路由组件：
+
+	如在home的input里输入内容，这时切换到其它组件，使返回后input里的内容仍在
+	正常情况下切换后就进入死亡，切换回来后会重新创建，所以无法保留
+
+	方法：给router-view添加父标签
+		<keep-alive>
+			<router-view></router-view>
+		</keep-alive>
+	注意：页面内容经实时变换时不建议用，如此做切后回去页面不会更新内容
+
+
+向路由组件传递数据：
+	
+	1.子组件path后面添加/:id占位将要传过来的数据
+		{
+			path:'/message',	//父路由组件
+			component:Message,
+			children:[
+				{	//子路由
+					path:'/home/detail/:id', //方法1
+				//  path:'home/detail'	//方法2，使用2时传参稍作改变
+					component:MessageDetail
+				}
+			]
+		}
+	2.你组件传参
+		//方法1的传参方式：
+		<router-link :to="`/Message/detail/${message.id}`">	
+		
+		//方法2的传参方式：:to="`/Message/detail?id={message.id}`"
+
+	3.子组件获取参数
+		$route.params.id 	//.id是跟根据占位时写的是/:id
+
+	注意：当在生命周期mounted里获取数据时，因为mounted里的方法只执行一次，mounted里返回数据一成不变，需要使用监视：
+		watch:{
+			$route:function(value){//路由路径(param)发生改变
+				//重新执行mounted里的方法
+			}
+		}
+
+	方法3：使用<router-view>属性携带数据：
+		1.<router-view msg='abc'>
+		2.export default{
+			props:{	//声明接收
+				msg:String
+			}
+		}
+
+编程式路由导航：
+	在Vue实例内部通过$router访问路由实例。调用：this.$router.push()
+	点击 <router-link :to="..."> 等同于调用 router.push(...)
+
+	router.replace()方法
+		与push唯一不同的是replace不会向history添加记录(浏览器前进后退记录)
+
+	router.back():后退

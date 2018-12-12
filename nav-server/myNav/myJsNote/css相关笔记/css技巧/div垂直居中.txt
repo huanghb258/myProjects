@@ -1,0 +1,74 @@
+固定高宽:
+	position: absolute;
+ 	left: 50%;
+ 	top: 50%;
+	width:200px;
+	height:100px;
+	margin-left:-100px;
+	margin-top:-50px;
+
+不固定高度方法：
+
+方法一：
+	父元素：before一个空元素，和 inline-block / vertical-align 可以搞定居中，非常巧妙。但是这个方法要求待居中的元素是 inline-block，不是一个真正通用的方案。
+	.parent {
+  		text-align: center;
+		}
+
+	.parent:before {
+  		content: '';
+  		display: inline-block;
+  		height: 100%;
+  		vertical-align: middle;
+  		margin-right: -0.25em; /* Adjusts for spacing */
+		}
+
+	.child {
+  		display: inline-block;
+  		vertical-align: middle;
+  		width: 50%;
+		}
+	没看明白原理。。。。
+
+方法二：
+
+	table布局方法，局限性很大，比如非唯一子元素，多测试就知道了！
+	.box{
+   		display:table-cell;
+    		text-align:center; 
+    		vertical-align:middle;     
+	} 
+
+
+方法三
+	transform方法，缺点：不兼容低版本，实际项目注意用多浏览器兼容写法
+	 .parent {
+         	 position: relative;
+        }
+        .child {
+            position: absolute;
+            top: 50%;
+            left: 50%;           
+            -webkit-transform: translateX(-50%) translateY(-50%);
+        }
+
+
+方法四：flex流布局，ie10+
+	 .parent {
+        	 display: flex;
+        	 justify-content: center;
+         	 align-items: center;
+
+        	}
+	
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css简单的翻转效果</title>
+	<style>
+		.wrap{
+			position: relative;
+			width: 123px;
+			height: 132px;
+		}
+		.backFace,.face{
+			background: pink;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: transform 1s;
+		}
+		.face{
+			background: #009ee0;
+			transform: rotateY(180deg);
+			backface-visibility: hidden;	
+		}
+		.wrap:hover .backFace{
+			transform: rotateY(180deg);			
+		}
+		.wrap:hover .face{
+			transform: rotateY(360deg);	
+			backface-visibility: hidden;		
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="backFace">反面</div>
+		<div class="face">正面</div>
+		<!--
+										谁在上面？
+											backFace在上面
+										谁在下面？
+											face在下面
+										有没有3D舞台？
+											有3D舞台就有纵深
+											初始化的时候：
+												.face{transform: rotateY(180deg);backface-visibility: hidden;}
+												就应该看到backFace（有背景的那一面）
+											旋转的时候
+												.face{transform: rotateY(360deg);backface-visibility: hidden;}
+												.backFace{transform: rotateY(180deg);}
+												在定位流里;3D舞台不影响最终层级。
+												应该看到backFace（有背景的那一面的背面）
+										
+										
+										chrome中有bug：3D视图更新不准确，内部模型准确
+										火狐内部渲染完全符合w3c规范，渲染准确
+									-->
+	</div>
+</body>
+</html>

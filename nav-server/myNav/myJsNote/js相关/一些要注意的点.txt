@@ -1,0 +1,13 @@
+﻿有时候觉得代码明明没问题（脑袋有点懵），调半天就是不出效果，这时还是写个小demo先测试一下吧
+
+箭头函数不能乱用，特别是要用到this或者调用API函数时
+	例：str.replace(reg,()=>{let arg=argument})	//arg是上一层函数的arg
+
+display为none的元素动态添加class没有过渡效果
+	动态设置为block后还得setTimeout延时添加class才有效果？
+	用定时器可能会出现意想不到的bug,可以视情况设置宽/高为零或opacity/visibility
+
+模板字符串虽然允许换行，但是换行符\n会被保留下来，并且正则通配符'.'匹配不到\n
+
+
+	

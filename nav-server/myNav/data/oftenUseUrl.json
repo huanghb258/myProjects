@@ -1,0 +1,210 @@
+﻿{
+	"icos":[
+		{"hostName":"vuejs.org","ico":"images/ico/vue.png"},
+		{"hostName":"douyu.com","ico":"images/ico/douyu.ico"},
+		{"hostName":"sanguosha.com","ico":"images/ico/sanguosha.ico"},
+		{"hostName":"github.com","ico":"images/ico/github.ico"},
+		{"hostName":"5sing.kugou.com","ico":"images/ico/5sing.ico"},
+		{"hostName":"music.163.com","ico":"images/ico/music163.ico"},
+		{"hostName":"op.gg","ico":"images/ico/opgg.ico"},
+		{"hostName":"nodejs.cn","ico":"images/ico/nodejs.png"}	
+	],
+	"jsDocs":[
+	    {
+	        "url": "https://www.jquery123.com",
+	        "title": "jQuery中文手册",
+	        "order": 0
+	    },
+	    {
+	        "url": "https://cn.vuejs.org",
+	        "title": "Vue中文官网",
+	        "order": 1
+	    },
+	    {
+	        "url": "http://nodejs.cn/api/",
+	        "title": "NodeJs",
+	        "order": 2
+	    },
+	    {
+	        "url": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+	        "title": "MDN JavaScript",
+	        "order": 3
+	    },
+	    {
+	        "url": "https://caniuse.com/#home",
+	        "title": "兼容性查询",
+	        "order": 4
+	    },
+	    {
+	        "url": "http://www.runoob.com/js/js-tutorial.html",
+	        "title": "菜鸟教程",
+	        "order": 5
+	    },
+	    {
+	        "url": "https://github.com",
+	        "title": "Github",
+	        "order": 6
+	    }
+	],
+	"jsVaried":[
+	    {
+	        "url": "https://www.jquery123.com",
+	        "title": "jQuery中文手册",
+	        "order": 0
+	    },
+	    {
+	        "url": "https://cn.vuejs.org",
+	        "title": "Vue中文官网",
+	        "order": 1
+	    },
+	    {
+	        "url": "http://nodejs.cn/api/",
+	        "title": "NodeJs",
+	        "order": 2
+	    },
+	    {
+	        "url": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+	        "title": "MDN JavaScript",
+	        "order": 3
+	    },
+	    {
+	        "url": "https://caniuse.com/#home",
+	        "title": "兼容性查询",
+	        "order": 4
+	    },
+	    {
+	        "url": "http://www.runoob.com/js/js-tutorial.html",
+	        "title": "菜鸟教程",
+	        "order": 5
+	    },
+	    {
+	        "url": "https://github.com",
+	        "title": "Github",
+	        "order": 6
+	    },
+	    {
+	        "url": "https://segmentfault.com",
+	        "title": "思否",
+	        "order": 7
+	    },
+	    {
+	        "url": "https://cloud.tencent.com/developer/doc/1079",
+	        "title": "express教程",
+	        "order": 8
+	    },
+	    {
+	        "url": "http://www.jq22.com",
+	        "title": "jQuery插件",
+	        "order": 9
+	    },
+	    {
+	        "url": "http://www.daqianduan.com/6281.html",
+	        "title": "移动端资源整合",
+	        "order": 10
+	    }
+	],
+	"cssDocs":[
+	    {
+	        "url": "http://www.bootcss.com/",
+	        "title": "bootstrap文档",
+	        "order": 0
+	    },
+	    {
+	        "url": "http://www.ionic.wang/css_doc-index.html",
+	        "title": "ionic中文文档",
+	        "order": 1
+	    },
+	    {
+	        "url": "http://mint-ui.github.io/#!/zh-cn",
+	        "title": "mint-ui",
+	        "order": 2
+	    },
+	    {
+	        "url": "http://lesscss.cn/features/",
+	        "title": "less官网",
+	        "order": 3
+	    }
+	],
+	"cssVaried":[
+	    {
+	        "url": "https://colorhunt.co/",
+	        "title": "配色网",
+	        "order": 0
+	    },
+	    {
+	        "url": "https://color.adobe.com/zh/create/color-wheel",
+	        "title": "渐变色",
+	        "order": 1
+	    },
+	    {
+	        "url": "https://www.youziku.com/onlinefont/index",
+	        "title": "有字库",
+	        "order": 2
+	    },
+	    {
+	        "url": "http://tool.oschina.net/commons?type=2",
+	        "title": "html字符转义",
+	        "order": 3
+	    },
+	    {
+	        "url": "http://www.iconfont.cn/",
+	        "title": "阿里ico",
+	        "order": 4
+	    },
+	    {
+	        "url": "https://www.cnblogs.com/RuMengkai/p/6502057.html",
+	        "title": "less常用的混合",
+	        "order": 5
+	    }
+	],
+	"often":[
+	    {
+	        "url": "http://music.163.com",
+	        "txt": "网易云音乐",
+	        "ico": "images/ico/music163.ico",
+	        "order": 2
+	    },
+	    {
+	        "url": "https://www.douyu.com/g_LOL",
+	        "txt": "斗鱼-每个人的直播平台",
+	        "ico": "images/ico/douyu.ico",
+	        "order": 0
+	    },
+	    {
+	        "url": "http://sanguosha.com/",
+	        "txt": "三国杀",
+	        "ico": "images/ico/sanguosha.ico",
+	        "order": 7
+	    },
+	    {
+	        "url": "http://5sing.kugou.com",
+	        "txt": "原创音乐网",
+	        "ico": "images/ico/5sing.ico",
+	        "order": 4
+	    },
+	    {
+	        "url": "http://www.op.gg/",
+	        "txt": "op.gg",
+	        "ico": "images/ico/opgg.ico",
+	        "order": 5
+	    },
+	    {
+	        "url": "https://cn.vuejs.org",
+	        "txt": "Vue",
+	        "ico": "images/ico/vue.png",
+	        "order": 3
+	    },
+	    {
+	        "url": "http://nodejs.cn/api/",
+	        "txt": "Node.js",
+	        "ico": "images/ico/nodejs.png",
+	        "order": 6
+	    },
+	    {
+	        "url": "http://github.com",
+	        "txt": "github",
+	        "ico": "images/ico/github.ico",
+	        "order": 2
+	    }
+	]
+}

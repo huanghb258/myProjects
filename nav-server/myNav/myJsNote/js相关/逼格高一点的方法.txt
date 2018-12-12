@@ -1,0 +1,45 @@
+﻿arguments.callee：说了半天，被弃用了
+	arguments用途是保存函数参数，arguments.callee返回函数本身
+	函数内部调用函数自身时好用，如递归
+
+	阶乘函数：
+	function factorial(num){//定义阶乘函数一般都要用到递归算法
+    
+   		if (num <=1) {
+         
+      		return 1;
+     
+   	} else {
+         
+   		return num * factorial(num-1);//改成arguments.callee(num-1)
+		}	
+	
+}//改完后即使函数名被改变也不影响
+
+	接受参数n=5,不用for循环输出数组[1,2,3,4,5]
+		function show(n) {
+
+    			var arr = [];
+
+    			return (function () {
+	//改(function fn(){
+        			arr.unshift(n);
+
+        			n--;
+
+        			if (n != 0) {
+
+            				arguments.callee();//改fn()
+     			}
+
+       			 return arr;
+
+    			})()
+
+		}
+	arguments.callee的替换方案：将return的自调函数里的匿名函数取个名字，如上例
+
+
+
+ '1'+=new Array(5+1).join("0");	//100000   不用for循环做到了for的事，''+0+''+0+''+0+''+0+''+0+'',5个0
+

@@ -1,0 +1,124 @@
+let const  不会声明提前，声明过的变量不能重复声明
+
+箭头函数：
+	
+
+	
+解构赋值： ...
+
+set：
+	可以去重复数组：let set=new Set([1,2,1,3,2]);  //1,2,3  返回的不是数组
+	一属性：size  相当于lenght
+	四方法：
+	1.add  添加一个值:set.add('张三');  //返回对象本身，可以链式操作
+	2.delete  set.delete('张三');   //返回布尔值
+	3.has  set.has('张三'); //判断有没有，返回布尔值
+	4.clear set.clear();  //清除所有，没有返回值
+
+	set.keys();set.vlue();  获取键值;
+
+map:键可以是数组、对象 
+	相比于对象，对象的键只能是字符串:obj.name=xx
+	
+	let map=new Map([]);
+	
+	常用属性:size
+	方法：
+		map.set(键，值);  设置键值
+		map.get(键) 取值
+		map.delete(键)  //删除   has  clear  //同Set
+
+	遍历：map.forEach(function (value,index){});
+
+
+
+Class:类，作为对象的模板
+	//定义类
+	class Point { //类似构造函数
+  		constructor(x, y) {
+    		this.x = x;
+    		this.y = y;
+  	     }
+  		toString() {//相当于prototype
+    		return '(' + this.x + ', ' + this.y + ')';
+  	     }
+	}
+	var p=new Point(1,2) //使用方法完全一样
+	Point === Point.prototype.constructor // true 类本身就指向构造函数
+
+	Object.assign方法可以很方便地一次向类添加多个方法。
+		Object.assign(Point.prototype, {
+  			toString(){},
+ 		 	toValue(){}
+		});
+
+Array.from():
+	把类数组转成数组;//Array.from('类数组')
+	小技巧：可以利用set()给数组去重复，然后用from()转回来;
+
+Array.of('d','da','fsaf')  //转成数组
+
+Object.assign(obj1,obj2,obj3...);  //合
+
+延展操作符：
+	let str='今天天气真好'  let arr=[...str];   //变成数组
+	
+function sum(a=1,b=2){..}  //如果不传参，a,b=1,2  如果有传参则无视
+
+function sum(...nums){
+	let result=0;
+	for(let value of nums){  //类似arguments
+		result+=value;
+	}
+}
+//优点:function sum(str,...nums) //这时nums可以不包含str
+
+
+
+promise:
+	var promise=new Promise(function(resolve, reject) {..})
+		 
+
+Symbol:
+	生成一个独一无二的值：var a=Symbol('a')  var b=Symbol('a') // a不等于b
+	\\给Symbol传的值可以当作注释，不传值：打印a=Symbol()  打印b也等于Symbol(),从外面看起来一样
+
+
+async/await: 用来处理异步
+	
+	async function timeout() {	//在一个函数前加async，这个函数就不会阻塞后面的代码
+　　			return 'hello world';
+		}
+
+	timeout();console.log('我先执行')	//先打印，后执行timeout
+
+	console.log(timeout());		//promise{<resolved>:'hello world'},返回promise对象
+
+	timeout().then(result => {	//在控制台打印hello world
+    		  console.log(result);
+		})
+
+	await:
+		
+	function doubleAfter2seconds(num) {	//2秒后返回num*2
+   		return new Promise((resolve, reject) => {
+        	  setTimeout(() => {
+            		resolve(2 * num)
+        	 }, 2000);
+   	   } )
+	}
+
+	async function testResult() {
+    	  let result = await doubleAfter2seconds(30);	//await:等一下，等后面的promise对象执行完
+    	  console.log(result);
+	}
+	//直到promise成功返回60后，赋值给result,暂停结束，开始执行console.log
+
+
+
+
+
+
+
+
+

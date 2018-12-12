@@ -1,0 +1,120 @@
+﻿获取浏览器类型:
+	var ua = navigator.userAgent;
+手机型号：
+	var mm = ['iPhone', 'iPad', 'iPod', 'Nexus', 'BenQ-Siemens', 'Meizu', 'Xiaomi', 'BlackBerry', 'CoolPad', 'Dell', 'HTC', 'Huawei', 'Kindle', 'K-Touch', 'Lenovo', 'LG', 'Motorola', 'Nintendo', 'Nokia', 'Onda', 'OPPO', 'OLPC', 'Palm', 'PlayStation', 'Samsung', 'SonyXperia', 'SonyEricsson', 'vivo', 'ZTE', 'UbuntuPhone', 'UbuntuTablet', 'WindowsPhone']
+
+判断pc还是移动端，如果是移动端，是安卓还是苹果:
+
+function isPc() {
+    if ((ua.match(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone)/i))) {
+        if (/iPhone|iPad|iPod/.test(ua)) {
+            return 'ios'     
+        } else if (/Android/.test(ua)) {
+            return 'android'   
+        }
+    }else{
+        return 'PC'
+    }
+}
+
+获取浏览器类型：
+	function BrowserType() 
+ { 
+   var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串 
+   var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器 
+   var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器 
+   var isEdge = userAgent.indexOf("Windows NT 6.1; Trident/7.0;") > -1 && !isIE; //判断是否IE的Edge浏览器 
+   var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器 
+   var isSafari = userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") == -1; //判断是否Safari浏览器 
+   var isChrome = userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Safari") > -1; //判断Chrome浏览器 
+ 
+   if (isIE)  
+   { 
+      var reIE = new RegExp("MSIE (\\d+\\.\\d+);"); 
+      reIE.test(userAgent); 
+      var fIEVersion = parseFloat(RegExp["$1"]); 
+      if(fIEVersion == 7) 
+      { return "IE7";} 
+      else if(fIEVersion == 8) 
+      { return "IE8";} 
+      else if(fIEVersion == 9) 
+      { return "IE9";} 
+      else if(fIEVersion == 10) 
+      { return "IE10";} 
+      else if(fIEVersion == 11) 
+      { return "IE11";} 
+      else 
+      { return "0"}//IE版本过低 
+    }//isIE end 
+     
+    if (isFF) { return "FF";} 
+    if (isOpera) { return "Opera";} 
+    if (isSafari) { return "Safari";} 
+    if (isChrome) { return "Chrome";} 
+    if (isEdge) { return "Edge";} 
+  }//myBrowser() end 
+   
+  //判断是否是IE浏览器 
+  function isIE() 
+  { 
+   var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串 
+   var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器 
+   if(isIE) 
+   { 
+     return "1"; 
+   } 
+   else 
+   { 
+     return "-1"; 
+   } 
+  } 
+   
+   
+  //判断是否是IE浏览器，包括Edge浏览器 
+  function IEVersion() 
+  { 
+   var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串 
+   var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器 
+var isEdge = userAgent.indexOf("Windows NT 6.1; Trident/7.0;") > -1 && !isIE; //判断是否IE的Edge浏览器 
+   if(isIE) 
+   { 
+      var reIE = new RegExp("MSIE (\\d+\\.\\d+);"); 
+      reIE.test(userAgent); 
+      var fIEVersion = parseFloat(RegExp["$1"]); 
+      if(fIEVersion == 7) 
+      { return "IE7";} 
+      else if(fIEVersion == 8) 
+      { return "IE8";} 
+      else if(fIEVersion == 9) 
+      { return "IE9";} 
+      else if(fIEVersion == 10) 
+      { return "IE10";} 
+      else if(fIEVersion == 11) 
+      { return "IE11";} 
+      else 
+      { return "0"}//IE版本过低 
+   } 
+else if(isEdge) 
+{ 
+  return "Edge"; 
+} 
+   else 
+   { 
+     return "-1";//非IE 
+   } 
+  } 
+\\无法正确区分IE5和IE7
+
+
+获取浏览器参数：
+
+function getQueryString(name) {  //neme:url参数名称   
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
+
+	\\调用：baidu.com/s?wd=蛤  getQueryString('wd')  //蛤 

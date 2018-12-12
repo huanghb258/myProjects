@@ -1,0 +1,59 @@
+﻿$.ajax基本用法
+	$.ajax({
+		type:'GET'
+		dataType:'JSONP',					
+		url:url,
+		data:date,
+		contentType: "application/json;charset=utf-8",
+		jsonp:'cb',
+		timeout:1000,	//请求超时时间
+	}).done((data,status,xhr)=>{
+		console.log(data);
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		console.log(textStatus)
+	  	
+	});
+
+辅助函数：
+$.param(obj) ：
+	把对象转换成符合url请求格式，{age:15,name:'liLei'} -->"age=15&name=liLei
+
+.serialize()：
+	表单系列化，语法：$("form").serialize() //返回类似wd='58'&name=xx的字符串
+
+.serializeArray()：返回数组[{name:'wd',value:'58'}...]
+
+
+fail错误参数：
+	XHR:
+		.readyState :当前状态,0-未初始化，1-正在载入，2-已经载入，3-数据进行交互，4-完成。
+
+		.status:返回的HTTP状态码，比如常见的404,500等错误代码。
+
+		.statusText:对应状态码的错误信息，如404错误信息not found,500是Internal Server Error
+
+		.responseText:服务器响应返回的文本信息
+
+	textStatus和errorThrown都是字符串类型，分别是返回的状态和服务器的错误信息。
+
+常见错误：
+	1.打印textStatus是“parsererror”，意为解析错误
+	  说明ajax已经与后端（服务器端）交互成功，后端响应并返回了文本信息。但是前端接受到这个文本后解析
+	  错误，一般是返回的json数据不完整或不合格的数据，例{'status':'success'}数据中是单引号
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

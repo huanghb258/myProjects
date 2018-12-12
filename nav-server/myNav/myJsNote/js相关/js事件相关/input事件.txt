@@ -1,0 +1,59 @@
+input专用事件：
+	1.onfocus  当input 获取到焦点时触发
+
+	2.onblur  当input失去焦点时触发，注意：这个事件触发的前提是已经获取了焦点再失去焦点的时候会触发相应的js
+
+	3.onchange 当input失去焦点并且它的value值发生变化时触发（value改变后回车也触发）
+
+	4.onkeydown 在 input中有键按住的时候执行一些代码
+
+	5.onkeyup 在input中有键抬起的时候触发的事件，在此事件触发之前一定触发了onkeydown事件
+
+	6.onclick  主要是用于 input type=button，当被点击时触发此事件
+
+	7.onselect  当input里的内容文本被选中后执行一段，只要选择了就会触发，不是非得全部选中
+
+	8.oninput  当input的value值发生变化时就会触发，不用等到失去焦点（与onchange的区别）
+		注：脚本修改value值不触发，绑定此事件后F12修改value值不会改变页面显示
+		    HTML5标准事件，IE9以下不支持	
+	对所有ie使用onpropertychange，其他浏览器用oninput：
+
+	var ie = !!window.ActiveXObject;
+	if(ie){
+    	object.onpropertychange = fn;
+	}else{
+    	object.addEventListener("input",fn,false);
+	}
+
+
+oninput与onchange的区别：
+		input是立即触发，change是失去焦点触发且可以作用于 <keygen> 和 <select> 元素
+
+
+清除input非数字：
+	 input.onkeyup=function(){//不能用keydown代替      
+        	this.value=this.value.replace(/\D/ig,'');//\D:非数字
+    	}
+
+
+Html5新增Type类型：
+	提示：normalize.css用于统一浏览器的标签默认样式，对存在不统一不兼容的样式进行重置(css reset)
+	1.number:只能输数字，右边有两个箭头加减数量
+		专有属性：
+			min/max:限制数值大小，限制不了手动输入的数值
+			step:加减箭头一次加减的数量
+
+	2.
+	
+		
+
+
+
+
+
+
+
+
+
+
+

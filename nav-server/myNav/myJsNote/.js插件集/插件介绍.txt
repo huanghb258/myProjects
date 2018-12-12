@@ -1,0 +1,41 @@
+日期插件：layDate 
+	使用方法：官网做的很详细：http://www.layui.com/laydate/
+	注意：引入时不能只单独引入js，需要整个文件夹
+
+
+canvas图表插件：chart
+
+	很坑，js版本不对文档上的方法直接报错，用法看拟简单
+
+
+一维码生成插件：JsBarcode
+
+	去官网看文档，很简单
+
+
+模拟数据插件:Mock.js
+	生成随机数据，拦截Ajax请求
+	npm install mockjs
+
+
+滚动UI插件：better-scroll(现已支持pc端)，好用
+	安装：npm install --save better-scroll
+
+	官方文档：https://ustbhuangyi.github.io/better-scroll/doc/
+
+	使用：
+		import BScroll from 'better-scroll'
+		let scroll = new BScroll('.wrapper',{})
+	注意：
+		1.better-scroll 默认会阻止浏览器的原生 click 事件,想要保留事件，就设置为true
+		new BScroll('.wrapper',{click:true})
+		
+		2.避免多次创建BScroll实例，创建时最好判断一下:let bs=new BScroll(),if(bs)//已存在	
+		  多次创建的后果,因为点击事件改由bs派发，实际点击一次却会触发多次
+
+		3.初次创建实例时因内容过少不需滚动，但当内容足够需要滚动时，需要拖动两次，解决：
+			判断滚动内容足够高时调用bs.refresh()来重新计算内容高度
+		
+	
+
+

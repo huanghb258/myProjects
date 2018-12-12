@@ -1,0 +1,6 @@
+﻿字符串标签：
+	$("<p>p标签<p>,{id:'p1',class:'p'}")	//创建标签同时能设置属性
+
+offset(): jq只返回left,top	zepto还返回宽高
+
+.width():zepto没有innerWidth/outWidth,返回包含边框，相当于outWidth

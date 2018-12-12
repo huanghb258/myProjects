@@ -1,0 +1,12 @@
+﻿
+var targetW=640;//设计图宽度
+var scale = document.documentElement.clientWidth/targetW;	//设计图跟屏宽比
+var meta =document.querySelector("meta[name='viewport']");
+meta.content="initial-scale="+scale+",minimum-scale="+scale+",maximum-scale="+scale+",user-scalable=no";
+
+原理：
+	每一个元素在不同设备上占据的css像素的个数是一样的（css像素是抽象的）。
+	但是css像素和物理像素的比例是不一样的，所以求出比例，在meta上设置缩小比例
+
+优点：所量即所得(设计图是10px就写10px);
+缺点：没用到完美视口

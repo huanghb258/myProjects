@@ -1,0 +1,16 @@
+﻿禁止电话与邮箱：
+	在手机上点击数据会自动打电话
+	解决：<meta name="format-detection" content="telephone=no,email=no"/>
+
+	如果要启用自动拨打：<a href="tel:110">1383838438</a>
+
+解决链接点击时背景高亮：
+	a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+解决按钮圆角过圆的问题:
+	在移动端input圆角自动50%
+	解决：-webkit-appearance:none;
+
+font boosting:
+	浏览器自动放大字体，虽然触发条件难，遇到字体大小跟预想不一样时设置
+	解决：max-height:9999px;

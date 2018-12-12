@@ -1,0 +1,44 @@
+﻿1.媒体查询：
+	.box{position:relative;}
+	.box:before{
+		position: absolute;
+		bottom: 0px;
+		content: "";
+		display: block;
+		width: 100%;
+		height: 1px;
+		background: black;
+	}
+	@media only screen and (-webkit-device-pixel-ratio:2 ) {
+		.box:before{
+			transform: scaleY(.5);
+		}
+	}
+	@media only screen and (-webkit-device-pixel-ratio:3 ) {
+		.box:before{
+			transform: scaleY(.33333333333);
+		}
+	}
+
+2.
+	let dpr = window.devicePixelRatio;  //求出像素比
+    
+	let scale = 1/dpr;   //求出缩放比例
+    
+	let width = document.documentElement.clientWidth/6.4 * dpr;  //乘以像素比，rem可以正常使用
+    
+	let metaN = document.querySelector('meta[name="viewport"]');
+    
+	metaN.setAttribute('content','content','initial-scale=' + scale + ', maximum-scale=' + scale + ', 
+		minimum-scale=' + scale + ', user-scalable=no');  //设置缩放
+
+    
+	let styleN = document.createElement('style');
+    
+	styleN.innerHTML = 'html{ font-size:' +  width + 'px; }';  //设置rem
+    
+	document.head.appendChild(styleN);
+
+
+
+	没试过，先抄下来

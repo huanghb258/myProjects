@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="1" id="input"/>
+<script>
+
+    var input=document.getElementById('input');
+    input.onkeyup=function(){//不能用keydown代替
+        //把非数字替换成空字符串
+        this.value=this.value.replace(/\D/ig,'');//\D:非数字
+    }
+    input.onchange=function(){//失去焦点时再检测一遍
+        this.value=this.value.replace(/\D/ig,'');
+    }
+    /*
+    验证keyCode是否为数字键
+    input.onkeydown=function(e){
+        e=e||window.event;
+        console.log(e.keyCode);
+        if(fn(e)){
+            console.log('非数字');
+        }else{
+            console.log('输入合法');
+        }
+    }
+    function fn(e){
+        //IE 中 Event 对象使用 keyCode 获得键入字符的 Unicode 编码
+        //DOM 中 Event 对象 使用 charCode 获得键入字符的 Unicode 编码
+        var char_code = e.charCode ? e.charCode : e.keyCode;
+        //Unicode 编码中， 0~9 的编码的十进制 是 48~57 之间 ， 0为 48， 9 为57
+        //小键盘为96~105
+        if(char_code<48 || (char_code >57&&char_code<96) || char_code>105){//           ;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    */
+
+</script>
+</body>
+</html>

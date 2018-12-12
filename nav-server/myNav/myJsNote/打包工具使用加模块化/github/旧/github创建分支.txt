@@ -1,0 +1,17 @@
+1.进入分支仓库    //huanghb258/demo
+
+2.点击Branch创建gh-pages        //名称不能变
+
+3.点击settings --> 选Branchs
+
+4.两个下拉菜单都选gh-pages  Update也点一下
+
+5.点完会自动跳转保存页，点保存即可
+
+访问：huanghb258.github.io/demo       //设置完可能要等几分钟
+
+
+
+/**********************************/
+
+备注：进入仓库—>settings ->GitHub Pages 选择主分支，保存也可以访问，不用创建分支

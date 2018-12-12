@@ -1,0 +1,44 @@
+原理：https://www.cnblogs.com/liuyanxia/p/5666892.html
+	
+
+var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1); 
+	//e.pageX :鼠标的位置	offsetLeft:元素坐标	w/h：元素宽高->this.offsetWidth
+	
+var y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1); 
+
+var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4;
+
+	\\direction的结果将会是0到3，分别代表上，右，下，左
+
+
+
+简单实现：
+	var div=document.getElementById('wrap');
+		div.onmouseover=function(e){
+			var w=this.offsetWidth,
+			    h=this.offsetHeight,
+			    x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1),
+			    y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1);
+			var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4;
+			switch(direction)
+			{
+			    case 0:
+			        direction='上';
+			        break;
+				case 1:
+			        direction='右';
+			        break;
+				case 2:
+			        direction='下';
+			        break;
+				case 3:
+			        direction='左';
+			        break;
+
+			    default:
+			        alert('direction异常');
+			}
+			console.log(direction)
+		}
+
+	

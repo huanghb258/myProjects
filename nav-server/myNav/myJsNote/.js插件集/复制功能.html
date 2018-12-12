@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- <link rel="stylesheet" type="text/stylesheets" href="stylesheets/bootstrap.stylesheets"> -->
+	<style type="text/css">
+	pre{
+		color:red;
+		font-size: 14px;
+		line-height: 22px;
+	}
+	button,input{
+		margin-top: 12px;
+	}
+	.btns{
+		margin-left: 30px;
+	}
+	</style>
+</head>
+<body>
+	<a href="https://clipboardjs.com/">官方文档</a>
+	<pre>说明：
+		1.data-clipboard-target属性指定要复制的文字容器的id
+		2.data-clipboard-action属性指定复制还是剪切，不写默认为复制
+		3.data-clipboard-text属性可以复制触发器自身data-clipboard-text里的值
+		4.new Clipboard('.btn')指定class为btn元素可以触发复制功能
+		注意：.btn匹配数量过多会造成内存大量消耗，应使用事件代理
+	</pre>
+
+	<!-- <p id="foo">Lorem ipsum dolor sit amet, </p> -->
+	<div class="btns">
+		<input id="foo" value="内容">
+
+	<!-- Trigger -->
+	<br>
+	<button class="btn" data-clipboard-target="#foo">
+	    btn1:复制
+	</button>
+	<button class="btn" data-clipboard-target="#foo" data-clipboard-action="cut">
+	    btn2:剪切
+	</button><br>
+	<button class="btn" data-clipboard-text="btn3">
+	    btn3:复制自身
+	</button>
+	</div>
+	
+	<script src="js/clipboard.min.js"></script>
+	<script type="text/javascript">
+		var clipboard=new Clipboard('.btn');
+
+
+		/**********如果需要捕获***********/
+		//看控制面板就知捕获的是什么了
+		clipboard.on('success', function(e) {
+		    console.info('Action:', e.action);
+		    console.info('Text:', e.text);
+		    console.info('Trigger:', e.trigger);
+
+		    e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+		    console.error('Action:', e.action);
+		    console.error('Trigger:', e.trigger);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+添加事件方法：
+	addHandler：function(element,type,handler){
+	    if(element.addEventListener){//检测是否为DOM2级方法
+	        element.addEventListener(type, handler, false);
+	    }else if (element.attachEvent){//检测是否为IE级方法
+	        element.attachEvent("on" + type, handler);
+	    } else {//检测是否为DOM0级方法
+	        element["on" + type] = handler;
+	    }
+	}
+
+移除之前添加的事件方法:
+	removeHandler：function(element, type, handler){
+       if (element.removeEventListener){
+           element.removeEventListener(type, handler, false);
+       } else if (element.detachEvent){
+           element.detachEvent("on" + type, handler);
+       } else {
+           element["on" + type] = null;
+       }
+   }
+
+阻止浏览器默认事件的兼容性写法:
+	preventDefault: function(event){
+        if (event.preventDefault){
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    }
+
+阻止事件冒泡的兼容性写法:
+	stopPropagation: function(event){
+        if (event.stopPropagation){
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+
+
+event 作为传参时:
+	var e=window.event||e;
+
+事件目标元素:
+	var theObj=e.target||e.srcElement;//e.target：当前元素
+
+对象转字符串：
+	var printObj = typeof JSON != "undefined" ? JSON.stringify : 
+		function(obj) {
+			//如果兼容JSON，printObj=JSON.stringify
+			var arr = [];
+			$.each(obj, function(key, val) {
+				var next = key + ": ";
+				next += $.isPlainObject(val) ? printObj(val) : val;
+				arr.push( next );
+			});
+			return "{" +  arr.join(", ") + "}";
+		};
+	$("#log").append( printObj(object1) ); //调用

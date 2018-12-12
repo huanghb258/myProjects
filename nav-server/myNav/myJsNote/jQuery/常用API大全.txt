@@ -1,0 +1,171 @@
+﻿/**非真正大全，只整理部分，以下收录基本测试过**/
+查找元素相关：
+	关系查找：
+		siblings():取得被选元素的所有兄弟元素，除自己以外的兄弟元素
+		children():获取被选元素的所有子元素的集合
+		closest():返回符合条件的第一个父元素 $("span").closest("ul")-->最近的父ul
+		parent():直接父元素；
+		parentsUntil()：返回指定范围内所有父元素	$("span").parentsUntil("div")-->li/ul
+		next():下一个兄弟
+		nextAll():后面所有兄弟
+		nextUntil()：指定范围内的兄弟   $("li.start").nextUntil("li.stop")  .start到.stop之间，不含头尾
+		prev(): prevAll() :prevUntil():  前一个兄弟
+
+	获取元素API：
+		p.slice(0,2)-属于其父元素第0-2个p(不含2),p=$('div p')
+		.filter()-筛选  例：p.filter('.a')  //匹配p里class里包含'a'的元素
+			提示：参数也可以是函数，只要返回true皆匹配
+		.first()/last()  属于其父元素第一/最后一个
+		.eq(index)  从0开始数
+		.find()-查找后代元素，必须传参  例：div.find('p')  //div里所有p元素
+
+	伪类匹配：用法$('p:last()')
+			//不传参可以不用()?
+
+		:eq(index)-匹配给定索引值的元素(从0开始)
+		:odd()/:even()-匹配奇/偶数(从0开始数)
+		:lt(index)/:get(小于)-匹配所有大于/小于设定index索引值的元素
+		:not('排除条件')-取非 $("input:not(':empty')")所有不为空的元素
+		:empty()-匹配孤儿，无父无子无内容   :parent()-匹配非孤儿
+		:has('el')匹配包含'el'的所有元素 $("div:has('p')")
+		:first-child/last 匹配页面所有ul中的第一个子元素/:first只能匹配到第一个ul中的第一个li
+		:only-child 匹配只有一个子元素的父元素中的子元素
+		:hidden() 匹配所有不可见的元素
+		:visible() 匹配所有可见的元素
+
+		表单选择器
+		:input 匹配所有表单元素input、textarea、select、button
+		:text 匹配所有单行文本框 $(":text")
+		:password....
+
+		表单对象属性
+		:enabled   :disabled
+		:checked-被选中的复选框、单选框等，不包括select中的option
+		:selected-匹配所有被客户端选择的option $(":select:selectde")
+
+		不常用：
+		:contains()-查找含有指定字符串条件的元素(text节点内容，非属性内容)
+		:nth-child(index)-同eq(从1开始计算)
+		:first()-匹配其父元素下第一个元素(只找一个，一般用first-child)  :last()-同上
+		:header()-匹配如h1，h2，h3之类的标题元素
+
+	类css3高级匹配：
+		$("div[id]")包含id的属性的div
+		$("div[xx='d']") xx属性等于d的div(非包含，class='d d1'不匹配)
+		$("div[xx!='a']")	xx属性不等于a的所有div
+		$("div[class $= 'da']") xx属性最后一个值包含'da' class='a dda' //true
+			\\^:第一个值包含  ~:完整匹配，但不分前后  *：只要包含，不分前后，不须完整匹配
+		$("div[xx |= 'a']");  xx属性的第一个值是'a-'开头  class='a-b c'  //true
+
+
+获取内容：
+	.scrollTop():获取匹配元素相对滚动条距离   //scrollLeft
+	.offset():相对于最顶部/左边的距离，固定值，不受滚动影响	 $("div").offset().top/left
+	.html/text/val():设置或返回所选元素/文本/表单的值
+	
+	待增加：获取元素宽高
+
+
+
+元素增删改：
+  增：
+	插入子节点：
+	.append(): $(A).append(B) 在A中加入B
+	.appendTo(): $(A).appendTo(B) 把A追加到B中
+	.prepend(): $(A).prepend(B) 把B前置在A中
+	.prependTo(): $(A).prependTo(B) 把A前置在B中
+	插入同辈节点：
+	.after(): $(A).after(B)把B插到A元素的后面
+	.insertAfter(): $(A).insertAfter (B)把A插到B元素的后面
+	.before(): $(A).before(B)把B插入到A的面前
+	.insertbefore(): $(A).insertbefore(B)把A插入到B的面前
+
+  删：
+	el.remove() - 删除el（及其子元素)
+	el.empty()  - 删除el的子元素
+
+
+
+操作元素行为：
+	.hide()-设置display为none
+	.show()-清除.hide()的影响，如果非.hide设置的none，则设置为block
+	.toggle()-添加or删除none	
+
+元素属性增删改：
+	hasClass():检查是否包含指定class。
+	addClass():添加一个类
+	removeClass():删除一个类
+	toggleClass():如果存在（不存在）就删除（添加）一个类。
+
+
+事件：
+	.hover(fn,fn)：移入和移出时都触发，只传一个函数时移入移出都执行同一个
+	.click():单击   dbclick:双击
+	.mouseenter/over	enter:不冒泡，只有从外面移入时触发
+		\\over:外面移入时会触发，继续移入到子元素还会再触发，从子元素移出经过时还触发
+	.mouseleave/out  同上移出时触发，leave不冒泡,只有移出到外界才触发一次
+		\\out:移入到子元素也触发(视为移出)，从子元素移出到自身还触发(子元素冒泡)，再移到外界还触发
+	.mousedown():鼠标按下时触发
+	.mouseup():鼠标松开时触发
+	.mousemove():鼠标在被选元素内移动时触发,在子元素上移动也算
+	.scroll():滚动指定元素的时候触发,一般作用于window
+	.blur():当元素失去焦点时触发
+	.focus():当元素获取焦点时触发
+	.off():移除事件 例：$('d1').off('click')
+
+
+动画：
+	slideUp():隐藏元素，动画效果：高度慢慢缩减为零，并display:none
+	slideDown():同上取反  //可以传3个参数(毫秒，linear，fn)
+	slideToggle():看名字
+	fadeOut():可见度方式隐藏
+	fadeIn/fadeToggle()-同上
+	fadeTo(动画时间，opacity,fn)-改变透明度
+	小技巧：例：function runIt() {  div.show();div.slideUp("normal",runIt);
+		\\slideUp的第二个参数使用递归，会无限循环runIt里的动画
+
+
+	自定义动画：
+	.animate({}，毫秒数)-基本用法：.animate({width:500}，毫秒,easing,fn)
+		//毫秒可以使用预定值："slow","normal", "fast"   easing：jq提供"linear" 和 "swing".
+	.stop()-停止匹配元素当前正在运行的动画。
+	.queue()-显示或操作已经执行的函数列队。div.queue.length可以显示个数
+
+Ajax/提交请求相关：
+	$.ajax基本用法
+
+
+	辅助函数：
+	$.param(obj) ：把对象转换成符合url请求格式，{age:15,name:'liLei'} -->"age=15&name=liLei
+
+	.serialize()：直接把表单系列化成符合url请求格式，$("form").serialize()
+
+	.serializeArray():表单系列化对对象
+
+
+全局API:
+	$.fn.xx=fn	//增加定义方法   $.fn===$.prototype
+	$.extent()	//例：$.extend([true,]obj1, obj2) ->把obj2合并到obj1(有重复则覆盖，obj1会被改变)
+		//第一个是可选参数，默认false(对象的值为对象时，直接覆盖而不是合并)
+		例：obj1={a:{b:1,c:2}} obj2={a:{b:5}}  $.extent(obj1,obj2)->obj1={a:{b:5}} 
+
+	$.type():
+		其实就是封装Object.prototype.toString，要注意的是返回的不是大写
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

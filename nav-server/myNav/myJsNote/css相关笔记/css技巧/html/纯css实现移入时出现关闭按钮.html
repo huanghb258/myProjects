@@ -1,0 +1,62 @@
+<!doctype html>
+<html data-framework="vue">
+	<head>
+		<meta charset="utf-8">
+		<title>纯css实现移入时出现关闭按钮</title>
+		<style>
+			ul{				
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				margin-top: 50px;
+				width: 300px;				
+			}
+
+			li{				
+				position: relative;
+				height: 60px;
+				line-height: 60px;
+				border: 1px solid #ccc;
+			}
+			button{
+				border: 0;
+				background: none;
+				outline: none;
+			}
+			.todo-list li .destroy {
+				display: none;
+				position: absolute;
+				top: 0;
+				right: 10px;
+				bottom: 0;
+				width: 40px;
+				height: 40px;
+				margin: auto 0;
+				font-size: 30px;
+				color: #cc9a9a;
+				margin-bottom: 11px;
+				transition: color 0.2s ease-out;
+			}
+
+			.todo-list li .destroy:hover {
+				color: #af5b5e;
+			}
+
+			.todo-list li .destroy:after {
+				content: '×';
+			}
+
+			.todo-list li:hover .destroy {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="todo-list">			
+			<li style="text-align: center;">
+				<span>todo</span><button class="destroy"></button>
+			</li>
+		</ul>
+
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .a{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed transparent;
+            text-align: center;
+            line-height: 200%;
+            font-size: 30px;
+        }
+        .b{
+            display: none;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 202px;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="a" id="a1"><p>d1</p>
+        <div class="b">
+           修改内容：<input type="text" id="txt" onchange="alter()"/>
+        </div>
+    </div>
+    <div class="a">d2</div>
+</div>
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+  $('.container').on('click','.a',function(e){
+      $(this).css('borderColor','#ccc');
+      $('.b').css('display','block');
+  })
+    $(document).on('click',function(e){
+//        e.stopPropagation();
+        var a1=document.getElementById('a1');
+        if(!$(e.target).is($('.a'))&&!$(e.target).is($('.b'))){
+            console.log($(e.target).is($('.a')));
+            console.log($(e.target));
+            $('.a').css('borderColor','transparent');
+            $('.b').css('display','none');
+        }
+    })
+    function alter(){
+        $('#a1>p').text($('#txt').val());
+    }
+</script>
+</body>
+</html>

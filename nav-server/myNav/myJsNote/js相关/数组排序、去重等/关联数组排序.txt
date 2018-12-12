@@ -1,0 +1,26 @@
+
+关联数组或对象排序：
+	
+	例如：{a:5,b:8,c:1},arr[a]=5;arr[b]=8...
+
+	目前没找到能直接这个数组的排序方法，如果项目中真有这种需求，
+	则数组不能这么简单的进行存储，可以保存成这样：[{key:'a',val:5},{key:'b',val:8}...]
+	然后按照上面的方法排序;
+
+	 var obj = {a: 5, b: 1, c: 7, d: 3};
+    	 var arr=[]，obj2={};
+    	 for(var k in obj){  //把obj转成可排序的数组
+       	 	arr.push({key:k,val:obj[k]});
+    	 }
+
+	  arr.sort(function (a,b){  //利用sort方法排序
+        	return a.val - b.val;
+    	 });
+	
+	  for(var i=0;i<arr.length;i++){// 转回成对象
+       		 obj2[arr[i].key]=arr[i].val;
+   	  }	//{b: 1, d: 3, a: 5, c: 7}
+
+	说明，上述方法是自己写的，没有封装，也许不是好方法，但是也能成功
+
+

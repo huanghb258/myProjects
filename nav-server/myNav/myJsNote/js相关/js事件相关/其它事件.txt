@@ -1,0 +1,31 @@
+﻿onerror事件：
+	<img src="image.gif" onerror="myFunction()">	//加载图片发生错误时触发
+
+ontransitionend事件
+	当transition动画完成后触发
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

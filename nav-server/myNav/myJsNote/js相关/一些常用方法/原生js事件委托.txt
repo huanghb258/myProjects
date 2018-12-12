@@ -1,0 +1,20 @@
+原理：利用冒泡事件，再判断当前触发的元素是否你想要的
+
+var ul = document.querySelector('#list')
+list.addEventListener('click',function (e){
+  var el = e.target
+
+//从target（点击）元素向上找currentTarget（监听）元素，找到了想委托的元素就触发事件，没找到就返回null
+
+  while(el.tagName !== 'LI'){
+    
+    if(el === ul){
+      el = null
+      break;
+    }
+    el = el.parentNode
+  }
+ if (el) {
+  console.log('你点击了ul里的li')
+  }
+})

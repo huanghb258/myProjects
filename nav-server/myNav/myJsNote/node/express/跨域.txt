@@ -1,0 +1,22 @@
+﻿方案1：
+	//app.js下设置响应头：
+	app.all('*', function(req, res, next) {
+     		res.header("Access-Control-Allow-Origin", "*");
+     		res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+     		res.header("Access-Control-Allow-Headers", "X-Requested-With");
+     		res.header('Access-Control-Allow-Headers', 'Content-Type');
+     		next();
+ 	});
+
+方案2：
+	//jsonp
+	服务端：
+		//注意返回不用拼接
+	 	res.jsonp(JSON.stringify(result));
+
+	客户端：
+		//注意不要设置jsonp:'cb'
+	  	type:'GET',
+        	data:{path:'../myJsNote/'},
+        	url:'http://127.0.0.1:3000/fsReaddir',
+        	dataType:'jsonp',

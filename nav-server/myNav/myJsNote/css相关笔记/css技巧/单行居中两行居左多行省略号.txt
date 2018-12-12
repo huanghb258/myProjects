@@ -1,0 +1,34 @@
+单行居中两行居左：
+	<h2><p>单行居中，多行居左</p></h2>
+	h2{text-align: center;}	p{display: inline-block;text-align: left;}
+	原理：单行时p的宽度未撑满，而p被居中，多行时p满宽，此时p相当于没居中，而p的内容是左的
+
+多行省略号：
+	<h2><p><em>Lorem ipsum dolor sit amet,</em></p></h2>
+	h2{text-align: center;}
+	p{display: inline-block;text-align: left;}
+	em {		
+		overflow : hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;	/*2为指定行数*/
+		-webkit-box-orient: vertical;
+	}
+	适用范围：
+		因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；	
+
+
+
+
+
+文字超出隐藏：
+	1.文字容器设置高度 2.overflow:hidden 3.line-height等于容器高度除文字行数
+
+实现单行超出显示省略号：
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+
+
+
+

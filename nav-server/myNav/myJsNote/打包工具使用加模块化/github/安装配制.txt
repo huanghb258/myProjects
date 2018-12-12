@@ -1,0 +1,22 @@
+﻿下载安装：
+	1.下载：
+	https://git-scm.com/downloads
+
+	2.安装：
+		按默认选项安装即可
+
+	3.在开始菜单里找到“Git”->“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！
+
+配置:	
+	1.生成ssh key:
+		ssh-keygen -t rsa -C "871616567@qq.com"
+		//成后会生成.ssh文件夹，位置看提示（一般在：C:\Users\Administrator下）
+		//每台电脑都要生成一个
+
+	2.配置ssh key:
+		登录github-->settings-->选择ssh keys,秘钥就是刚生成.ssh文件夹下的id_rsa.pub内容
+		title随便写,可重复
+
+	3.配置邮箱
+		git config --global user.name "your name"
+		git config --global user.email "871616567@qq.com"

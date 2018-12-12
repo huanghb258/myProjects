@@ -1,0 +1,77 @@
+<!DOCTYPE html>  
+<html>  
+<head lang="en">  
+    <meta charset="UTF-8">  
+    <title>上传图片并显示</title>  
+    <style>  
+        img{max-width: 100%; height: 100px;margin: 10px 20px;}  
+        .img_list .img-div{width: 100px;height: 200px; float: left;  overflow: hidden;text-align: center;  }  
+        .upload{position: relative;}  
+        .upload input{opacity: 0;position: absolute;top: 0;left: 10px;height: 100px;width: 100px;}  
+        .upload .upload_box{width: 100px;height: 100px;background-color: pink;color: white;}  
+        .img-div p{color: #28a4b0;margin: 0;}  
+    </style>  
+</head>  
+<body>  
+	<h3>没有跟后端交互，原生js</h3>
+<div class="upload">  
+    <input class="file_input" type="file" multiple id="avc"/>  
+    <div class="upload_box">  
+        点我上传图片哦  
+    </div>  
+  
+</div>  
+  
+<div class="img_list">  
+  
+</div>  
+<script>  
+    var file_input=document.getElementsByClassName("file_input")[0];  
+//    触发事件用的是change，因为files是数组，需要添加下标  
+    file_input.addEventListener("change",function(){  
+        var obj=this;  
+        var obj_name=this.files[0].name;  
+        var img_length=obj.files.length;  
+        for(var i=0;i<img_length;i++)  
+        {  
+        	console.log(obj.files[i].type)
+            if(!(/image\/\w+/).test(obj.files[i].type))  
+            {  
+                alert("上传的图片格式错误，请上传图片");  
+                return false;  
+            }  
+            var reader = new FileReader();  
+            reader.error=function(e){  
+                alert("读取异常")  
+            }  
+            reader.onload = function(e){  
+//                div_html是包括图片和图片名称的容器  
+                var img_html='<img src="'+e.target.result+'"/>';  
+                var div_html=document.createElement("div");  
+                var p_html=document.createElement("p");  
+                if(document.getElementsByClassName("img_list")[0].children.length<5)  
+                {  
+                    div_html.innerHTML=img_html;  
+                    div_html.appendChild(p_html);  
+                    p_html.innerHTML=obj_name;  
+                    div_html.className="img-div";  
+                    document.getElementsByClassName("img_list")[0].appendChild(div_html);  
+                }else{  
+                    alert("最多上传5张图片")  
+                }  
+            };  
+            reader.onloadstart=function(){  
+                console.log("开始读取"+obj_name);  
+            }  
+            reader.onprogress=function(e){  
+                if(e.lengthComputable){  
+                    console.log("正在读取文件")  
+                }  
+            };  
+            reader.readAsDataURL(obj.files[i]);  
+        }  
+  
+    })  
+</script>  
+</body>  
+</html>  

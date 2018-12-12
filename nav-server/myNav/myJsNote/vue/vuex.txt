@@ -1,0 +1,142 @@
+﻿多个组件共用才放到vuex里，比如data数据，子组件的data仍然放在子组件
+
+vue流程：
+	view-->actions-->state-->view....	//单线流
+
+	更新显示通过事件触发调用action函数，函数去更新state状态数据,状态数据改变引起视图更新
+
+vuex多了一个步骤：vue components-->action-->mutations-->state-->vue com....
+	\\由mutations控制state状态数据
+
+安装：
+	npm install vuex --save
+
+使用：
+	假定配置文件夹名:store
+	1.引入vue和vuex
+	2.声明使用：Vue.use(Vuex)
+	3.创建四个对象，一般写在单独js文件内，然后引入
+	 
+		state.js-->export default    { 状态数据 }
+		mutations.js-->export default{ 包含多个更新state函数的对象 }
+		actions.js-->export default  {包含多个对应事件回调函数的对象}
+		getters.js-->export default  {包含多个getter计算属性函数的对象}
+
+		//一般actions与mutations之间再定义一个
+		mutation-types.js-->export const  AA_BB='aa_bb'
+		//action的参数与mutation函数名一样,这样都用AA_BB，不容易出错
+
+
+	4.store文件夹下：index.js
+
+		import state from './state.js'	...
+		
+		export default new Vuex.Store({//vuex的核心管理对象模块：store
+			state,//state:state的简写
+			mutations,
+			actions,//
+			getters,//
+		})
+	
+	入口main.js:
+	1.引入:
+	import store from './store'
+	new Vue({
+		stort
+	})
+
+	组件App.vue下的data里状态数据放在store下state.js中
+	组件获取state中的数据：{{$store.state.xx}}
+
+	2.计算属性放在getters对象中
+		const getters={ 
+			evenOrOdd(state){	//会自动获取$store.state
+				return state.count%2===0?'偶数':'奇数'
+			}
+		}
+	  App.vue读取计算属性：
+		computed:{
+			evenOrOdd(){
+				return this.$store.getters.evenOrOdd	//不用()调用
+			}
+
+		}
+	
+	3.1: mutation-types.js
+		export const  INCREMENT='increment'	//此文件只是定
+		export ...
+
+	3.2:更新状态的函数对象mutations（与actions关联）
+		import {INCREMENT,..} from './mutation-types.js'	//INCREMENT='increment'
+		export default{
+			//为什么用[]? 直接写成INCREMENT，变量会被理解成字符串
+			[INCREMENT] (state){
+				state.count++	//这里演示操作data数据
+			}
+		}
+
+
+	3.3:通知mutation去更新state的数据，从而更新视图
+		import {INCREMENT,..} from './mutation-types.js'
+		import {...} from './api'	//一般获取接口数据的ajax方法写在api文件夹中
+		//为什么接口的数据不是放在state中？
+		    state放的的初始数据，如todos中的data=空数组，之后从localStorage中获取，再更新到data
+		export default{
+			increment({commit,state}){
+				//通知mutations对象中INCREMENT去更新 
+				commit('INCREMENT'[,参数])	//state不用传，有其它参数时才传
+			}
+		}
+		
+
+	
+	App.vue函数调用：
+		methods:{
+			this.$store.dispatch('increment')
+		}
+
+	
+优化写法：	
+	例:{{$store.state.count}}简化成{{count}}
+
+	未优化前的写法：
+		methods:{	
+		    add(){
+		     this.$store.dispatch('add')
+		    },
+
+		    decrease(){
+		     this.$store.dispatch('decrease')
+		    },
+		    ifOdd(){
+		      this.$store.dispatch('ifOdd')
+		    },
+		    asyncs(){
+		     this.$store.dispatch('asyncs')
+		    }
+		  },
+		  computed:{
+		    eventOrOdd(){
+		      return this.$store.getters.eventOrOdd
+		    }
+		}
+
+
+	优化后的写法：	
+	1.import {mapState,mapActions,mapGetters} from 'vuex'
+	2.
+	computed:{
+		...mapState(['count']),
+		...mapGetters(['eventOrOdd'])
+	},
+	mehtods:{
+		...mapActions(['increment','decrement'...])
+	}
+	
+	注意：这种写法必须保持名称一致，比如App.vue里定义的方法名increment与对应的store.js里也是定义为increment
+		如果不同,要用对象参数：	...mapActions({increment:increment2,...})
+	
+	
+
+	
+	

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .left,.right{float: left;width: 45%;border-right: 1px solid red;padding-left: 20px;}
+        .right{float: right;border-left: 1px solid red;}
+        .d1{
+            margin: 50px 0;
+            background: #eee;        
+        }
+        .d2{
+            width: 200px;
+            height: 60px;
+            background: #aacccc;            
+            text-align: center;
+            line-height: 60px;
+        }
+        .rotate{
+            /*transform:rotate(10deg);*//*中心点旋转*/
+            /*transform:rotateY(180deg);*//*Y轴，左右翻转*/
+            /*transform:rotateX(10deg);*//*x轴，上下翻转*/
+            transform:rotateX(180deg) rotateY(180deg);
+        }
+        .skew{
+            /*transform:skew(20deg);*/
+            /*transform:skewX(20deg);*/
+            /*transform:skewY(20deg);*/
+            transform:skewX(20deg) skewY(20deg);
+        }
+        .scale{
+            /*transform:scale(1.5,1.5);*/
+            /*transform:scaleX(1.5);*/
+            transform:scaleY(1.5);
+        }
+        .translate{/*垂直居中时很好用*/
+            /*transform:translate(120px,0px);*//*上下左右位移*/
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .perspective{
+            -webkit-transform: perspective(5px);
+            width: 230px;
+        }
+        .transform-origin{
+            width: 20px;
+            height: 80px;
+            /*transform-origin:center bottom;*/
+            transform-origin:50px 50px;
+            transform: rotate(50deg);
+        }
+        .translate3d{
+            transform: translate3d(9px,9px,0);
+            /*参数：水平位置，垂直位置，z*/
+        }
+        p{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="d1">   
+            <p>注意transform-origin并不是transform中的属性值,以下属性基本上都可以配合使用</p>         
+            <p>它的作用是改变元素基点（如配合旋转时改变旋转基点）,值可以是bottom、top、center...
+            </p> 
+            <p>
+               使用示例：transform-origin:(left,top)  //设置基点放左上角      
+            </p>
+            <p>
+                transform-origin:right //基点为右边中间点  transform-origin(25%,75%) //...
+            </p>
+        </div>
+    <div class="left">
+        <div class="d1">
+            <div class="translate3d d2">translate3d</div> 
+            <p>参数x,y,z，向xyz轴方向位移，没深入了解</p>          
+        </div>
+        <div class="d1">
+            <div class="rotate d2">rotate翻转</div>
+            <p>transform:rotate(30deg)xy都翻转30度，totateY(30deg)只Y轴</p>
+        </div>
+        <div class="d1">
+            <div class="skew d2">skew倾斜</div>
+        </div>
+        <div class="d1">
+            <div class="scale d2">scale放大缩小</div>
+            <p>默认中心点向四周放大，可用transform-origin改变</p>
+        </div>
+    </div>
+    <div class="right">
+         <div class="d1">
+            <div class="translate d2">translate位移</div>
+             <p>translate(100px,20px),默认以中心点对x,y轴移动</p>
+        </div>
+        <div class="d1">
+             <div class="perspective d2">perspective透视视图(不会用)</div>
+        </div>
+       
+    </div>
+   
+   
+  
+
+</body>
+</html>

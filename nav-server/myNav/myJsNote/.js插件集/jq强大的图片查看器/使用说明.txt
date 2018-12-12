@@ -1,0 +1,14 @@
+1.引入js和css文件
+	<link rel="stylesheet" href="css/viewer.min.css">
+	<script src="js/viewer.min.js"></script>
+
+2.js部分： $('图片容器 ').viewer();
+
+
+插件默认会取图片的src地址。如果想要放大之后换一张大图的话，可以把大图的路径写在data-original属性中，然后设置url : "data-original" 。
+
+alt用来存放图片的标题。
+
+参数的用法：
+
+	$('容器').viewer({url:"data-original"});

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单实现滑动控制条</title>
+		<style type="text/css">
+			#box{width: 430px;height: 40px;border: 1px solid #000;position: relative;}
+			#box1{width: 0px;height: 40px;background: green;position: absolute;}
+			#span1{height: 60px;width: 30px;background: green;display: block;border-radius: 10px;position: absolute;top: -10px;}
+			p{position:absolute;width: 200px;height: 40px;top:50px;text-align:center;line-height: 40px;font-size: 32px;}
+		</style>
+	</head>
+	<body>
+		<h5 style="color:orange;font-size: 16px;width: 800px;padding-left: 80px">提示：如果支持html5,使用input:type='range',样式可以修改</h5>
+
+		<pre>
+			样式示例：
+		input[type=range]{ 
+			 margin-top: 8px;
+		         outline: none; 
+			 -webkit-appearance: none;/*清除系统默认样式*/  
+			 width:56% !important;  
+			 background: -webkit-linear-gradient(#61bd12, #61bd12) no-repeat, #ddd;  
+		         background-size: 30% 100%;/*设置左右宽度比例*/  
+			height: 3px;/*横条的高度*/  
+		} 
+		 /*拖动块的样式*/  
+		   input[type=range]::-webkit-slider-thumb {  
+			 -webkit-appearance: none;/*清除系统默认样式*/  
+			height:16px;/*拖动块高度*/  
+		        width: 16px;/*拖动块宽度*/  
+		        background: #fff;/*拖动块背景*/  
+			border-radius: 50%; /*外观设置为圆形*/  
+			 border: solid 1px #ddd; /*设置边框*/  
+		} 
+
+		</pre>
+		<h3>js实现：</h3>
+		<div id="box">
+
+			<div id="box1">
+				<span id="span1">
+					
+				</span>
+			</div>
+			<p id="p1"></p>
+		</div>
+		
+		<script type="text/javascript">
+			var Span =document.getElementById("span1");
+			var Box =document.getElementById("box");
+			var Box1 =document.getElementById("box1");
+			var P1 =document.getElementById("p1");
+			Span.onmousedown=function(e){
+				var evt =e||event;
+				var x =evt.offsetX;
+				var y =evt.offsetY;
+				//console.log(x)
+				//console.log("Aa")
+				Box.onmousemove=function(e){
+					var evt =e||event;
+					Span.style.left=evt.clientX-Box.offsetLeft-x+"px";
+					if(evt.clientX-Box.offsetLeft-x<=0){
+						Span.style.left="0px";
+					}
+					if(evt.clientX-Box.offsetLeft-x>=400){
+						Span.style.left="400px";
+					}
+					//console.log(Span.offsetLeft);
+					P1.innerHTML="音量："+Math.floor(Span.offsetLeft/4);
+					Box1.style.width=Span.offsetLeft+"px";
+					
+				}
+				document.onmouseup=function(){
+					//Box1.style.width=evt.offsetX+"px";
+					Box.onmousemove=null;
+				}
+			}
+		</script>
+	</body>
+</html>

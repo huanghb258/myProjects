@@ -1,0 +1,49 @@
+﻿父组件（App.vue）传值给子组件：
+
+	1.在标签里绑定值：<users v-bind:users='users'></users>  //添加自定义属性
+	
+	export default里添加props属性
+	{
+		props:['users'...]， //普通写法
+		props:{		//标准写法
+			users:{
+			type:Array,  //数组格式
+			required:true
+			}
+			....
+			
+		}
+	}
+
+
+事件传值（子to父）：
+	
+	子组件里：
+		methods:{
+		changeTitle:function(){
+		  this.$emit('titleChanged','要传的值')  //自定义一个事件
+		}
+	}
+	\\当你调用这个函数时，会去查找titleChanged这个事件
+
+	在app.vue里使用这个事件：@titleChanged="fn($event)"
+
+	app.vue里添加fn方法：methods:{fu(title){this.title=title}}
+		//title得到的就是子组件传的值：‘要传的值’
+
+生命周期：
+	beforeCreate:这里可以加载一些东西
+	
+	create:获取数据
+
+	beforeMount:挂载组件之前，虚拟DOM已配置
+
+	mounted:页面已显示出来，显示出后后可以做的事	//常用
+
+	beforeUpadate 组件更新之前
+
+	updated:组件更新之后
+
+	beforeDestroy:销毁之前		//常用
+
+	

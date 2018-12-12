@@ -1,0 +1,10 @@
+﻿touch点击事件:
+	与click的区别：
+		touch：指触碰开始就能触发
+		click触发多出条件：1.手指未在屏幕上移动	2.点完马上离开离开dom
+
+	touchstart：手指点上时
+	
+	touchmove:手指一直划动时
+
+	touchend:手指离开屏幕时触发

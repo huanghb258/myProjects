@@ -1,0 +1,107 @@
+﻿增：childNode与children
+
+修改CSS样式:
+	el.style.display = 'none'
+
+修改CLASS属性:
+	el.className = 'active div-1';  //为空''可以清除class
+
+其它class增删改查操作：
+	1.查：
+		el.classList.item(0);  //获得el的第0个class名
+		el.classList.length;//	获得class的个数
+
+	2.增：
+		el.classList.add('newClass');//添加class
+
+	3.删：
+		el.classList.remove('className');//移除class
+
+	4.其它
+		el.classList.toggle('newClass');//有则移除，无则添加
+		el.classList.contains('newClass');//判断是否存在该class
+
+	注意：add和remove方法不允许链式操作，也不允许同时添加或删除多个
+
+直接获取元素：
+	document.getElement方法：
+		id:Byid		name属性:sByName	标签名:sByTagName	class类名:sByClassName
+		html:document.documentElement	body:document.body
+
+	document.querySelector方法：
+		querySelector：方法相当于jquery,只返回匹配的第一个元素，ie7之前不兼容
+		querySelectorAll：返回集合用这个
+
+	注意：
+		ById:在IE6、7中会把表单元素的name当做ID值获取，在IE6、7中不区分大小写,没找到返回null
+
+		ByName:ie9之前只能获取表单元素，ie10开始不只是表单元素
+
+		ByClassName:ie8之前不兼容
+
+	区别：当querySelector获取到的元素发生改变后，之前获取的无效，要重新获取，速度不如getElement
+
+
+查询元素的信息：
+	offset家族搬家到了‘./获取鼠标元素等位置宽高.txt’
+
+	document.documentElement.clientWidth:当前视口大小，不是指body的宽度
+		
+	el.get/setAttribute():获取元素的属性值
+		语法：div.getAttribute('src')     div.getAttribute('src','2.jpg')			
+
+
+	
+
+
+JS创建元素并向其中追加文本：
+	var newdiv = document.createElement('div');
+	var newtext = document.createTextNode('123');
+	newdiv.appendChild(newtext);
+	document.body.appendChild(newdiv);
+
+	同理：removeChild()移除节点，并返回节点
+
+	cloneNode()复制节点
+
+	insertBefore()插入节点（父节点内容的最前面） 
+	注意：insertBefore()有两个参数
+	例：list.insertBefore(newItem,list.childNodes[1]); //从0开始数
+
+返回节点API:
+	firstChild返回第一个子节点
+	lastChild返回最后一个子节点
+	parentNode返回父节点对象
+	nextSibling返回下一个兄弟节点对象
+	previousSibling返回前一个兄弟节点对象
+	nodeName返回节点的HTML标记名称
+
+
+
+常用API收集：
+
+
+	instanceof：判断'左边'是否由'右边'构造
+		例：obj instanceof Object;   //判断实例obj在不在Object构造函数中
+			function a(){};	b=new a(); 	b instanceof a	//true
+
+	Object.prototype.toString.call(obj)
+
+	Array.isArray(arr)判断是不是数组
+
+
+	.getBoundingClientRect()：返回元素与页面上、下、左、右距离及元素宽高
+		用法：el.getBoundingClientRect()	\\返回一个对象，包含上下左右等等
+		或：el.getBoundingClientRect().top...  
+	
+		注意：在IE中，默认坐标从(2,2)开始计算？  
+		//用ie11试了下，与chome无差别，但是chome有x,y属性，ie没有，要注意
+
+	Object.keys(obj) //遍历对象的可枚举属性
+		例：obj={a:1,b:2}  Object.keys(obj)  \\['a','b']
+
+	
+
+
+
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			.hint{padding: 0 50px;margin-top: 30px;}
+		</style>
+	</head>
+	<body>
+		
+		<p style="width:16rem;text-align: center;">16rem=全屏</p>
+
+		<p class="hint">
+			chrome 的控制台看到如下提示：<br>
+			Unable to preventDefault inside passive event listener due to target being treated as passive
+		</p>
+		<p class="hint">
+		由于浏览器必须要在执行事件处理函数之后，才能知道有没有掉用过 preventDefault() ，这就导致了浏览器不能及时响应滚动，略有延迟。
+		所以为了让页面滚动的效果如丝般顺滑，从 chrome56 开始，在 window、document 和 body 上注册的 touchstart 和 touchmove 事件处理函数，会默认为是 passive: true。浏览器忽略 preventDefault() 就可以第一时间滚动了。<br>
+		举例：<br>
+		wnidow.addEventListener('touchmove', func) 效果和下面一句一样<br>
+		wnidow.addEventListener('touchmove', func, { passive: true })
+		</p>
+		<p class="hint">
+		这就导致了一个问题：<br>
+		如果在以上这 3 个元素的 touchstart 和 touchmove 事件处理函数中调用 e.preventDefault() ，会被浏览器忽略掉，并不会阻止默认行为。
+		</p>
+		<p class="hint">
+			解决方案：<br>
+			1.window.addEventListener('touchmove', func, { passive: false })
+			<br>	
+			2.应用 CSS 属性 touch-action: none; 这样任何触摸事件都不会产生默认行为，但是 touch 事件照样触发。
+		</p>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.addEventListener("touchstart",function(ev){
+				ev=ev||event;
+				ev.preventDefault();
+			}, { passive: false })
+			
+			;(function(){
+				var styleNode = document.createElement("style");
+				var w = document.documentElement.clientWidth/16;
+				styleNode.innerHTML="html{font-size:"+w+"px!important}";
+				document.head.appendChild(styleNode);				
+			})()
+		}
+	</script>
+	
+</html>

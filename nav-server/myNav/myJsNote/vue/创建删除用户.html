@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>111</title>
+    <!--<link rel="stylesheet" href="stylesheets/bootstrap.stylesheets"/>-->
+    <!--<script src="javascripts/jquery-2.1.1.min.javascripts"></script>-->
+    <!--<script src="javascripts/bootstrap.min.javascripts"></script>-->
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-router.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        fieldset{
+            border: 2px solid orangered;
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 70px;
+            margin-bottom: 20px;
+        }
+        fieldset input{
+            width: 200px;
+            height: 20px;
+            margin: 10px;
+        }
+        fieldset button{
+            margin: 10px;
+        }
+        table{
+            width: 600px;
+            margin: 0 auto;
+            border: 2px solid orangered;
+            text-align: center;;
+        }
+        thead{
+            background: orangered;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    
+    <fieldset>
+        <legend>拇指哥学生录入系统</legend>
+        <div>
+            <label>姓名：</label><input type="text" placeholder="姓名" v-model="newStudent.name"/>
+        </div>
+        <div>
+            <label>年龄：</label><input type="text" placeholder="年龄" v-model="newStudent.age"/>
+        </div>
+        <div>
+            <label>性别：</label>
+            <select name="gander" id="gander" v-model="newStudent.gender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div>
+            <label>手机：</label><input type="text" placeholder="手机" v-model="newStudent.phone"/>
+        </div>
+        <button @click="addStudent">创建用户</button>
+    </fieldset>
+    <table>
+        <thead>
+        <tr>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>手机</td>
+            <td>删除</td>
+        </tr>
+        </thead>
+        <tbody v-for="(value,index) in students">
+        <tr>
+            <td>{{value.name}}</td>
+            <td>{{value.age}}</td>
+            <td>{{value.gender}}</td>
+            <td>{{value.phone}}</td>
+            <td><button @click="removeStudent(index)">删除</button></td>
+        </tr>
+        </tbody>
+    </table>
+    
+    <div style="text-align:center;margin: 30px">{{test}}</div>
+</div>
+<script>
+new Vue({
+    el:'#app',
+    data:{
+        newStudent:{name:'',age:'',gender:'男',phone:''},
+        students:[
+            {name:'张三',age:'31',gender:'男',phone:'13564965312'},
+            {name:'李四',age:'18',gender:'女',phone:'13564895321'},
+            {name:'王五',age:'21',gender:'男',phone:'13585475210'},
+            {name:'赵六',age:'35',gender:'男',phone:'13564955142'}
+        ],
+        test:'test'
+    },
+    methods:{
+        addStudent:function(){
+            if(this.newStudent.name==''||this.newStudent.age==''||this.newStudent.phone==''){
+                alert('信息不完整');
+            }else{
+                this.students.unshift(this.newStudent);
+                this.newStudent={name:'',age:'',gender:'男',phone:''};
+            }
+
+        },
+        removeStudent:function(index){
+          this.students.splice(index,1);
+        }
+    }
+});
+</script>
+</body>
+</html>

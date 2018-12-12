@@ -1,0 +1,121 @@
+以iPhone6为设计图
+淘宝做法：
+	 1. <meta name="viewport" content="" />
+
+	2. js 动态修改meta标签content值
+	    var scale = 1 / window.devicePixelRatio;
+    	    document.querySelector('meta[name="viewport"]')
+	    .setAttribute('content','width=device-width,initial-scale=' + scale + ',
+	    maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+	
+	3.  动态设置html字体大小
+	    document.documentElement.style.fontSize = 
+	    document.documentElement.clientWidth / 10 + 'px';
+
+	4.元素的rem尺寸 = 元素的psd稿测量的像素尺寸 / 动态设置的html标签的font-size值
+
+	以iphone6为例，html标签的font-size的值就等于 750 / 10 = 75px 了，这样 1rem = 75px，
+	所以红色方块200px换算为rem单位就是 200 / 75 = 2.6666667rem。
+
+	缺点：就是转化rem单位的时候，需要除以font-size的值
+	注意：做页面的时候文字字体大小不要用rem换算，还是使用px做单位。
+
+
+网易做法：
+	1.<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+	
+	2. 动态设置html标签的font-size值
+		document.documentElement.style.fontSize = 
+		document.documentElement.clientWidth / 7.5 + 'px';
+
+	3.做页面是测量设计图的px尺寸除以100得到rem尺寸。
+	
+
+	优点：rem比较好计算
+
+
+
+
+
+
+
+字体大小：使用媒体查询
+
+@media screen and (max-width: 321px) {
+    body {
+        font-size:16px
+    }
+}
+ 
+@media screen and (min-width: 321px) and (max-width:400px) {
+    body {
+        font-size:17px
+    }
+}
+ 
+@media screen and (min-width: 400px) {
+    body {
+        font-size:19px
+    }
+}
+
+代码片段二：
+
+@media screen and (max-width: 321px) {
+    header,footer {
+        font-size:16px
+    }
+}
+ 
+@media screen and (min-width: 321px) and (max-width:400px) {
+    header,footer {
+        font-size:17px
+    }
+}
+ 
+@media screen and (min-width: 400px) {
+    header,footer {
+        font-size:19px
+    }
+}
+
+我们总结一下网易在文字字体大小上的做法，在媒体查询阶段，分为三个等级分别是：
+
+321px以下
+321px – 400px之间
+400px以上
+
+具体文字大小要多少个像素这个以设计图为准，但是这三个等级之间是有规律的，仔细观察发现，321px以下的屏幕字体大小比321px – 400px之间的屏幕字体大小要小一个像素，而321px – 400px之间的屏幕字体大小要比400以上屏幕字体大小要小2个像素。依照这个规律，我们根据设计图所在的像素
+
+
+
+
+
+视频教程方案：
+	js：
+	(function(){
+		var html=document.documentElement;   //html标签
+		var width=html.getBoundingClientRect().width;  //html宽度
+		html.style.fontSize=width/15+'px';  //设置html标签的fontSize
+		//15是自定义值，以可以是16...
+		//在iphone6为参考下，除15后得到的是整数25px,1rem就等于25px
+	})()
+
+	此时若有一个p元素，设计尺寸是47px,换算后的值是(47/25)rem;
+	元素多了计算起来很麻烦，建议用less/sass
+
+	IPHone6下测试效果：
+	用三个p元素，宽度刚好充满屏幕
+	css：
+	body:margin:0;
+	p{
+			box-sizing: border-box;  //不要让边框影响计算
+			width: 5rem;		
+			//为什么是5：iphone6宽度375/3=125  3个125px宽的p刚好充满
+			换算成rem:125px/25=5rem	
+			height: 5rem;
+			border:1px solid red;	//加边框是为了方便看效果
+			float:left;
+		}
+
+

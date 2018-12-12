@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>简单实用jQuery图片放大镜效果 - 源码之家</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" class="library" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" class="library" src="js/fangdajing.js"></script>
+<body>
+<div class="con-FangDa" id="fangdajing">
+  <div class="con-fangDaIMg">
+  	<!-- 正常显示的图片-->
+  	<img src="images/big/1.jpg">
+    <!-- 滑块-->  
+    <div class="magnifyingBegin"></div>
+    <!-- 放大镜显示的图片 -->
+    <div class="magnifyingShow"><img src="images/big/1.jpg"></div>
+  </div>
+  
+  <ul class="con-FangDa-ImgList">
+    <!-- 图片显示列表 -->
+    <li class="active"><img src="images/thumb/1.jpg" data-bigimg="images/big/1.jpg"></li>
+    <li><img src="images/thumb/2.jpg" data-bigimg="images/big/2.jpg"></li>
+    <li><img src="images/thumb/3.jpg" data-bigimg="images/big/3.jpg"></li>
+    <li><img src="images/thumb/4.jpg" data-bigimg="images/big/4.jpg"></li>
+    <li><img src="images/thumb/5.jpg" data-bigimg="images/big/5.jpg"></li>
+  </ul>
+</div>
+</body>
+</html>

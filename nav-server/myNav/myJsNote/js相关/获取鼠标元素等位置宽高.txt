@@ -1,0 +1,61 @@
+﻿放在前面说:
+	1.第一次编辑于2018-11-21，都只经过pc端chrome新版本测试(非网上抄写)
+	2.以下说的元素相对位置指都是元素左上角(含边框，内边距)，无视margin	
+	3.pc端内容区指的是html标签(padding也算,margin不算),而非body
+
+
+鼠标位置：
+	e.screenX/Y:相对于屏幕四边的位置，不算滚动条
+
+	e.clientX/Y:		
+		相对于浏览器内容窗口的边框距离,非内容区(这个边框包含html的margin)
+		不包含滚动条距离(尺子都能量),如滚动条下拉500px,点击内容区最上边,还是0
+
+	e.pageX/Y:
+		同上,但是包含滚动条距离,比如滚动条下拉500px,点击内容区最上边,返回500
+
+
+offset家族:
+	el.offset.top/left:元素相对于已定位父元素的偏移
+
+
+	offset返回的都是数值,不含px,不用加()调用
+
+	el.offsetWidth/H:
+		返回元素宽高(含边框，内边距)，无视margin
+
+	el.offsetLeft/Top:
+		返回相对于有定位的父级元素的位置，不计算父元素的边框(padding算)
+		注意:这个值不会计算居中常用的translateX/Y的偏移值.
+	     	例:left:50;transform:translateX(-50px);肉眼看起来跟父元素齐平,实际返回50
+	
+	jq.offset().left/top:
+		返回距离浏览器内边框距离，会加上html的margin,会加上translateX/Y
+
+	el.offsetParent:
+		返回el相对于有定位的父级元素,父级都没定位则返回body
+
+		el如果是fiexd定位，不管你父级有没有定位
+			火狐的offsetParent --> body
+			非火狐offsetParent --> null
+	
+
+el.getBoundingClientRect():
+	获取元素的绝对位置(相对于html)
+	返回一个对象，只包括top/left/宽高等信息,且计算自身margin及边框，总之不用考虑不准确问题
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

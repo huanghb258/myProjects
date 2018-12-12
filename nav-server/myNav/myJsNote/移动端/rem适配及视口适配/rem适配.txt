@@ -1,0 +1,24 @@
+﻿两种：
+	1.css媒体查询：
+		以640设计图为例：
+		html{max-width: 640px;margin: 0px auto;font-size: 100px;}
+		@media only screen and (max-width: 414px){	
+ 			html{font-size: 64px;}
+		}//375=58px/360=56px/320=50 ....
+		//就是把屏幕划成6.4rem,为什么是6.4?因为640/375....比较好除6.4
+
+		缺点:要把所有可能的尺寸都写上，也还好，写完一次copy
+
+	2.js查询
+
+		var styleNode = document.createElement("style");
+		var w = document.documentElement.clientWidth/16;
+		styleNode.innerHTML="html{font-size:"+w+"px!important}";
+		document.head.appendChild(styleNode);
+
+	说明：其实两种没区别，只是获取屏宽的方式不同，然后设置根标签fontSize而已
+
+	共同缺点：以后只有用rem少用px了
+
+	只要移动端少不了：
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />

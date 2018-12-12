@@ -1,0 +1,31 @@
+﻿未用闭包示例：
+function box(){
+    var arr = [];
+    for(var i=0;i<5;i++){
+        arr[i] = function(){
+            return i;         //由于这个闭包的关系，他是循环完毕之后才返回，最终结果是4++是5
+        }                     //这个匿名函数里面根本没有i这个变量，所以匿名函数会从父级函数中去找i，
+    }                         //当找到这个i的时候，for循环已经循环完毕了，所以最终会返回5
+    return arr;
+}
+
+闭包方案1：
+	 arr[i] = (function(num){     //自我执行，并传参(将匿名函数形成一个表达式)(传递一个参数)
+            return num;               //这里的num写什么都可以                    
+        })(i); 
+
+	小技巧：如果将一个匿名函数自我执行时赋值给一个变量，那么这个匿名函数中的圆括号可以去掉
+		 arr[i] = function(num){   
+           			 return num;                       
+       			 }(i); 
+
+	注意：如果上改成 
+		btn.onclick=(function(){//绑定事件时第一参数默认是event	
+				//错误	
+				return function(i){console.log(i)}	//此时i=event
+
+				//应改成：
+				var a=i;return function(e){console.log(a)}	//注意a不能当参数
+				
+			})(i);
+

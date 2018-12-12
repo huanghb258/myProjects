@@ -1,0 +1,68 @@
+﻿先看个简单示例：
+let promise=new Promise((resolve,reject)=>{
+	//初始化promise状态：pending（初始化）
+	console.log(111)
+
+	//执行异步操作，通常是发送ajax请求
+	setTimeout(()=>{
+		console.log(333);
+		//根据异步任务返回的结果去修改promise的状态
+		//如果异步任务执行成功就调用resolve(),它会修改promise的状态为:fullfilled
+		
+		//异步任务失败调用:reject()，修改为失败状态：rejected
+		
+	},1000)
+});
+console.log(222);	//打印顺序：111	222	333
+promise.then(()=>{
+	//成功的回调
+},()=>{
+	//失败的回调
+})
+
+实战示例：
+	  //定义一个请求news的方法，getNews返回promise对象
+    function getNews(url) {
+        //创建一个promise对象
+        let promise = new Promise((resolve, reject) => {
+            //初始化promise状态为pending
+            //启动异步任务
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function () {//监听
+                if(request.readyState === 4){
+                    if(request.status === 200){
+                        let news = request.response;
+                        resolve(news);
+                    }else{
+                        reject('请求失败了。。。');
+                    }
+                }else{
+                //注意：reject不能放在这里，因为监听回调会执行4次，第四次时request.readyState === 4
+                	前三次都会进入到这里，所以要放在上面，===4但不==200才是真正请求失败
+                	// reject('请求失败了。。。');
+                }
+            };
+            request.responseType = 'json';//设置返回的数据类型
+            request.open("GET", url);//规定请求的方法，创建链接
+            request.send();//发送
+        })
+        return promise;
+    }
+
+
+    //getNews()返回的是promise的实例
+    getNews('http://localhost:3000/news?id=2')
+            .then((news) => {
+                console.log(news);
+                document.write(JSON.stringify(news));
+                console.log('http://localhost:3000' + news.commentsUrl);
+                return getNews('http://localhost:3000' + news.commentsUrl);	//返回一个promise实例
+            }, (error) => {
+                alert(error);
+            })
+            .then((comments) => {//链式调用，上一个then成功后返回的promise实例。
+                console.log(comments);
+                document.write('<br><br><br><br><br>' + JSON.stringify(comments));
+            }, (error) => {
+                alert(error);
+            })

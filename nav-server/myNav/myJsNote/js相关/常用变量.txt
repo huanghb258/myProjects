@@ -1,0 +1,2 @@
+﻿update:更新、修正
+score:分数

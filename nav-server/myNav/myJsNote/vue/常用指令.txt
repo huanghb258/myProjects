@@ -1,0 +1,132 @@
+new Vue({
+	el:'',
+
+	data:{question:''},
+
+	methods:{foo:function(){}},
+
+	computed: { // 计算属性，v-model可以直接获取计算后的值
+  		 //相对methods,他会缓存计算结果，如果需要经常调用且值很少变动，优选
+   		 reversedMessage: function () {    //调用时不用带() 
+      		return this.message.split('').reverse().join('')
+    	},
+	watch: {//深度监视
+    		// 如果 `question` 发生改变，这个函数就会运行
+    		question: function (newQuestion) {...}
+      		
+    	}
+})
+
+计算属性的get与set方法：
+	computed:{
+	//当需要读取当前属性值时回调，返回计算后的值
+		fullname:{
+			get(){return this.firstname+' '+this.lastname}，
+		//set方法监视当前属性值的变化(fullname)，当值改变时执行
+			set(val){//val就是fullname的最新属性值}
+		}
+	}
+
+v-model:双向绑定
+	小提示：radio单选框绑定  例：<input type="radio" value="男" v-model='gender'>男
+		//此时data数据gender为'男'时，value=='男’会自动被选中，反之为'女'时亦然
+		
+		chechbox多选框：data存储为数组		
+		更多表单数据自动收集：尚硅谷视频12
+	注意：v-model内部是使用oninput事件，所以只能在 <input> 或 <textarea> 上使用
+
+v-once:一次性，不被双向绑定影响
+
+v-if：每件成立才显示，不成立注释掉   //消耗高，条件不常更换优选
+
+v-show:同上，不成立display:none  //html元素变
+
+v-else:需配合if使用
+	使用方法：  <p v-if="age>18">if</p>
+    		    <p v-else>else</p>   //两标签必须连着，中间不能有别的标签
+
+v-for:遍历，包括字符串、数字
+	v-for="item in items"   //items:数组
+	v-for="(item,index) in items"   //同时拿到index,对象则是键值对
+
+	\\建议尽可能在使用 v-for 时提供key:<div v-for="item in items" :key="item.id">
+
+v-text:
+	<p v-text="msg">哈哈</p>  //只会显示msg，哈哈被无视
+
+v-html:支持标签，慎用
+
+v-bind: 绑定属性 可以直接缩写成':'
+	例：:src  :class="这里可以表达式"   :style="{color:color}"
+
+v-on:事件绑定（简写 '@'）
+	@click="fn()"
+	//如果要传参并使用到event:fn(123,$event)
+	//<button @click="fn()"> 	获取button：event.target
+	阻止事件冒泡：@click.stop=''	
+	阻止默认事件：@click.prevent=''
+	@keyup事件指定某个按键触发：@keyup.enter...
+
+ref:vue专用标识
+	例：<p ref='p1'></p>
+	此时this.$refs.p1可以拿到p标签
+
+v-cloak:解决刷新页面时显示{{msg}}的问题
+	方法：css样式-->[v-cloak]:{display:none}	//属性选择器
+	原理：当vue还没解析时,v-cloak存在,css生效，当vue开始解析后，v-cloak消失
+
+自定义指令：
+	1.全局指令：
+ 	Vue.directive('指令名',function(el,binding){//binding是一个对象，包含value等})
+	2.局部指令：
+	new　Vue({
+		el:'#id',
+		deriectives:{
+			'upper-text'：fn...
+		}
+	})
+
+过滤器：|
+	使用方法：<p>{{date | dateString}}</p>
+	自定义过滤：
+	Vue.filter('定义过滤名',function(val，过滤参数){//使用过滤名时可以传参
+		return  过滤结果
+	})
+
+	//过滤传参  {{data | 过滤名（'参数'）}}
+	
+
+创建构造器：
+	let profile=Vue.extend({
+		template:<div></div>  //1.模板选项
+	});
+	2.注册一个全局组件
+	Vue.component('my-date',profile);  //my-date就可以当标签了
+
+	注意：要写在new Vue之前;
+	
+	局部组件：new Vue({
+		el:'',
+		components:{
+			'my-date':profile
+		}
+		})
+
+	Vue.component里的date必须是函数
+
+	Vue.component里props属性用来接收数据：props:['msg1','msg2']
+		Vue不支持驼峰式写法
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

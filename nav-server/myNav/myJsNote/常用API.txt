@@ -1,0 +1,185 @@
+﻿.join("")无逢拼接
+	语法：arr.jojn("");//双引号里是内容，如果是空就是无逢连接；
+	
+
+
+.concat()连接数组：
+	无权修改原数组
+	语法：arr.concat();
+	例：var a=[1,2,3] b=[4,5] c=[6,7] var d=a.concat(8,b,c)
+	//先把括号里的内容与a拼合然后让赋值给d.  结果为d=a+(8+b+c)
+	注意：.concat有打散功能，如上述b和c跟a合到一起，b和c里面的每个元素都会得到一个房间
+		
+
+.slice()获取某一段数组：字符串也可用,返回截取的数组
+	语法：arr.slice(起始下标，结束下标+1)取负数反着开始算，无权修改原数组 。
+	简写：.slice(起始)——到结尾     2.不写参数:全选
+	例：arr=[1,2,3,4,5] 
+	    arr1=arr.slice(1,4);//2,3,4  为什么没5？因为包头不包尾
+	    arr2=arr.slice(-4,-2)//2,3   从右第N个开始数，尾巴照砍，注意反着数是从1开始而不是0
+	注意：从右开始数也是从左往右，如上述
+
+.splice()删除部分数组并添加部分数组，字符串不可用
+	语法：arr.splice(起始下标，要删除个数，e1,e2...en)  会修改原数组
+	    //e1,e2..en是新添加的数组，注意不一定是删除的个数，可以删一个加两个，设0可以不删
+	简写：省略删除个数：删除所有
+	例：arr=[10,20,30,40,50];
+	    arr1=arr.splice(2,0,21,22,23);//结果arr1没东西？ arr=10,20,21,22,23,30,40,50
+	    arr2=arr.splice(2,2,21,22,23);//arr2=30,40  arr=10,20,21,22,23,50被删2个
+	    arr3=arr.splice(2,2,[91,92,93]);//arr=10,20,array[3],50 splice没打散功能，91.92.93在一间房
+	说明：arr1得到的是被删除的数组，而arr被改变了
+	注意：语法要记清，容易搞混。配合.concat可以实现数组交换。
+	强调：打印时splice会删除提前，赋值时好像又不会 
+
+
+.reverse()颠倒数组顺序  语法：arr.reverse(); 没了，已经倒好了。	字符串不可用
+
+.sort()数组由小到大排序
+	语法：arr.sort();如果()里没指定参数，则按unicode码排序,直接修改原数组
+		参数：如 function cmp(a,b){return a-b;}//这是自定义的一个参数。cmp就是参数。
+			原装的cmp：cmp(a,b){return String(a)-String(b)}
+	 注意调用参数时：arr.sort(cmp); 不能写成cmp(a,b),因为加了()时，cmp相当于a-b的结果
+	例：var arr2=['中文','aa','bb','AA','AB',1,2];//=[1, 2, "AA", "AB", "aa", "bb", "中文"]
+	注意：默认是按Unicode码排，并且是升序。所以如果是数字要特殊处理。
+	强调:sort方法会使用提前，如果有两个不同的sort方法，全部都会按放在后面的那个方法，赋值时好像又不会
+
+.push()进栈  
+	语法： arr.push();   作用：主要用来接收数组，因为arr[]直接接收得这样:arr[n]=x
+	例：var arr=[10,20]  arr.push(30,40);  给arr后面添加30，40
+	注意：亲测arr组数有自定义的下标，只放在数字下标的最后。即只参照length;
+	进栈和出栈都可以改变原始数据，所以不用=接着。
+.unshift();语法一样，只是反着来，加在最前面
+	
+.pop()出栈
+	语法：var arr=[10,20,30]  arr.pop(); 作用：删除最后一个;
+	注意：括号里设不了参数，所以只能删一个。也是完全参照length,无视字符串下标。即只删除数字下标。
+.shift();语法一样，只是反着来，删除最前面1个；
+
+.toLowerCase()全部转成小写  语法：arr1=arr.toLowerCase(); 无权改变原字符，所以要接收。
+
+.toUpperCase()全部转成大写  语法同上；
+
+.charAt();获取指定下标处的字符  语法：arr.charAt(下标位置);  注意.slice()也能做到。
+
+.charCodeAt();获取指定下标处的字符的Unicode码   语法同上。
+
+.indexOf();返回指定字符第一次出现的下标，如 a,b,c,a  括号写a的话返回0;
+	例：var arr="tom@163@sohu.com"   console.log(arr.indexOf('@'));  //返回3
+	例2：console.log(arr.indexOf('tom'));//返回0； 注意tom是三个字符
+	例3：console.log(arr.indexOf('@',5));//7  5代表从5开始找，忽略5前面的，注意得到的位置不减5
+	可以用循环打出所有的@： while（(var i=arr.indexOf("@",i+1))!=-1);
+	解释：i=找到的第一个关键字的位置，假如5，i+1=6 然后从6开始找下一个，找不到了会返回-1；
+
+
+.lastIndexOf();返回最后一次出现的下标位置。
+	例1：var arr="tom@163@sohu.com"   console.log(arr.lastIndexOf('@',5));  //3 倒数5开始数 
+	如果返回-1，说明没找到。 
+	var i=str.length; while((i=str.lastIndexOf("@",i-1))!=-1){if(i==0)break;}
+
+.substring()截取子字符串
+	语法：跟上面.slice一样，作用也一样，.slice主要数组用。
+
+.toFixed() 固定小数位数并四舍五入
+	语法：a.toFixed(2)  //保留两位小数	
+
+
+数组栈和队列：
+	栈：出入口共用一个,最后装进去却最先出来
+	队列：左边进，右边出	
+
+数组其它常用API:
+	.map()：返回一个新数组，数组的每个值即return的结果
+		语法：[].map(function(value, index, array) {...}
+		例：
+		var data = [1, 2, 3, 4];
+		var arrayOfSquares = data.map(function (item) {
+		  return item * item;
+		});		//[1,4,9,16]
+
+		小技巧：
+			当你得到一个数组，但是这个数组内容很多都不需要，我只要得到其部分值,
+			且新数组预设的键与这个数组不一致	
+			例：arr=[{x:1,y:2,z:3},{x:4,y:5,z:6},{x:7,y:8,z:9}]
+			我想得到一个新数组b=[{a:arr.x,b:arr.y}]	
+			//不需要arr.z，b的键是a,b得到对应arr的x,y
+			方法：
+			arr = arr.map(function (item) {
+			  return {a:item.x,b:item.y}
+			});
+
+	.reduce():简单理解为累加器
+		例：total = [0,1,2,3,4].reduce((a, b)=>a + b); //10
+		reduce接受一个函数和一个可选参数(初始值)，函数有四个参数，分别是：
+		 1、上一次的值
+    		 2、当前值
+     		 3、当前值的索引
+    		 4、数组
+		如上例：[0,1,2,3,4].reduce((a, b)=>a + b,10) //20  10+可选参数
+		//a:上一次的值	b:当前值
+
+		巧用1：arr=[{name: "张三", t: true},{name: "李四", t: false},{name: "王五", t: true}]
+		arr.reduce((a,b)=>a+(b.t?1:0),0)	//2	累计t为ture的个数
+			
+		注意：数组不为纯数字时，必需使用可选参数，因为a=上一次值，即{name: "张三", t: true}
+
+		巧用2：扁平化一个二维数组
+			[[0, 1], [2, 3], [4, 5]].reduce((a, b)=> a.concat(b), [])
+			\\[0, 1, 2, 3, 4, 5]	注意第二个参数[]
+
+	.forEach()
+		语法：arr.forEach((value,index,arr)=>{})
+		value:当前元素	index：当前下标	  arr:当前元素所属的数组对象
+		注意：如在forEach里操作arr而改变arr的length,比如replice,注意下标会乱
+		例：arr=[1,2,3,4,5,6,7,8,9]
+		    arr.forEach((v,i)=>{
+v==4&&arr.splice(i,1);v==5&&arr.splice(i,1);})
+		当v==4时i=3,splice除4，length改变，进入下次循环i=4,v却=6，5被跳过，因5的下标是3了
+		这种情况还是用for循环吧，可以手动让i-1，就没事了
+		
+
+	.find():只返回一个符合条件的值
+		语法：array.find(function(currentValue, index, arr))
+		//currentValue：当前元素  index:当前索引  arr:当前元素所属的数组对象
+		例：
+			var ages = [4, 12, 16, 20];
+			b=ages.find(function(a){return a>5})	//12 遇到第一个符合时直接return
+		
+		
+
+正则：RegExp  API
+	检索：即检索每个关键词的内容，又检索每个关键词的位置。
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

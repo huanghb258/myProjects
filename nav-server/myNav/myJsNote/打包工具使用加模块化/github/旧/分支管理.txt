@@ -1,0 +1,41 @@
+一、主分支
+默认情况下，master是一条线，GIT利用master指向最新的提交，再用HEAD指向master，就能确定当前分支以及当前分支的提交点。
+
+二、用分支管理
+当用户创建一个新的分支（假设新的分支为brh）后，GIT它就会创建一个新的brh的分支，此指针将指向master相同的提交，再将HEAD指向brh,表示当前分支在brh上。
+
+三、分支提交
+如果有新的提交，则master分支不会发生改变，只有brh分支会发生变化；
+
+四、分支合并
+
+五、删除分支
+
+六、实践：分支管理
+1、创建分支
+git branch 分支名称
+2、查看分支信息
+git branch
+3、切换分支
+git checkout brh
+4、提交并推送分支
+git add .
+git commit -m “xxx”
+git push -u origin brh
+
+5、分支合并
+git merge brh
+6、推送主分支
+git push -u origin master
+7、删除子分支
+git branch -d brh
+8、删除远程子分支
+git push origin --delete brh
+ 
+查看分支的三个命令：
+
+七、冲突的解决
+模拟一个开发环境：
+l 新建一个分支brh，一位开发者在这个分支上修改了Hello.java文件；
+l 但这位开发者不小心切换到主分支（master），同时也修改了Hello.java文件；
+ 最后基本就是这样！

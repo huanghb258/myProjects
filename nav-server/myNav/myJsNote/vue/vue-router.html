@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-router.js"></script>
+    <style>
+        body{
+            background-color: #e8e8e8;
+        }
+    </style>
+</head>
+<body>
+    <p style="white-space: nowrap;width: 800px;">
+    </p >
+    <div id="app">
+        <router-link to="/h5">Go to Foo</router-link>
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="page-header"></div>
+            </div>
+        </div>
+        <router-view>
+
+        </router-view>
+    </div>
+    <template id="h5">
+        <div>
+            <h2>html5学院</h2>
+            <p>掌握面向未来的神技</p>
+        </div>
+    </template>
+    <template id="java">
+        <div>
+            <h2>jave学院</h2>
+            <p>世界上最好的语言</p>
+        </div>
+    </template>
+    <template id="python">
+        <div>
+            <h2>python学院</h2>
+            <p>现在好火热呀</p>
+        </div>
+    </template>
+    <script>
+        //创建组件
+        const Html5=Vue.extend({
+            template:'#h5'
+        });
+        const java=Vue.extend({
+            template:'#java'
+        });
+        const python=Vue.extend({
+            template:'#python'
+        });
+        //定义路由
+        const routes=[
+            {path:'/h5',component:Html5},
+            {path:'/java',component:java},
+            {path:'/python',component:python},
+        ];
+        const router=new VueRouter({
+            routes:routes
+        })
+    new Vue({
+        router
+    }).$mount('#app');
+    </script>
+</body>
+</html>

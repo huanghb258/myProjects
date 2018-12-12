@@ -1,0 +1,26 @@
+﻿注意：
+	定义在最外层的变量数据不会释放，第二次请求时返回的结果会加上第一次的结果
+	所以result最好定义在函数内。
+
+创建路由文件：
+	生成的骨架目录下routes里有两个js文件，app.js里已经配制好了。
+	
+	app.js下面几句就是在配制路由：
+	
+		var indexRouter = require('./routes/index');	//引入
+		var usersRouter = require('./routes/users');
+	
+		app.use('/', indexRouter);		//127.0.0.1:3000/访问的就是这个主路由
+		app.use('/users', usersRouter);		//访问127.0.0.1:3000/users
+
+	添加路由：照着users.js做就是了
+
+
+前端发送请求：
+	例：xhr.open('get','./users');		//请求users.js
+	注意：请求方式写错会返回404错误，比如把get写成post
+
+处理请求：
+	例：router.post('/',function(req,res,next){
+			var userName=req.bocy.userName;
+		});

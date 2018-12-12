@@ -1,0 +1,46 @@
+﻿首次：
+	1.初始化：git init
+	2.关联远程：git remote add origin git@github.com:huanghb258/仓库名.git
+
+	3.从远程下拉最新文件(如果远程有的话)：
+		git pull origin master
+		
+	
+
+开始推送(三步)：
+	1.git add . 	//提交到缓存区
+
+	2.git commit -m "改动说明"
+
+	3.git push -u origin master	//推送到远程仓库
+		//-u 第一次关联远程时加上，把本地的master分支和远程的master分支关联起来
+
+	 
+	如果是默认分支(master),之后推送和下拉直接git pull和git push就行
+
+注意点：
+	文件目录是新建的而远程仓库并非新建，必须先pull，并且文件夹里不能有东西，可以先把文件夹里
+	的东西移走，等pull完再拷回来
+
+修改远程仓库：
+	git remote 	//查看所有远程仓库
+	git remote rm origin	//删除之前关联的仓库
+	
+	//也可以在.git下直接修改config文件
+	
+
+常见错误：
+	 failed to push some refs to 'git@github.com:xx.git'
+
+	原因：在github上乱删文件，造成远程库与本地库不一致
+	解决：
+		git pull --rebase origin master
+		//把远程库中的更新合并到本地库中，
+		//–rebase的作用是取消掉本地库中刚刚的commit，并把他们接到更新后的版本库之中
+
+
+其它：
+	git remote -v		//显示当前远程仓库及其克隆地址
+
+
+	

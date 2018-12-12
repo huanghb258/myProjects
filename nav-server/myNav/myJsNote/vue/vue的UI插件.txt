@@ -1,0 +1,18 @@
+mint-ui:	
+	官网：mint-ui.github.io
+	1.安装
+		npm install --save mint-ui
+
+	2.实现按需打包
+		1.npm install --save-dev babel-plugin-component
+		2.修改babel配置
+			"plugins":["transform-runtime",["component",[
+				{
+					"libraryName":"mint-ui",
+					"style":true
+				}
+			]]]
+
+
+	
+2.

@@ -1,0 +1,38 @@
+可获取的鼠标坐标有以下几种：
+  1.PageX/PageX:鼠标在页面上的位置,从页面左上角开始,即是以页面为参考点,不随滑动条移动而变化
+  2.clientX/clientY:鼠标在页面上可视区域的位置,从浏览器可视区域左上角开始,即是以浏览器滑动条此刻的滑动到的位置为参考点,随滑动条移动 而变化.
+      可是悲剧的是,PageX在ie下没有（？？？）
+  3.screenX/screenY：鼠标在屏幕上的位置,从屏幕左上角开始（w3c标准）
+  4.offsetX/offsetY:IE特有,鼠标相比较于触发事件的元素的位置,以元素盒子模型的内容区域的左上角为参考点,如果有boder,可能出现负值
+  5.layerX/layerY：FF特有(???),鼠标相比较于当前坐标系的位置,即如果触发元素没有设置绝对定位或相对定位,以页面为参考点,如果有,将改变参考坐标系,从触发元素盒子模型的border区域的     左上角为参考点也就是当触发元素设置了相对或者绝对定位后,layerX和offsetX就幸福地生活在一起^-^,几乎相等,唯一不同就是一个从border为参考点,一个以内容为参考点
+   chrome和safari一条龙通杀!完全支持所有属性.其中(offsetX和layerX都是以border为参考点)
+
+
+
+// 说明：获取鼠标位置
+// 整理：http://www.codebit.cn
+// 来源：http://www.webreference.com
+function mousePosition(ev){
+   if(ev.pageX || ev.pageY){
+     return {x:ev.pageX, y:ev.pageY};
+   }
+   return {
+     x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+     y:ev.clientY + document.body.scrollTop - document.body.clientTop
+   };
+}
+document.onmousemove = mouseMove;
+function mouseMove(ev){
+ ev = ev || window.event;
+ var mousePos = mousePosition(ev);
+   document.getElementByIdx('mouseXPosition').value = mousePos.x;
+   document.getElementByIdx('mouseYPosition').value = mousePos.y;
+}
+
+
+关于代码的详细说明如下：
+我们首先要声明一个 evnet 对象，无论移动、点击、按键等，都会激活一个 evnet ，在 Internet Explorer 里， event 是全局变量，会被存储在 window.event 里． 在 firefox 或者其他浏览器，event 会被相应的函数获取．当我们将mouseMove函数赋值于document.onmousemove，mouseMove 会获取鼠标移动事件。
+为了让 ev 在所有浏览器下获取了 event 事件，在Firefox下"||window.event"将不起作用，因为ev已经有了赋值。在 MSIE 中 ev 为空，所以得到 window.event 。
+因为在这篇文章中我们需要多次获取鼠标位置，所以我们设计了一个 mousePosition 函数，它包含一个参数 ： event 。
+因为我们要在 MSIE 和其他浏览器下运行，Firefox 和其他浏览器用 event.pageX 和 event.pageY 来表示鼠标相对于文档的位置，如果你有一个 500*500 的窗口并且你的鼠标在绝对中间，那么 pageX 和 pageY 的值都是 250，如果你向下滚动 500， 那么 pageY 将变成 750。
+MSIE 正好相反，它使用 event.clientX 和 event.clientY 表示鼠标相当于窗口的位置，而不是文档。在同样的例子中，如果你向下滚动500，clientY 依然是 250，因此，我们需要添加 scrollLeft 和 scrollTop 这两个相对于文档的属性。最后，MSIE 中文档并不是从 0，0 开始，而是通常有一个小的边框（通常是 2 象素），边框的大小定义在 document.body.clientLeft 和 clientTop 中，我们也把这些加进去。

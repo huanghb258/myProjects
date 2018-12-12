@@ -1,0 +1,53 @@
+方法1：
+	$("#a").on("click", function(e){
+        	$("#menu").show();
+
+        	$(document).one("click", function(){
+            	$("#menu").hide();
+        	});
+
+        	e.stopPropagation();
+    	});
+    	$("#menu").on("click", function(e){
+        	e.stopPropagation();
+    	});
+
+方法2：
+	$(document).on("click",function(e)
+{
+        
+		if($(e.target).parents(".菜单").length == 0)
+{
+	
+            $(".菜单").hide();
+        
+		}
+	
+});
+
+
+方法3：建议使用
+	(function($){
+        	$.fn.autoHide=function(){
+            	var el=$(this);
+            	$(document).on('click',function(e){
+                	if(el.is(':visible')&&(!$(e.target)[0].isEqualNode(el[0])&&el.has(e.target).length===0)){
+                    	el.hide();
+                	}
+                	e.stopPropagation();//有评论说这两行要去掉，主要看对于冒泡的影响，
+                	return false;	   //不用管冒泡的话留与不留都能正常
+            	});
+            	return this;
+        	}
+    	})(jQuery);
+   //调用
+	$('要隐藏的元素').autoHide();	//没有其它元素控制其显示及隐藏的情况下
+	或
+    	$('#link').on('click',function(){//#link控制#menu显示隐藏，点自身不会隐藏
+        	$('#menu').toggle().autoHide();//toggle自己看着用
+        	return false;
+   	 });
+
+
+
+

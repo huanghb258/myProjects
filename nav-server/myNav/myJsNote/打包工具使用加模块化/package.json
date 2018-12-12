@@ -1,0 +1,5 @@
+﻿// npm --save-dev 开发时才用到的包后面加dev,对应devDependencies
+{
+	"name":""//包名，不能有大写，不能中文
+	""
+}

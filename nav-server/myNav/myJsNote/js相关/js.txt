@@ -1,0 +1,178 @@
+﻿url中文转码：decodeURI（'%xx%xx%xx'）;encodeURI('中文');
+
+uncode转码：
+	'好'.charCodeAt(0).toString(16)//0：字符串下标，16：十六进制
+	反转：var str='\u4f60'; str=str.replace(/\\/g,"%");return unescape(str);
+	注:直接unescape('\u4f60')可转中文，但大多情况下要把\替换成%
+    
+控制台打印样式：console.log("%c此浏览器功能专供开发者使用。","font-size: 20px;color:#333")
+
+改变上传按钮样式：用容器包裹，自身input透明度0,大小充满容器，然后改变容器的样式
+
+获取data-*自定义属性的值：d1.getAttribute('data-abc')或$('#d1').data('abc');
+
+jq官方CDN:http://code.jquery.com/jquery-2.1.1.min.js
+
+
+
+
+e.target表示发生点击事件的元素,类似于this；
+
+click=mousedown+mouseup  //点击事件
+
+
+js 点击非自身元素才触发事件：
+	给document绑定事件，然后判断是点击时是否元素自身	
+        if(!$(e.target).is($('#btn'))
+	注意：jquery返回的是对象，即$('#d1')==$('#d1')为false,要用is()判断,原生js返回为true
+
+
+获取选中的文本：txt=window.getSelection().toString();//需要onmouseup事件后
+
+
+时间格式：new Date().toLocaleString()
+
+eval()函数作用：
+	可计算某个字符串的值，并执行其中的的 JavaScript 代码。
+
+
+原生js事件委托：
+	.addEventListener("click",function(){})
+
+
+isEqualNode()方法：检测两个节点是否相等
+	var item1=document.getElementById("myList1").firstChild;
+	var item2=document.getElementById("myList2").firstChild;
+	item1.isEqualNode(item2);  //false
+
+	如果下例条件为 true，则两个节点相等：
+		1.节点类型相同
+		2.拥有相同的 nodeName、NodeValue、localName、nameSpaceURI 以及前缀
+		3.所有后代均为相同的子节点
+		4.拥有相同的属性和属性值（属性次序不必一致）
+
+
+Object.create():ES5  //E5中提出的一种新的对象创建方式
+
+	 function clone(obj) {
+            return Object.create(obj);
+        }
+        var a = {name: 'a'};
+        var b = clone(a);
+        console.log(b.name);//a   b没有就从a上找
+        a.name = 'a1';
+        console.log(b.name);//a1
+        b.name = 'b';
+        console.log(a.name);//a1   不会影响a
+        a.name = 'a2';
+        console.log(b.name);//b	  b有从自己找
+
+	相当于function clone(obj){
+		var ret={};
+		ret.__proto__=obj; //__proto__大部分浏览器可实现了，但不规范
+		return ret;
+		}
+
+	兼容低版本写法：function clone(obj){
+			function noop(){}//创建空函数
+			noop.prototype=obj;
+			return new noop;
+		}
+
+
+getXXXByXXX 获取的是动态集合，querySelector获取的是静态集合。
+简单的说就是，动态就是选出的元素会随文档改变，静态的不会，取出来之后就和文档的改变无关了。
+
+检测数据类型：方法4优选
+
+	1. 使用typeof检测   -- typeof str
+
+	2. 使用instance检测  -- str instanceof String  检测是否new出的实例
+
+	3.使用constructor检测  --str.constructor==String
+
+	4. 使用Object.prototype.toString.call	--Object.prototype.toString.call(str)
+
+	5.jquery中$.type的实现   $.type(str)原理同4
+
+
+{}+[]  //0   {}在前被理解为复合语句块，相当于{};+[]   []为空'',+号把[]转成了0
+
+[]+{}  //"[object Object]"    看懂上句不须解释
+
+console.log({}+[])  //"[object Object]"  在这里也不会被作为语句块
+
+Math.round(4.5)  //5  	 只保留整数
+Math.round(-4.5) //-4    如果是负数，则是四舍五点一以上入： -4.51= -5
+
+if(window.confirm('确定删除？') )	//弹出确定/取消对话框，返回true/false
+
+documentFragment:减少页面更新次数
+	const fragment=document.createDocumentFragment();
+	let child;
+	while(child=ul.fristChild){
+		fragment.appendChild(child)	//fragment会将child从ul中移除，成为fragment的子节点
+	}
+	[].slice.call(fragment.childNodes).forEach(node=>{
+		if(node.nodeType===1){//返回1代表元素节点
+			node.textContent='xxx'
+		}
+	})
+	ul.appendChild(fragmetn)
+
+当this遇到return时：
+	return的是：String，Number，Boolean，Null，Undefined。忽视return，返回this对象
+	return的是Object，不再返回this对象，而是返回return语句的返回值。
+
+
+浮点数计算不精确：
+	0.1+0.2=0.300...4;	//0.1和0.2转成二进制都是无限循环
+	解决方案：
+		1.(0.1+0.2).toFixed(1) //0.3,直接四舍五入，结果一般不会错，但不严谨
+		2.(0.1*10 + 0.2*10)/10	//乘以10的n次幂，再除10的n次幂，大部分编程用这方法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+﻿进入到项目：npm install vue-resource --save-dev   //没墙十次有八次不成功，用cnpm
+
+main.js 引入：
+	1.import resource from 'vue-resource'
+
+	2.Vue.use(resource);
+
+	3.组件里添加属性：create(){
+		this.$http.get('http').then(
+			(data)=>{console.log(data)}
+		)    //data.body就是我们要的数据
+	}
+

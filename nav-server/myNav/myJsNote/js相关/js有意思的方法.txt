@@ -1,0 +1,36 @@
+﻿jquery filter()方法：将匹配元素集合缩减为匹配指定选择器的元素
+	例：$('div').css({color:red}).filter('.a').css({color:blue});
+	//所有div颜色红，带.a的div颜色蓝;()里可以是函数
+
+
+window.open().document.write(`这里放html完整代码`);
+	\\可以跳转到空白页并渲染
+
+
+function isObject(val) {//实现判断是否为对象
+  return val != null && typeof val === 'object' && Array.isArray(val) === false;
+};
+
+快速获得时间戳：+new Date
+
+
+设置文本文档默认为utf-8格式：
+	1.在桌面新建一个文本文档，不要写入任何内容，然后手动另存为，将此文档编码改为UTF-8，然后将文件名字改为template.txt；
+	2.再将template.txt移动到C:\Windows\ShellNew这个文件夹下；
+	3.打开注册表，WIN+R输入regedit,打开HKEY_CLASSES_ROOT\.txt\ShellNew，然后新建字符串值FileName，双击新建文件，在地址栏输入C:\Windows\ShellNew\template.txt。
+
+jq获取transform的值：
+	 var matrix=that.css('transform');//如果没设置过transform返回'none'
+	//返回的是'matrix(...)',括号里的就是，用正则去截取
+         matrix=matrix.replace(/[(matrix)\(\)]/ig,'');
+         matrix=matrix.split(',');
+         var translateX=matrix[4];
+         
+
+
+
+
+
+
+
+

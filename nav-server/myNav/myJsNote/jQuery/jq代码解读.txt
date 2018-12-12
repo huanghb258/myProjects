@@ -1,0 +1,48 @@
+﻿原文：https://www.cnblogs.com/SheilaSun/p/4779895.html
+一、为什么传入window,undefined：
+	(function(window,undefined){
+   	 	...	
+	})(window);
+
+	1.如果不传window代码压缩时因window不是参数也不是局部变量，不能压成一个字符
+	2.传入window参数，就可以不用沿着作用域链一层层向上查找，访问更快。
+	3.undefined并不是JS中的关键字，在IE8及以下中是可以对其重新赋值的
+	  在参数列表中给出undefined参数，但是不传入值，那么这个参数值就是undefined值了
+
+二、jQuery对象的构建
+	为了让你得到jquery不用new:$('*')相当于new $('*')
+
+	jQuery = function( selector, context ) {
+    		return new jQuery.fn.init( selector, context, rootjQuery );
+	},
+	jQuery.fn = jQuery.prototype = { //fn即对应prototype
+    		constructor: jQuery,
+    		init: function( selector, context, rootjQuery ) {
+        		...
+       		 return this;
+    	}
+   		 ...
+	}
+	jQuery.fn.init.prototype = jQuery.fn;
+
+	"jQuery.fn.init.prototype = jQuery.fn"这句很重要，它将init的原型指向jQuery的原型，所以JQ对象才
+	可以访问‘css'、'show'、'hide'这些写在jQuery.fn上的方法。
+
+	为何要从init这绕这么一大圈来访问jQuery的原型，而不是直接返回一个jQuery实例直接通过这个实例来访
+	问自身原型？比如代码写成这样：
+
+	jQuery = function( selector, context ) {
+        	return new jQuery();
+	} 
+	这样就死打循环了;
+
+	.....
+
+
+
+
+
+
+
+
+

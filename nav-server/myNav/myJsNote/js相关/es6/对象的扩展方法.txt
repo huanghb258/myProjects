@@ -1,0 +1,13 @@
+﻿1. Object.is(v1, v2)
+  * 判断2个数据是否完全相等，注意：
+     NaN == NaN;//false	而	Object.is(NaN, NaN);	//true   
+     0 == -0;//true		而	Object.is(0, -0);	//false
+
+2. Object.assign(target, source1, source2..)
+  * 将源对象的属性复制到目标对象上,如果有重复，后面的覆盖前面的
+  例：Object.assign(obj, obj1, obj2)		//将obj1和obj2的值复制给obj,复制完后改变obj1不影响obj
+  注意：let obj1=Object.assign(obj)		//浅拷贝，相当于obj1=obj
+
+3. 直接操作 __proto__ 属性
+  let obj2 = {};
+  obj2.__proto__ = obj1;

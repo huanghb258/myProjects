@@ -1,0 +1,45 @@
+槽(gutter)宽：30px 	//即左右内边距各15	容器和栅格都有槽宽
+
+容器：
+	container-fluid		宽度：auto	//auto是加上padding后宽等于100%
+	container：
+		>=1200时	宽等于1170
+		>=992		宽等于970
+		>=768		宽等于750
+		<768		auto	
+		
+颜色：
+	success：淡绿
+	info:淡蓝
+	warning:淡黄
+	danger:淡红
+
+栅格系统：
+	col-xs-1至12	<768	//当屏幕小于768时
+	sm: >=768	md: >=992	lg: >=1200
+
+列偏移：
+	.col-md-offset-*	//增加左边距，影响整体
+
+列排序：
+	.col-md-push-* 和 .col-md-pull-*	//使用绝对定位改变自身位置，不影响整体
+
+
+文字对齐：
+	text-left	中center	右right	
+	text-justify:		text-nowrap:不换行
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
