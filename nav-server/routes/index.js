@@ -13,7 +13,7 @@ router.get('/command', function (req, res, next){
     const target=req.query.target;
     let data={code:0,target};
     let p=new Promise((rsolve,reject)=>{
-        exec(target,'utf-8',function (error,stdout,stderr) {
+        exec(target,'ANSI',function (error,stdout,stderr) {
             if (error) {
                 console.error(`执行出错: ${error}`);
                 data={code:0,error};

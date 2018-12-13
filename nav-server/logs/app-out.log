@@ -710,3 +710,125 @@ stderr:
 [0mGET /images/ico/nodejs.png [36m304 [0m46.540 ms - -[0m
 [0mGET /images/ico/sanguosha.ico [36m304 [0m58.459 ms - -[0m
 [0mGET /favicon.ico [33m404 [0m1.460 ms - 1087[0m
+[0mGET /command?target=start+%2Fnormal+%5CmyProjects%5Cnav-server%5CmyNav%5Cbat%5Cpush.bat [0m- [0m- ms - -[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fnormal+%5CmyProjects%5Cnav-server%5CmyNav%5Cbat%5Cpush.bat [36m304 [0m4228.803 ms - -[0m
+stdout: 
+stderr: 
+[0mGET / [36m304 [0m94.578 ms - -[0m
+[0mGET /stylesheets/common.css [36m304 [0m4.300 ms - -[0m
+[0mGET /stylesheets/index.css [36m304 [0m23.949 ms - -[0m
+[0mGET /stylesheets/asideL.css [36m304 [0m2.098 ms - -[0m
+[0mGET /stylesheets/footer.css [36m304 [0m2.427 ms - -[0m
+[0mGET /images/baidu-logo.gif [36m304 [0m1.493 ms - -[0m
+[0mGET /javascripts/jquery.min.js [36m304 [0m2.618 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m0.889 ms - -[0m
+[0mGET /javascripts/BDSearch.js [36m304 [0m3.037 ms - -[0m
+[0mGET /javascripts/mainCon.js [36m304 [0m2.659 ms - -[0m
+[0mGET /javascripts/rightSide.js [36m304 [0m1.298 ms - -[0m
+[0mGET /images/bg1.jpg [36m304 [0m0.914 ms - -[0m
+[0mGET /javascripts/leftSide.js [36m304 [0m35.560 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m8.359 ms - -[0m
+[0mGET /fsReaddir?callback=jQuery11130004487047035597325_1544660309162&path=.%2FmyNav%2FmyJsNote&_=1544660309163 [32m200 [0m111.163 ms - 16545[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m113.112 ms - -[0m
+[0mGET /images/ico/douyu.ico [36m304 [0m6.100 ms - -[0m
+[0mGET /images/ico/github.ico [36m304 [0m1.901 ms - -[0m
+[0mGET /images/ico/vue.png [36m304 [0m1.836 ms - -[0m
+[0mGET /images/ico/music163.ico [36m304 [0m6.184 ms - -[0m
+[0mGET /images/ico/5sing.ico [36m304 [0m0.952 ms - -[0m
+[0mGET /images/ico/opgg.ico [36m304 [0m5.035 ms - -[0m
+[0mGET /images/ico/nodejs.png [36m304 [0m4.403 ms - -[0m
+[0mGET /images/ico/sanguosha.ico [36m304 [0m3.319 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m19.371 ms - 1087[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fnormal+H%3A%5CmyProjects%5Cnav-server%5CmyNav%5CmyJsNote%5Cvue%5Cvue-router.html [32m200 [0m213.388 ms - 125[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fnormal+%5CmyProjects%5Cnav-server%5CmyNav%5Cbat%5Cpush.bat [36m304 [0m29552.916 ms - -[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fnormal+%5CmyProjects%5Cnav-server%5CmyNav%5Cbat%5Cpush.bat [36m304 [0m7444.374 ms - -[0m
+[0mGET / [36m304 [0m2.025 ms - -[0m
+[0mGET /stylesheets/common.css [36m304 [0m4.425 ms - -[0m
+[0mGET /stylesheets/index.css [36m304 [0m4.120 ms - -[0m
+[0mGET /stylesheets/asideL.css [36m304 [0m1.108 ms - -[0m
+[0mGET /stylesheets/footer.css [36m304 [0m1.274 ms - -[0m
+[0mGET /javascripts/jquery.min.js [36m304 [0m3.101 ms - -[0m
+[0mGET /images/baidu-logo.gif [36m304 [0m3.336 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m1.200 ms - -[0m
+[0mGET /javascripts/BDSearch.js [36m304 [0m2.442 ms - -[0m
+[0mGET /javascripts/mainCon.js [36m304 [0m2.647 ms - -[0m
+[0mGET /javascripts/rightSide.js [36m304 [0m2.279 ms - -[0m
+[0mGET /javascripts/leftSide.js [36m304 [0m2.421 ms - -[0m
+[0mGET /images/bg1.jpg [36m304 [0m0.527 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m2.637 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m0.922 ms - -[0m
+[0mGET /fsReaddir?callback=jQuery111308498648765423376_1544662784779&path=.%2FmyNav%2FmyJsNote&_=1544662784780 [32m200 [0m43.176 ms - 16541[0m
+[0mGET /images/ico/douyu.ico [36m304 [0m16.710 ms - -[0m
+[0mGET /images/ico/music163.ico [36m304 [0m18.889 ms - -[0m
+[0mGET /images/ico/github.ico [36m304 [0m19.102 ms - -[0m
+[0mGET /images/ico/5sing.ico [36m304 [0m18.699 ms - -[0m
+[0mGET /images/ico/vue.png [36m304 [0m19.938 ms - -[0m
+[0mGET /images/ico/opgg.ico [36m304 [0m2.261 ms - -[0m
+[0mGET /images/ico/nodejs.png [36m304 [0m3.282 ms - -[0m
+[0mGET /images/ico/sanguosha.ico [36m304 [0m2.510 ms - -[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fnormal+%5CmyProjects%5Cnav-server%5CmyNav%5Cbat%5Cpush.bat [36m304 [0m4921.801 ms - -[0m
+[0mGET /myJsNote/%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.txt [32m200 [0m8.766 ms - 375[0m
+[0mGET /myJsNote/%E5%B8%B8%E7%94%A8API.txt [32m200 [0m1.928 ms - 7535[0m
+[0mGET /myJsNote/%E5%B8%B8%E7%94%A8API.txt [36m304 [0m5.491 ms - -[0m
+[0mGET / [36m304 [0m1.358 ms - -[0m
+[0mGET /stylesheets/index.css [36m304 [0m2.734 ms - -[0m
+[0mGET /stylesheets/common.css [36m304 [0m7.213 ms - -[0m
+[0mGET /stylesheets/asideL.css [36m304 [0m1.579 ms - -[0m
+[0mGET /stylesheets/footer.css [36m304 [0m1.447 ms - -[0m
+[0mGET /javascripts/jquery.min.js [36m304 [0m1.293 ms - -[0m
+[0mGET /images/baidu-logo.gif [36m304 [0m1.174 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m0.611 ms - -[0m
+[0mGET /javascripts/BDSearch.js [36m304 [0m4.812 ms - -[0m
+[0mGET /javascripts/mainCon.js [36m304 [0m3.928 ms - -[0m
+[0mGET /javascripts/rightSide.js [36m304 [0m1.284 ms - -[0m
+[0mGET /javascripts/leftSide.js [36m304 [0m1.343 ms - -[0m
+[0mGET /images/bg1.jpg [36m304 [0m0.513 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m0.913 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m0.929 ms - -[0m
+[0mGET /fsReaddir?callback=jQuery111308624503832799828_1544663182671&path=.%2FmyNav%2FmyJsNote&_=1544663182672 [32m200 [0m38.546 ms - 16541[0m
+[0mGET /images/ico/douyu.ico [36m304 [0m2.181 ms - -[0m
+[0mGET /images/ico/music163.ico [36m304 [0m2.734 ms - -[0m
+[0mGET /images/ico/github.ico [36m304 [0m2.953 ms - -[0m
+[0mGET /images/ico/vue.png [36m304 [0m3.210 ms - -[0m
+[0mGET /images/ico/5sing.ico [36m304 [0m3.515 ms - -[0m
+[0mGET /images/ico/opgg.ico [36m304 [0m0.855 ms - -[0m
+[0mGET /images/ico/nodejs.png [36m304 [0m0.831 ms - -[0m
+[0mGET /images/ico/sanguosha.ico [36m304 [0m1.015 ms - -[0m
+[0mGET /myJsNote/%E5%B8%B8%E7%94%A8API.txt [36m304 [0m0.699 ms - -[0m
+[0mGET / [36m304 [0m5.921 ms - -[0m
+[0mGET /stylesheets/common.css [36m304 [0m4.133 ms - -[0m
+[0mGET /stylesheets/index.css [36m304 [0m3.351 ms - -[0m
+[0mGET /javascripts/jquery.min.js [36m304 [0m1.151 ms - -[0m
+[0mGET /images/baidu-logo.gif [36m304 [0m1.415 ms - -[0m
+[0mGET /stylesheets/footer.css [36m304 [0m5.367 ms - -[0m
+[0mGET /stylesheets/asideL.css [36m304 [0m10.347 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m3.035 ms - -[0m
+[0mGET /javascripts/BDSearch.js [36m304 [0m3.532 ms - -[0m
+[0mGET /javascripts/mainCon.js [36m304 [0m4.528 ms - -[0m
+[0mGET /javascripts/rightSide.js [36m304 [0m5.361 ms - -[0m
+[0mGET /javascripts/leftSide.js [36m304 [0m2.953 ms - -[0m
+[0mGET /images/bg1.jpg [36m304 [0m0.550 ms - -[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m5.419 ms - -[0m
+[0mGET /fsReaddir?callback=jQuery1113040497132551070525_1544663225103&path=.%2FmyNav%2FmyJsNote&_=1544663225104 [32m200 [0m42.450 ms - 16543[0m
+[0mGET /data/oftenUseUrl.json [36m304 [0m1.919 ms - -[0m
+[0mGET /images/ico/douyu.ico [36m304 [0m2.079 ms - -[0m
+[0mGET /images/ico/music163.ico [36m304 [0m2.273 ms - -[0m
+[0mGET /images/ico/github.ico [36m304 [0m2.455 ms - -[0m
+[0mGET /images/ico/vue.png [36m304 [0m2.678 ms - -[0m
+[0mGET /images/ico/5sing.ico [36m304 [0m0.845 ms - -[0m
+[0mGET /images/ico/opgg.ico [36m304 [0m0.994 ms - -[0m
+[0mGET /images/ico/nodejs.png [36m304 [0m1.039 ms - -[0m
+[0mGET /images/ico/sanguosha.ico [36m304 [0m1.304 ms - -[0m
+stdout: 
+stderr: 
+[0mGET /command?target=start+%2Fnormal+%5CmyProjects%5Cnav-server%5CmyNav%5Cbat%5Cpush.bat [36m304 [0m8118.024 ms - -[0m
