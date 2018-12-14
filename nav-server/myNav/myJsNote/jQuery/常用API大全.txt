@@ -59,8 +59,11 @@
 
 
 获取内容：
-	.scrollTop():获取匹配元素相对滚动条距离   //scrollLeft
+	el.scrollTop():获取匹配元素相对滚动条距离或滚动   //scrollLeft
+		//overflow在谁身上el就写谁，传值不用加px
+
 	.offset():相对于最顶部/左边的距离，固定值，不受滚动影响	 $("div").offset().top/left
+
 	.html/text/val():设置或返回所选元素/文本/表单的值
 	
 	待增加：获取元素宽高

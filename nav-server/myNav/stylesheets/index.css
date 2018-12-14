@@ -29,6 +29,94 @@ body {
 }
 
 #baidu {
+    position: relative;
+}
+.child-center{
+    /*display: flex;*/
+    /*display: -webkit-flex;*/
+    /*display: -moz-flex;*/
+    /*justify-content: center;*/
+    /*-webkit-justify-content: center;*/
+    /*-moz-justify-content: center;*/
+    /*align-items: center;*/
+    /*-webkit-align-items: center;*/
+    /*-moz-align-items: center;*/
+}
+.child-center form{
+    width: 715px;
+    margin: 0 auto;
+}
+.child-center .local-list{
+    display: none;
+    position: absolute;
+    width: 714px;
+    left: 0;
+    right: 0;
+    top: 75px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    height: 332px;
+    background: #fff;
+    z-index: 90;
+    overflow: hidden;
+}
+@keyframes remind{
+	0%{background: #c6e377;}
+	33%{background: #fff;}
+	66%{background: #c6e377;}
+	100%{background: #fff;}
+}
+.dir> a.remind{
+	-webkit-animation: remind 1s;
+	-o-animation: remind 1s;
+	animation: remind 1s;
+}
+.local-list .title{
+    float: left;
+    background: #eee;
+    width: 100%;
+    text-align: center;
+}
+.local-list div{
+    box-sizing: border-box;
+}
+.local-list .title>div{
+    height: 30px;
+    line-height: 30px;
+}
+.local-list .col-4{
+    float: left;
+    width: 33.333333%;
+}
+.local-list > .sub-list:nth-child(3),
+.local-list .title>div:nth-child(2){
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+.local-list > .sub-list{
+    height: 300px;   
+    overflow-y: auto;
+}
+.local-list > .sub-list a{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding:0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;    
+}
+.local-list > .sub-list a:hover{
+    background: #eee;
+}
+.local-list  a.txt{
+    color: #594129;
+}
+.local-list  a.html{
+    color: #6b76ff;
+}
+.local-list a.folder{
+    color: #f06f32;
 }
 
 #baidu .logo {

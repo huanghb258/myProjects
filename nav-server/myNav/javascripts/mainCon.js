@@ -260,9 +260,9 @@ $(function () {
                     isReqJson=false;
                     resolve(oftenUseUrlJson)
                 }
-                function error(xhr, txt) {
-                    console.log(xhr, txt);
-                    reject(txt)
+                function error(xhr) {
+                    console.warn(xhr.statusText);
+                    reject(xhr.statusText)
                 }
             }
         })
@@ -576,6 +576,9 @@ $(function () {
                 examine.hide();
             });
         }({jsDocs: jsDocs, jsVaried: jsVaried, cssDocs: cssDocs, cssVaried: cssVaried});
+    },()=>{
+    	alert('没有cookie或cookie数据不全,也没有JSON文件\n点击导出JOSN可以生成一个新json文件')
+    	console.warn('没有cookie或cookie数据不全,也没有JSON文件')
     })
 
     //全局事件

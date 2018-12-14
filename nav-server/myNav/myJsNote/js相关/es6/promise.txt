@@ -7,8 +7,7 @@ let promise=new Promise((resolve,reject)=>{
 	setTimeout(()=>{
 		console.log(333);
 		//根据异步任务返回的结果去修改promise的状态
-		//如果异步任务执行成功就调用resolve(),它会修改promise的状态为:fullfilled
-		
+		//如果异步任务执行成功就调用resolve(),它会修改promise的状态为:fullfilled		
 		//异步任务失败调用:reject()，修改为失败状态：rejected
 		
 	},1000)
@@ -21,7 +20,7 @@ promise.then(()=>{
 })
 
 实战示例：
-	  //定义一个请求news的方法，getNews返回promise对象
+	//定义一个请求news的方法，getNews返回promise对象
     function getNews(url) {
         //创建一个promise对象
         let promise = new Promise((resolve, reject) => {

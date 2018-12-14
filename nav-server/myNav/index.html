@@ -76,12 +76,15 @@
             <div class="w-tomorrow">明天：<span></span></div>
             <div class="isRain warn"></div>
         </div>
+        <div>
+        	<a href="" id="exportJson">导出到json</a>
+        </div>
     </aside>
     <div id="baidu">
         <div class="child-center">
             <form class="">
                 <div class="tab-bar">
-						<span class="active" data-txt='百度一下' href="https://www.baidu.com/"
+						<span class="active www" data-txt='百度一下' href="https://www.baidu.com/"
                               data-url='https://www.baidu.com/s?ie=utf-8&wd=' domain='www'>
 							网页
 						</span>
@@ -97,7 +100,7 @@
                           domain='map'>
 							地图
 						</span>
-                    <span data-txt='本地搜索' domain='local' class="local-search">
+                    <span data-txt='本地搜索' domain='local' class="local-search" id="local-search">
 							本地
 						</span>
 
@@ -107,7 +110,7 @@
                         <img src="images/baidu-logo.gif">
                     </a>
                     <div class="sInput lf">
-                        <input type="text" id="searchText" autocomplete="off">
+                        <input type="text" id="searchText" autocomplete="off" placeholder="当前是百度一下">
                         <ul id="searchResult" style="display: none">
 
                         </ul>
@@ -116,6 +119,23 @@
                 </div>
 
             </form>
+            <div class="local-list" id="local-list">
+                <div class="title">
+                    <div class="col-4">文件夹</div>
+                    <div class="col-4">文件</div>
+                    <div class="col-4">包含搜索内容的txt文件</div>
+                </div>
+                <div class="folder col-4 sub-list">
+
+                </div>
+                <div class="file col-4 sub-list">
+
+                </div>
+                <div class="content col-4 sub-list">
+
+                </div>
+
+            </div>
         </div>
     </div>
     <section class="main">

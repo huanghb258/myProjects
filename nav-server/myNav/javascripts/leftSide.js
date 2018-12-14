@@ -1,12 +1,13 @@
 $(function () {
-    const path = './myNav/myJsNote';//myJsNote的相对路径
-    const newPath = 'myJsNote'; //文件移动到node服务目录后的相对路径
+    const path = './myNav/myJsNote';//向服务器请求myJsNote的相对路径，即以相对于app.js
+    const newPath = 'myJsNote'; //index.html相对myjsnote的路径
     const noteList = $('#noteList');
     const txtView = $('#txt-view');
     const serverUrl = '/fsReaddir';
     const menu = $('#contextmenu');//右键菜单
 
     let AP = '';  //存放myJsNote的绝对路径
+    window.localSearchTargetArr={files:[],folders:[]};
 
     //请求数据并初始化列表
     function init() {
@@ -38,7 +39,6 @@ $(function () {
                 e.preventDefault();
                 alert(11)
             })
-
         }
 
         //成功后的回调函数
@@ -95,34 +95,37 @@ $(function () {
                 for (let i = 0, len = folder.length; i < len; i++) {
                     // '\'在匹配时容易出错，先把它替换成$
                     let select = folder[i].replace(/\\/g, '##');
+                    let href=basePath + folder[i];
                     html +=
                         `<li class="dir" data-fname="${select}">
-                    <a href="${basePath + folder[i]}">
+                    <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
                         <i class="folder-close"></i>
                         <i class="iconfont icon-wenjianjia"></i>
                         <span>${folder[i].slice(1)}</span>
                     </a>  
                       <ul class="sublist-1"></ul>                  
                 </li>`;
+                    localSearchTargetArr.folders.push({path:basePath + folder[i],name:folder[i].slice(1)})
                 }
             }
 
             if (files) {
                 for (let i = 0, len = files.length; i < len; i++) {
                     let type = files[i].slice(files[i].lastIndexOf('.') + 1);
+                    let href=basePath + files[i];
                     html +=
                         `<li class="${type}">
-                    <a href="${basePath + files[i]}">
+                    <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
                         <span>${files[i].slice(1)}</span>
                     </a>
                 </li>`;
+                    localSearchTargetArr.files.push({path:basePath + files[i],name:files[i].slice(1)});
                 }
             }
 
             $(ulNode).addClass('sublist-0').html(html);
             fragment.appendChild(ulNode);
         }
-
         //生成后面的子目录
         function createSubDir(data, index) {
 
@@ -139,18 +142,18 @@ $(function () {
                     let select = 'li[data-fName="' + parentPath + '"]';
                     let parentLi = fragment.querySelector(select);
                     let html = '';
+                    let href=basePath + folder[i];
+                    let content=folder[i].slice(folder[i].lastIndexOf('\\') + 1);
                     html +=
                         `<li class="dir" data-fname="${folder[i].replace(/\\/g, '##')}">
-                    <a href="${basePath + folder[i]}">
+                    <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
                         <i class="folder-close"></i>
                         <i class="iconfont icon-wenjianjia"></i>
-                        <span>${folder[i].slice(folder[i].lastIndexOf('\\') + 1)}</span>
+                        <span>${content}</span>
                     </a>  
                     <ul class="sublist-${index + 1}"></ul>                  
                 </li>`;
-                    if (!parentLi) {
-                        debugger
-                    }
+                    localSearchTargetArr.folders.push({path:href,name:content})
                     let ulNode = parentLi.querySelector('.sublist-' + (index));
                     $(ulNode).html($(ulNode).html() + html);
                     parentLi.appendChild(ulNode);
@@ -162,13 +165,15 @@ $(function () {
                     let parentPath = files[i].slice(0, files[i].lastIndexOf('\\')).replace(/\\/g, '##');
                     let select = 'li[data-fName="' + parentPath + '"]';
                     let liNode = document.createElement('li');
+                    let href=basePath + files[i];
                     let html = '';
                     html +=
                         `
-                <a href="${basePath + files[i]}">
+                <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
                     <span>${files[i].slice(files[i].lastIndexOf('\\') + 1)}</span>
                 </a>
                `;
+                    localSearchTargetArr.files.push({path:basePath + files[i],name:files[i].slice(files[i].lastIndexOf('\\') + 1)});
                     $(liNode).addClass(type).html(html);
                     fragment.querySelector(select).appendChild(liNode);
                 }
@@ -195,7 +200,12 @@ $(function () {
         let isClickUp=true;     //控制一定时间内不能再点
 
         //右击事件
-        noteList.on('contextmenu', 'li>a', function (e) {
+        noteList.on('click',function (e) {
+            e=e||event;
+            e.stopPropagation();
+            $("#searchResult").hide();
+        })
+            .on('contextmenu', 'li>a', function (e) {
             e = e || event;
             event.preventDefault();
             e.stopPropagation();
@@ -227,6 +237,7 @@ $(function () {
                 $(this).children('i:first-child').toggleClass('folder-open')
                     .toggleClass('folder-close');
                 $(this).siblings().slideToggle(200);
+                $(this).toggleClass('open')
             })
 
             //点击文本
@@ -469,7 +480,6 @@ $(function () {
         addReg({
             reg: '(([\t {2,20}]\/\/.+)[\r\n])', count: 2,
             method(arg) {
-                console.log(_escape(arg[this.indexs[0]]));
                 return `\t<span class="color-green">${_escape(arg[this.indexs[0]])}</span>\r`;
             }
         });

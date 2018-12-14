@@ -2,3 +2,343 @@
 ϵͳ�Ҳ����ļ� H:\myProjects\nav-server\myNav\myJsNote\node\nodeһЩ���ù���.txt��
 
 失败
+执行出错: Error: Command failed: \myProjects\nav-server\myNav\bat\push.bat
+warning: LF will be replaced by CRLF in nav-server/logs/app-out.log.
+The file will have its original line endings in your working directory
+
+失败
+H:\myProjects\nav-server\routes\index.js:1
+(function (exports, require, module, __filename, __dirname) { aconst express = require('express');
+                                                                     ^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\app.js:7:19)
+H:\myProjects\nav-server\routes\index.js:1
+(function (exports, require, module, __filename, __dirname) { aconst express = require('express');
+                                                                     ^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\app.js:7:19)
+H:\myProjects\nav-server\routes\index.js:1
+(function (exports, require, module, __filename, __dirname) { aconst express = require('express');
+                                                                     ^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\app.js:7:19)
+H:\myProjects\nav-server\routes\index.js:1
+(function (exports, require, module, __filename, __dirname) { aconst express = require('express');
+                                                                     ^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\app.js:7:19)
+H:\myProjects\nav-server\routes\index.js:1
+(function (exports, require, module, __filename, __dirname) { aconst express = require('express');
+                                                                     ^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\app.js:7:19)
+H:\myProjects\nav-server\app.js:2
+var 1express = require('express');
+    ^^
+
+SyntaxError: Invalid or unexpected token
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\bin\www:7:11)
+H:\myProjects\nav-server\app.js:2
+var 1express = require('express');
+    ^^
+
+SyntaxError: Invalid or unexpected token
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\bin\www:7:11)
+H:\myProjects\nav-server\app.js:2
+var 1express = require('express');
+    ^^
+
+SyntaxError: Invalid or unexpected token
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\bin\www:7:11)
+H:\myProjects\nav-server\app.js:2
+var 1express = require('express');
+    ^^
+
+SyntaxError: Invalid or unexpected token
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\bin\www:7:11)
+H:\myProjects\nav-server\app.js:2
+var 1express = require('express');
+    ^^
+
+SyntaxError: Invalid or unexpected token
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:139:10)
+    at Module._compile (module.js:616:28)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (H:\myProjects\nav-server\bin\www:7:11)
+ReferenceError: filedir is not defined
+    at H:\myProjects\nav-server\routes\index.js:53:42
+    at FSReqWrap.oncomplete (fs.js:153:5)
+ReferenceError: i is not defined
+    at H:\myProjects\nav-server\routes\index.js:58:53
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+ReferenceError: i is not defined
+    at H:\myProjects\nav-server\routes\index.js:58:53
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:49:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:50:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:53:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+TypeError: Cannot read property 'forEach' of undefined
+    at H:\myProjects\nav-server\routes\index.js:53:19
+    at FSReqWrap.oncomplete (fs.js:135:15)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at H:\myProjects\nav-server\routes\index.js:83:13
+    at checkEnd (H:\myProjects\nav-server\routes\index.js:51:44)
+    at checkEnd (H:\myProjects\nav-server\routes\index.js:51:44)
+    at checkEnd (H:\myProjects\nav-server\routes\index.js:51:44)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at H:\myProjects\nav-server\routes\index.js:83:13
+    at checkEnd (H:\myProjects\nav-server\routes\index.js:51:44)
+    at checkEnd (H:\myProjects\nav-server\routes\index.js:51:44)
+    at checkEnd (H:\myProjects\nav-server\routes\index.js:51:44)
+ReferenceError: i is not defined
+    at H:\myProjects\nav-server\routes\index.js:64:57
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+ReferenceError: i is not defined
+    at H:\myProjects\nav-server\routes\index.js:64:57
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at readDirRecur (H:\myProjects\nav-server\routes\index.js:43:13)
+    at H:\myProjects\nav-server\routes\index.js:56:32
+    at FSReqWrap.oncomplete (fs.js:153:5)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at readDirRecur (H:\myProjects\nav-server\routes\index.js:43:13)
+    at H:\myProjects\nav-server\routes\index.js:56:32
+    at FSReqWrap.oncomplete (fs.js:153:5)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at readDirRecur (H:\myProjects\nav-server\routes\index.js:43:13)
+    at H:\myProjects\nav-server\routes\index.js:56:32
+    at FSReqWrap.oncomplete (fs.js:153:5)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at readDirRecur (H:\myProjects\nav-server\routes\index.js:43:13)
+    at H:\myProjects\nav-server\routes\index.js:56:32
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at readDirRecur (H:\myProjects\nav-server\routes\index.js:43:13)
+    at H:\myProjects\nav-server\routes\index.js:56:32
+    at FSReqWrap.oncomplete (fs.js:153:5)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at readDirRecur (H:\myProjects\nav-server\routes\index.js:43:13)
+    at H:\myProjects\nav-server\routes\index.js:56:32
+    at FSReqWrap.oncomplete (fs.js:153:5)
+Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:767:10)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:170:12)
+    at ServerResponse.json (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:267:15)
+    at ServerResponse.send (H:\myProjects\nav-server\node_modules\_express@4.16.4@express\lib\response.js:158:21)
+    at readDirRecur (H:\myProjects\nav-server\routes\index.js:43:13)
+    at H:\myProjects\nav-server\routes\index.js:56:32
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)
+TypeError: Cannot read property 'toString' of undefined
+    at H:\myProjects\nav-server\routes\index.js:59:59
+    at FSReqWrap.oncomplete (fs.js:153:5)

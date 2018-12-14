@@ -10,21 +10,7 @@
 	body{
 		/*background: url('https://www.2345.com/images/index/v1.1/body-bg-180104.png');*/
 	}
-	.child-center{
-		/*display: flex;*/
-		/*display: -webkit-flex;*/
-		/*display: -moz-flex;*/
-    	/*justify-content: center;*/
-    	/*-webkit-justify-content: center;*/
-    	/*-moz-justify-content: center;*/
-     	/*align-items: center;*/
-     	/*-webkit-align-items: center;*/
-     	/*-moz-align-items: center;*/
-	}
-	.child-center form{
-		width: 715px;
-		margin: 0 auto;
-	}
+
 	.lf{
 		float: left;
 	}

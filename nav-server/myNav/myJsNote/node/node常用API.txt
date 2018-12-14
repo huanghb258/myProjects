@@ -78,6 +78,32 @@
 		});
 
 		rs.pipe(ws)   //可以将可读流中的内容，直接输出到可写流中
+
+文件模块其它操作：
+
+	fs.existsSync(path)：
+		验证路径是否存在
+
+	fs.unlink(path, callback)：
+		删除文件
+
+	fs.readdir(path[, options], callback):
+		列出文件
+
+	fs.truncate(path, len, callback)：
+		截断文件
+
+	fs.mkdir(path[, mode], callback):
+		建立目录
+
+	fs.rmdir(path, callback):
+		删除目录
+	
+	fs.rename(oldPath, newPath, callback):
+		重命名文件和目录
+
+	fs.watchFile(filename[, options], listener):
+		监视文件更改写入
 		
 	  
 
