@@ -24,13 +24,15 @@
 
 	目录结构：
 		nav-server整个文件夹放在myProjects文件夹下，什么盘不管，结构不能改
-
+		
 	然后cd到nav-server目录下：
 		npm install	//安装依赖
 		npm start	//运行node服务，注意命令窗口不能关，或者使用pm2
 
 	如果使用pm2：		
-		pm2 start pm2.json	//
+		pm2 start pm2.json
+
+	不出意外的话就可以访问了，地址：127.0.0.1:3000
 
 一定要看：
 	1.很多功能其实是在执行cmd命令，不同平台命令可能存在差别，不过顶多报错不会造成安全隐患
