@@ -8,7 +8,7 @@ $(function () {
 
 
     let AP = '';  //存放myJsNote的绝对路径
-    window.localSearchTargetArr={files:[],folders:[]};
+    window.localSearchTargetArr = {files: [], folders: []};
 
     //请求数据并初始化列表
     function init() {
@@ -34,18 +34,21 @@ $(function () {
         //请求myJsNote失败后调用
         function showHint() {
             let hint = noteList.siblings('.local-hint');
-            debugger
             hint.show();
             hint.on('click', 'a.load-html', function (e) {
                 e = e || event;
                 e.preventDefault();
 
-                noteList.load('data/htmlFragment.html',function (response,status,xhr) {
-                    console.log(response);
+                noteList.load('data/htmlFragment.html', function (response, status, xhr) {
+                    // console.log(response);
+                    noteList.show();
+                    hint.hide();
+                    on();
                 })
                 // noteList.show();
             })
         }
+
         //成功后的回调函数
         function done(data) {
             let newData = classify(data);
@@ -56,6 +59,7 @@ $(function () {
             noteList[0].appendChild(fragment);
             noteList.find('ul.sublist-0 li>a').siblings().slideUp();
             noteList.show();
+            on();
         }
 
         //给返回的数组划分层级
@@ -100,37 +104,38 @@ $(function () {
                 for (let i = 0, len = folder.length; i < len; i++) {
                     // '\'在匹配时容易出错，先把它替换成$
                     let select = folder[i].replace(/\\/g, '##');
-                    let href=basePath + folder[i];
+                    let href = basePath + folder[i];
                     html +=
                         `<li class="dir" data-fname="${select}">
-                    <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
-                        <i class="folder-close"></i>
-                        <i class="iconfont icon-wenjianjia"></i>
-                        <span>${folder[i].slice(1)}</span>
-                    </a>  
-                      <ul class="sublist-1"></ul>                  
-                </li>`;
-                    localSearchTargetArr.folders.push({path:basePath + folder[i],name:folder[i].slice(1)})
+                        <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g, '_')}">
+                            <i class="folder-close"></i>
+                            <i class="iconfont icon-wenjianjia"></i>
+                            <span>${folder[i].slice(1)}</span>
+                        </a>  
+                          <ul class="sublist-1"></ul>                  
+                    </li>`;
+                    localSearchTargetArr.folders.push({path: basePath + folder[i], name: folder[i].slice(1)})
                 }
             }
 
             if (files) {
                 for (let i = 0, len = files.length; i < len; i++) {
                     let type = files[i].slice(files[i].lastIndexOf('.') + 1);
-                    let href=basePath + files[i];
+                    let href = basePath + files[i];
                     html +=
                         `<li class="${type}">
-                    <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
-                        <span>${files[i].slice(1)}</span>
-                    </a>
-                </li>`;
-                    localSearchTargetArr.files.push({path:basePath + files[i],name:files[i].slice(1)});
+                        <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g, '_')}">
+                            <span>${files[i].slice(1)}</span>
+                        </a>
+                    </li>`;
+                    localSearchTargetArr.files.push({path: basePath + files[i], name: files[i].slice(1)});
                 }
             }
 
             $(ulNode).addClass('sublist-0').html(html);
             fragment.appendChild(ulNode);
         }
+
         //生成后面的子目录
         function createSubDir(data, index) {
 
@@ -147,18 +152,18 @@ $(function () {
                     let select = 'li[data-fName="' + parentPath + '"]';
                     let parentLi = fragment.querySelector(select);
                     let html = '';
-                    let href=basePath + folder[i];
-                    let content=folder[i].slice(folder[i].lastIndexOf('\\') + 1);
+                    let href = basePath + folder[i];
+                    let content = folder[i].slice(folder[i].lastIndexOf('\\') + 1);
                     html +=
                         `<li class="dir" data-fname="${folder[i].replace(/\\/g, '##')}">
-                    <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
-                        <i class="folder-close"></i>
-                        <i class="iconfont icon-wenjianjia"></i>
-                        <span>${content}</span>
-                    </a>  
-                    <ul class="sublist-${index + 1}"></ul>                  
-                </li>`;
-                    localSearchTargetArr.folders.push({path:href,name:content})
+                        <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g, '_')}">
+                            <i class="folder-close"></i>
+                            <i class="iconfont icon-wenjianjia"></i>
+                            <span>${content}</span>
+                        </a>  
+                        <ul class="sublist-${index + 1}"></ul>                  
+                    </li>`;
+                    localSearchTargetArr.folders.push({path: href, name: content})
                     let ulNode = parentLi.querySelector('.sublist-' + (index));
                     $(ulNode).html($(ulNode).html() + html);
                     parentLi.appendChild(ulNode);
@@ -170,15 +175,18 @@ $(function () {
                     let parentPath = files[i].slice(0, files[i].lastIndexOf('\\')).replace(/\\/g, '##');
                     let select = 'li[data-fName="' + parentPath + '"]';
                     let liNode = document.createElement('li');
-                    let href=basePath + files[i];
+                    let href = basePath + files[i];
                     let html = '';
                     html +=
                         `
-                <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g,'_')}">
+                <a href="${href}" id="${href.replace(/[\\:\.\(\)]/g, '_')}">
                     <span>${files[i].slice(files[i].lastIndexOf('\\') + 1)}</span>
                 </a>
                `;
-                    localSearchTargetArr.files.push({path:basePath + files[i],name:files[i].slice(files[i].lastIndexOf('\\') + 1)});
+                    localSearchTargetArr.files.push({
+                        path: basePath + files[i],
+                        name: files[i].slice(files[i].lastIndexOf('\\') + 1)
+                    });
                     $(liNode).addClass(type).html(html);
                     fragment.querySelector(select).appendChild(liNode);
                 }
@@ -201,34 +209,34 @@ $(function () {
         let old = null;//存放上一次点击的a,如果重复点击就不做那么多操作了
         let nowMenu = null;//保存当前右击的元素
         let clickTimer = null;  //双击延时
-        let upTxtTime=null;     //更新文档延时
-        let isClickUp=true;     //控制一定时间内不能再点
+        let upTxtTime = null;     //更新文档延时
+        let isClickUp = true;     //控制一定时间内不能再点
 
         //右击事件
-        noteList.on('click',function (e) {
-            e=e||event;
+        noteList.on('click', function (e) {
+            e = e || event;
             e.stopPropagation();
             $("#searchResult").hide();
         })
             .on('contextmenu', 'li>a', function (e) {
-            e = e || event;
-            event.preventDefault();
-            e.stopPropagation();
-            nowMenu = $(this);
-            let offsetX = $('aside.l-aside').offset().left;
-            let offsetY = $('aside.l-aside').offset().top;
-            menu[0].style.left = event.pageX - offsetX + "px";
-            menu[0].style.top = event.pageY - offsetY + "px";
-            menu.show();
-            document.addEventListener('contextmenu', function () {
-                menu.hide();
-            });
-            document.addEventListener('click', function () {
-                menu.hide();
-            });
-        })
+                e = e || event;
+                event.preventDefault();
+                e.stopPropagation();
+                nowMenu = $(this);
+                let offsetX = $('aside.l-aside').offset().left;
+                let offsetY = $('aside.l-aside').offset().top;
+                menu[0].style.left = event.pageX - offsetX + "px";
+                menu[0].style.top = event.pageY - offsetY + "px";
+                menu.show();
+                document.addEventListener('contextmenu', function () {
+                    menu.hide();
+                });
+                document.addEventListener('click', function () {
+                    menu.hide();
+                });
+            })
             .on('contextmenu', 'li.dir>a', function (e) {
-                console.log(111);
+                // console.log(111);
                 menu.find('.open-txt').addClass('disabled');
             })
             .on('contextmenu', 'li.txt>a', function (e) {
@@ -242,6 +250,7 @@ $(function () {
                 $(this).children('i:first-child').toggleClass('folder-open')
                     .toggleClass('folder-close');
                 $(this).siblings().slideToggle(200);
+                let a = $(this).siblings();
                 $(this).toggleClass('open')
             })
 
@@ -254,10 +263,14 @@ $(function () {
                 // clearTimeout(clickTimer);
                 // clickTimer=setTimeout(()=>{
                 let href = $(this).attr('href');
+                //如果是没启动node的情况下，AP是没有值的，这里写死了，纯粹是为了在githup上能跑一下
+                AP || (AP = "H:\\myProjects\\nav-server\\myNav\\myJsNote");
                 let url = href.replace(AP, newPath);
+                // debugger;
                 let http = window.location.origin;
                 if (/\..+\./.exec(href)) {
-                    console.warn('文件名不带点（非后缀的点）');
+                    // console.warn('文件名不能带点（非后缀的点）');
+                    alert('文件名非法，名称不能带点（非后缀的点）')
                     return;
                 }
                 if (http.slice(0, 4) !== 'http') {
@@ -318,7 +331,7 @@ $(function () {
                 command(target);
             })
 
-            //控制文本内容框的菜单列表
+        //控制文本内容框的菜单列表
         $('.l-aside .menu-list').on('click', function (e) {
             e = e || event;
             e.preventDefault();
@@ -334,14 +347,15 @@ $(function () {
                 $(document).scrollTop(txtView.outerHeight());
             })
             .on('click', 'a.upTxt', function () {
-                if(isClickUp){
+                if (isClickUp) {
                     util();
-                    isClickUp=false;
-                    setTimeout(()=>{
-                        isClickUp=true;
-                    },1200);
+                    isClickUp = false;
+                    setTimeout(() => {
+                        isClickUp = true;
+                    }, 1200);
                 }
-                function util(){
+
+                function util() {
                     txtView.removeClass('show-txt');
                     txtView.one('transitionend', function () {
                         console.log('transitionEnd');
@@ -357,9 +371,9 @@ $(function () {
             })
 
         //git push上传
-        $('.git-btn .gitPush').on('click', function (e){
-            const target='start /normal ' + '\\myProjects\\nav-server\\myNav\\bat\\push.bat';
-            const w=$('#cmdWindow');
+        $('.git-btn .gitPush').on('click', function (e) {
+            const target = 'start /normal ' + '\\myProjects\\nav-server\\myNav\\bat\\push.bat';
+            const w = $('#cmdWindow');
 
             w.show();
             // let i=1;
@@ -370,18 +384,18 @@ $(function () {
             //     w.children('.data-txt').html('执行中'+float);
             // },500)
             command(target);
+
             function callback(data) {
                 clearTimeout()
                 w.children('.data-txt').html(data)
             }
         })
         //git pull 下拉
-        $('.git-btn .gitPull').on('click', function (e){
+        $('.git-btn .gitPull').on('click', function (e) {
             alert('pull还是手动吧,打开目录');
             const target = 'start /dpatch ' + '\\myProjects';
             command(target);
         })
-
 
         //隐藏
         function hideTxt() {
@@ -429,26 +443,25 @@ $(function () {
         }
 
         //执行cmd命令
-        function command(target,callback){
+        function command(target, callback) {
             $.ajax({
                 type: 'GET',
                 data: {target},
                 url: '/command',
                 success(data) {
-                    if(callback&&typeof callback=='function'){
+                    if (callback && typeof callback == 'function') {
                         callback(data);
-                    }else{
+                    } else {
                         // console.log('cmd命令执行成功：',data);
                     }
                 },
                 error(xhr, txt) {
-                    console.warn('cmd命令执行失败：',xhr);
+                    console.warn('cmd命令执行失败：', xhr);
                 }
             })
         }
     }
 
-    on();
 
     //
     function regAll() {
@@ -477,10 +490,11 @@ $(function () {
             regArr.push({reg, count, indexs, method});
             arr.push(reg);
         }
+
         //所有匹配里可能再出现<>的method里都应该调用
-        function _escape(str){
-            return str.replace(/[<>]/g,function (a) {
-             return a==='<'?'&#60;':'&#62;';
+        function _escape(str) {
+            return str.replace(/[<>]/g, function (a) {
+                return a === '<' ? '&#60;' : '&#62;';
             })
         }
 

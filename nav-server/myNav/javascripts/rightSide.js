@@ -9,7 +9,7 @@ $(function(){
 		var tomorrow=$('#weather .w-tomorrow')[0];	
 		var isRain=$('#weather .isRain')[0];
 		var city_code=101230201;//默认为厦门	
-		var URL='http://t.weather.sojson.com/api/weather/city/';	
+		var URL='http://t.weather.sojson.com/api/weather/city/';
 		function reqWeather(url,city){
 			$.ajax({					
 				// dataType:'JSONP',			
@@ -36,7 +36,9 @@ $(function(){
 				}
 				
 			}).fail(function(jqXHR,textStatus,errorThrown){
-			  	console.log(textStatus);
+			  	// console.log(textStatus);
+                isRain.innerHTML='免费天气接口非https,被github阻止了';
+                $(isRain);
 			});		
 		}
 		reqWeather(URL,city_code);
@@ -52,7 +54,6 @@ $(function(){
 	  	e=e||event;
     	e.preventDefault();
     	let jsonData={};
-    	
     	function reqOldJson(){
     		console.log(1)
     		return new Promise((resolve,reject)=>{
