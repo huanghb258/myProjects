@@ -3,6 +3,7 @@
 // city_code:_city.json   city_code代表城市,厦门：101230201
 //status:200代表成功，!200失败
 $(function(){
+	//天气提醒
 	function showWeather(){
 		var today=$('#weather .w-today')[0];	
 		var tomorrow=$('#weather .w-tomorrow')[0];	
@@ -44,7 +45,9 @@ $(function(){
 			window.open('https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd=厦门天气');
 		})
 	}
-	showWeather();	
+	showWeather();
+
+	//导出json
     $('#exportJson').on('click',function(e){
 	  	e=e||event;
     	e.preventDefault();
@@ -62,11 +65,8 @@ $(function(){
 			    	 	reject();
 			    	}
 		    	});
-    			
     		})
-       
     	}
-    	 
     	reqOldJson().then(data=>{
     		
     		createJson(data,send)
@@ -87,7 +87,6 @@ $(function(){
 	    	jsonData=JSON.stringify(jsonData);
 	    	callback(jsonData);
     	}
-
 		
     	function send(jsonData){
 			$.ajax({
@@ -100,8 +99,25 @@ $(function(){
 	    		error(err){console.log(err)}
 	    	})    	
     	}
-    	
     
-    })    
+    })
+
+	//小工具
+	$('.tools').on('click','a',function (e) {
+		e=e||event;
+		e.preventDefault();
+		let target=$(this).attr('href');
+        $.ajax({
+            type: 'GET',
+            data: {target},
+            url: '/command',
+            success(data) {
+                console.log('cmd命令：'+target+'执行成功');
+            },
+            error(xhr, txt) {
+                console.warn('cmd命令：'+target+'执行失败',xhr);
+            }
+        })
+    })
 
 })

@@ -84,10 +84,10 @@ body {
     height: 30px;
     line-height: 30px;
 }
-.local-list .col-4{
-    float: left;
-    width: 33.333333%;
-}
+/*.local-list .col-4{*/
+    /*float: left;*/
+    /*width: 33.333333%;*/
+/*}*/
 .local-list > .sub-list:nth-child(3),
 .local-list .title>div:nth-child(2){
     border-left: 1px solid #ddd;
@@ -350,7 +350,7 @@ section.main a:hover {
     background: #efefef;
 }
 
-.group-often .list > div {
+.group-often .list > div.ico,.tools .ico {
     position: relative;
     width: 48px;
     height: 48px;
@@ -369,7 +369,8 @@ section.main a:hover {
     border-radius: 0;
     background: transparent;
     cursor: pointer;
-    font-weight: 9;
+    /*font-weight: 800;*/
+    text-align: center;
 }
 
 /*.group-often .list .addItem:hover{
@@ -390,14 +391,14 @@ section.main a:hover {
     left: -30px;
 }
 
-.group-often .list img {
+.group-often .list img ,.tools .ico img{
     width: 24px;
     position: absolute;
     top: 12px;
     left: 12px;
 }
 
-.group-often .list > p {
+.group-often .list > p , .tools .list p {
     margin-top: 11px;
     text-align: center;
     overflow: hidden;

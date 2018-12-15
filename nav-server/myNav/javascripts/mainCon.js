@@ -262,13 +262,14 @@ $(function () {
                 }
                 function error(xhr) {
                     console.warn(xhr.statusText);
-                    reject(xhr.statusText)
+                    isReqJson=false;
+                    resolve(false)
                 }
             }
         })
     }
 
-    reqOftenJson().then(()=>{
+    reqOftenJson().then((state)=>{
         //前端专用导航，生成列表构造函数
         function createNavList(el, urls) {
             if ($(el).length <= 0) {
@@ -306,7 +307,6 @@ $(function () {
                 el.html(lis);
             };
         }
-
         var jsDocs = new createNavList(docsJson.jsDocs.el, docsJson.jsDocs.urls);
         var jsVaried = new createNavList(docsJson.jsVaried.el, docsJson.jsVaried.urls);
         var cssDocs = new createNavList(docsJson.cssDocs.el, docsJson.cssDocs.urls);
@@ -317,6 +317,8 @@ $(function () {
         jsVaried.NavList();
         cssDocs.NavList();
         cssVaried.NavList();
+
+
         //导航增删改
         !function (labels) {
             var delList = [];//删除记录
@@ -413,7 +415,6 @@ $(function () {
                     el && el.removeClass('warnBorder');
                 }, 5000);
             };
-
             //显示设置框并生成列表
             group.on('click', '.js-addOrdel', function () {
                 urls = null;//清空缓存，不然下次打开还保留上次的数据
@@ -427,6 +428,7 @@ $(function () {
                 examine.css({left: '140px', top: '-200px'});
                 examine.show();
                 $('#modalBox').css({display: 'block'});
+
             });
             ulItem.on('mousedown', function (e) {
                 e = e || event;
@@ -577,13 +579,14 @@ $(function () {
             });
         }({jsDocs: jsDocs, jsVaried: jsVaried, cssDocs: cssDocs, cssVaried: cssVaried});
     },()=>{
-    	alert('没有cookie或cookie数据不全,也没有JSON文件\n点击导出JOSN可以生成一个新json文件')
+    	alert('没有cookie或cookie数据不全,也没有JSON文件\n点击右侧导出JOSN可以生成一个新json文件')
     	console.warn('没有cookie或cookie数据不全,也没有JSON文件')
     })
 
     //全局事件
     //box启用拖拽
     $('.js-setBox').pullBox();
+
     //阻止input非数字输入
-    $('.onlyNum').onlyNum();
+    $('.main').onlyNum(999,-1);
 });

@@ -1,14 +1,14 @@
-
-·â×°ºÃÖ±½Óµ÷ÓÃ£º
+ï»¿
+å°è£…å¥½ç›´æ¥è°ƒç”¨ï¼š
 Date.prototype.format = function(fmt) { 
      var o = { 
-        "M+" : this.getMonth()+1,                 //ÔÂ·İ 
-        "d+" : this.getDate(),                    //ÈÕ 
-        "h+" : this.getHours(),                   //Ğ¡Ê± 
-        "m+" : this.getMinutes(),                 //·Ö 
-        "s+" : this.getSeconds(),                 //Ãë 
-        "q+" : Math.floor((this.getMonth()+3)/3), //¼¾¶È 
-        "S"  : this.getMilliseconds()             //ºÁÃë 
+        "M+" : this.getMonth()+1,                 //æœˆä»½ 
+        "d+" : this.getDate(),                    //æ—¥ 
+        "h+" : this.getHours(),                   //å°æ—¶ 
+        "m+" : this.getMinutes(),                 //åˆ† 
+        "s+" : this.getSeconds(),                 //ç§’ 
+        "q+" : Math.floor((this.getMonth()+3)/3), //å­£åº¦ 
+        "S"  : this.getMilliseconds()             //æ¯«ç§’ 
     }; 
     if(/(y+)/.test(fmt)) {
             fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
@@ -20,15 +20,15 @@ Date.prototype.format = function(fmt) {
      }
     return fmt; 
 }
-1.³£¹æµ÷ÓÃ·½·¨£ºvar time1 = new Date().format("yyyy-MM-dd hh:mm:ss");  //2018-04-13 10:01:23
-	 .format("yyÄêMMÔÂddÈÕ");   //18Äê04ÔÂ13ÈÕ
+1.å¸¸è§„è°ƒç”¨æ–¹æ³•ï¼švar time1 = new Date().format("yyyy-MM-dd hh:mm:ss");  //2018-04-13 10:01:23
+	 .format("yyå¹´MMæœˆddæ—¥");   //18å¹´04æœˆ13æ—¥
 
-2.½«Ö¸¶¨ÈÕÆÚ×ªÎªÏëÒªµÄ¸ñÊ½£º
+2.å°†æŒ‡å®šæ—¥æœŸè½¬ä¸ºæƒ³è¦çš„æ ¼å¼ï¼š
 	 var oldTime = (new Date("2012/12/25 20:11:11")).getTime();
    	 var curTime = new Date(oldTime).format("yyyy-MM-dd");
 
-3.Ö¸¶¨Ê±¼ä´Á×ª»»£º 
-	//²»ÍêÉÆ£¬Àı08ÔÂÊä³ö8ÔÂ£¬ÇÒ¸ñÊ½¹Ì¶¨
+3.æŒ‡å®šæ—¶é—´æˆ³è½¬æ¢ï¼š 
+	//ä¸å®Œå–„ï¼Œä¾‹08æœˆè¾“å‡º8æœˆï¼Œä¸”æ ¼å¼å›ºå®š
 function formatDate(nows) { 
   var now=new Date(nows); 
   var year=now.getFullYear(); 

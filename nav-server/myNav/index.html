@@ -40,12 +40,13 @@
 
         </div>
         <div class="local-hint">
-            <h4>node服务未启动!</h4>
+            <h3>脱机状态！</h3>
             <div>
-                <p>如果对文件进行了修改,记得手动git push</p>
-                <p>使用缓存html片段文件结构可能对不上,并且文件内容将从新窗口打开</p>
+                <p>完整功能移步到<a href="https://github.com/huanghb258/myProjects">myProjects</a></p>
+                <p>这里只能简单的演示，脱机状态会导致部分功能失效</p>
+                <p>使用html片段无法保证文档结构与实际目录一致</p>
                 <a href="javascript:;" class="load-html">
-                    加载片段
+                   加载片段
                 </a>
             </div>
         </div>
@@ -71,13 +72,50 @@
     </aside>
 
     <aside class="r-aside">
+        <div class="text-center">
+            <a href="#" id="exportJson" class="btn">导出到json</a>
+        </div>
+
         <div id="weather">
             <div class="w-today">今天：<span></span></div>
             <div class="w-tomorrow">明天：<span></span></div>
             <div class="isRain warn"></div>
         </div>
-        <div>
-        	<a href="" id="exportJson">导出到json</a>
+        <div class="tools">
+            <div class="title">小工具</div>
+            <ul>
+                <li class="col-6">
+                    <a href="H:\myProjects\nav-server\myNav\myJsNote\jQuery\jquery1.11.3.CHM">
+                        <div class="list">
+                            <div class="ico"><img src="images/ico/chm.ico"></div>
+                            <p>
+                                jq1.11手册
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-6">
+                    <a href="C:\Program Files (x86)\Just Great Software\RegexBuddy3\RegexBuddy.exe">
+                        <div class="list">
+                            <div class="ico"><img src="images/ico/regex.ico"></div>
+                            <p>
+                                猫头鹰
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-6">
+                    <a href="H:\前端工具\FastStone Capture\FSCapture.exe">
+                        <div class="list">
+                            <div class="ico"><img src="images/ico/FSCapture.ico"></div>
+                            <p>
+                               取色工具
+                            </p>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
         </div>
     </aside>
     <div id="baidu">

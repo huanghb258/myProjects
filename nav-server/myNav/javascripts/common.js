@@ -93,9 +93,13 @@ $(function () {
     };
 
     //阻止input非数字输入，如果有参数，控制其最大/最小值
+    //注意，修改为绑定在父级元素上，不然动态增加的input匹配不到，一般直接让body调用就好了
     $.fn.onlyNum = function (max = NaN, min = NaN) {
-        this.on('input', function () {
-            this.value = this.value.replace(/\D/ig, '');
+        this.on('input','input.onlyNum' ,function () {
+            //新增允许负值
+            let minus='';
+            /^-{1}/.exec(this.value)&&(minus='-');
+            this.value = minus+this.value.replace(/\D/ig, '');
             !isNaN(max) && this.value > max && (this.value = max);
             !isNaN(min) && this.value < min && (this.value = min);
         });

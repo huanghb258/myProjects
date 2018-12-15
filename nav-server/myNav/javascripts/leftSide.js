@@ -6,6 +6,7 @@ $(function () {
     const serverUrl = '/fsReaddir';
     const menu = $('#contextmenu');//右键菜单
 
+
     let AP = '';  //存放myJsNote的绝对路径
     window.localSearchTargetArr={files:[],folders:[]};
 
@@ -30,17 +31,21 @@ $(function () {
             })
         }
 
-        //Node服务未开启
+        //请求myJsNote失败后调用
         function showHint() {
             let hint = noteList.siblings('.local-hint');
+            debugger
             hint.show();
             hint.on('click', 'a.load-html', function (e) {
                 e = e || event;
                 e.preventDefault();
-                alert(11)
+
+                noteList.load('data/htmlFragment.html',function (response,status,xhr) {
+                    console.log(response);
+                })
+                // noteList.show();
             })
         }
-
         //成功后的回调函数
         function done(data) {
             let newData = classify(data);
@@ -244,6 +249,8 @@ $(function () {
             .on('click', 'li.txt>a', function (e) {
                 e = e || event;
                 e.preventDefault();
+                //新增本地搜索提示
+                $('#local-list').hide();
                 // clearTimeout(clickTimer);
                 // clickTimer=setTimeout(()=>{
                 let href = $(this).attr('href');
@@ -431,11 +438,11 @@ $(function () {
                     if(callback&&typeof callback=='function'){
                         callback(data);
                     }else{
-                        console.log('cmd命令执行成功：',data);
+                        // console.log('cmd命令执行成功：',data);
                     }
                 },
                 error(xhr, txt) {
-                    console.error('cmd命令执行失败：',xhr);
+                    console.warn('cmd命令执行失败：',xhr);
                 }
             })
         }

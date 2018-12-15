@@ -19,6 +19,7 @@
   max-height: 580px;
   border-@{r}: 0.5px solid #eee;
   .border-box();
+  z-index: 1;
 }
 .trilateral(){
     width: 0px;
@@ -51,6 +52,20 @@
   -ms-transition: @property @duration @timing @delay;
   -o-transition: @property @duration @timing @delay;
   transition: @property @duration @timing @delay;
+}
+.load-html(@color;@h;){
+  border: 1px solid @color;
+  padding: 0 8px;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  height: @h;
+  line-height: -2+@h;
+  color: @color;
+  &:hover{
+    color: #fff;
+    background-color: @color;
+  }
 }
 //阿里在线图标库
 @font-face {font-family: "iconfont";
@@ -85,6 +100,7 @@
     .aside(right);
     width: 230px;
     left: -100px;
+    z-index: 20;
     h3.title{
         text-align: center;
         color: #42b983;
@@ -193,27 +209,14 @@
       pre{
         width: 992px;
         .border-box();
-        margin: 30px 15px 10px 60px;
+        margin: 30px 15px 40px 60px;
         span.color-green{color:green;}
       }
       mark{
         background: #a6cb12;
       }
     }
-  .load-html(@color;@h;){
-    border: 1px solid @color;
-    padding: 0 8px;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    height: @h;
-    line-height: -2+@h;
-    color: @color;
-    &:hover{
-      color: #fff;
-      background-color: @color;
-    }
-  }
+
     .local-hint{
     display: none;
     position: relative;
@@ -228,7 +231,7 @@
       margin: 15px 0;
       line-height: 30px;
     }
-    a{.load-html(@red,34px)}
+    a.load-html{.load-html(@red,34px)}
   }
     .git-btn{
       padding: 8px 0 5px 0;
@@ -290,10 +293,29 @@
     .aside(left);
     width: 250px;
     right: -110px;
+  padding-left:10px;
+  padding-right: 5px;
+  .tools{
+    margin-top: 20px;
+    .title{
+      height: 30px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    li{
+      padding: 5px;
+      a{color:  #155e63;}
+      p{
+        margin-top: 5px;
+      }
+    }
+  }
 }
 #weather {
-  padding-left: 10px;
   line-height: 30px;
+  margin-top: 10px;
   cursor: pointer;
 }
 #weather .isRain {
@@ -303,4 +325,8 @@
     color: red;
     font-weight: bold;
 }
+#exportJson{
+  .load-html(#42b983,34px);
+}
+
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFzaWRlTC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTztBQUNQO0lBQ0ksbUJBQW1CO0lBQ25CLGFBQWE7SUFDYiw2QkFBNkI7SUFDN0IsYUFBYTtJQUNiLGFBQWE7SUFDYixVQUFVO0NBQ2I7Ozs7O0FBS0QsT0FBTztBQUNQO0lBQ0ksYUFBYTtJQUNiLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIsbUJBQW1CO0lBQ25CLGNBQWM7SUFDZCxVQUFVO0NBQ2I7O0FBRUQ7SUFDSSxpQkFBaUI7SUFDakIsbUJBQW1CO0lBQ25CLGtCQUFrQjtDQUNyQjs7QUFFRDtJQUNJLGVBQWU7Q0FDbEI7O0FBRUQ7SUFDSSxXQUFXO0lBQ1gsa0JBQWtCO0NBQ3JCIiwiZmlsZSI6ImFzaWRlTC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKuW3pui+ueagjyovXHJcbi5sLWFzaWRle1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgd2lkdGg6IDI1MHB4O1xyXG4gICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgI2VlZTtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIGxlZnQ6IC0xNDBweDtcclxuICAgIHRvcDogMjVweDtcclxufVxyXG5cclxuXHJcblxyXG5cclxuLyrlj7PovrnmoI8qL1xyXG4uci1hc2lkZSB7XHJcbiAgICB3aWR0aDogMjUwcHg7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICBib3JkZXItbGVmdDogMC41cHggc29saWQgI2VlZTtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHJpZ2h0OiAtMTIwcHg7XHJcbiAgICB0b3A6IDI1cHg7XHJcbn1cclxuXHJcbiN3ZWF0aGVyIHtcclxuICAgIG1hcmdpbi10b3A6IDEwcHg7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XHJcbiAgICBsaW5lLWhlaWdodDogMzBweDtcclxufVxyXG5cclxuI3dlYXRoZXIgLmlzUmFpbiB7XHJcbiAgICBjb2xvcjogIzAwQ0MwMDtcclxufVxyXG5cclxuI3dlYXRoZXIgLndhcm4ge1xyXG4gICAgY29sb3I6IHJlZDtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59Il19 */
