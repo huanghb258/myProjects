@@ -34,6 +34,12 @@ $(function(){
 
 	sText.oldVal=sText.val();//!!
 	//事件绑定
+	//新增，禁止按回车时自动跳转
+	$('form').on('keydown',function(e){
+		if(e.keyCode===13){
+			return false;
+		}		
+	})
 	sText.on('input',function(){
 		var val = this.value;
 		reqAjax(val,option);
@@ -65,7 +71,7 @@ $(function(){
 			}
 		})
 		.on('keydown',function(e){
-			if(option==='local'){return}
+			if(option==='local'){return}			
 			e=e||event;
 			var code=e.keyCode;
 			var val=this.value;
@@ -358,7 +364,7 @@ $(function(){
 	}
 	//跳转到百度
 	function openBaidu(url,val,option,e){
-		e.preventDefault();			
+		e.preventDefault();		
 		if(val){				
 			saveLog(val);				
 			//中文转url码				

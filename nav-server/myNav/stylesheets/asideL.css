@@ -225,7 +225,7 @@
   top: 50px;
   text-align: center;
   padding: 20px 10px;
-  color: #ffb4ac;
+  color: #42b983;
 }
 .l-aside .local-hint p {
   text-align: left;
@@ -233,18 +233,18 @@
   line-height: 30px;
 }
 .l-aside .local-hint a.load-html {
-  border: 1px solid #ca0c16;
+  border: 1px solid #42b983;
   padding: 0 8px;
   display: inline-block;
   font-size: 14px;
   border-radius: 4px;
   height: 34px;
   line-height: 32px;
-  color: #ca0c16;
+  color: #42b983;
 }
 .l-aside .local-hint a.load-html:hover {
   color: #fff;
-  background-color: #ca0c16;
+  background-color: #42b983;
 }
 .l-aside .git-btn {
   padding: 8px 0 5px 0;

@@ -38,7 +38,7 @@ $(function(){
 			}).fail(function(jqXHR,textStatus,errorThrown){
 			  	// console.log(textStatus);
                 isRain.innerHTML='免费天气接口非https,被github阻止了';
-                $(isRain);
+                $(isRain).removeClass('warn').css('color','#333');
 			});		
 		}
 		reqWeather(URL,city_code);
@@ -107,7 +107,7 @@ $(function(){
 	$('.tools').on('click','a',function (e) {
 		e=e||event;
 		e.preventDefault();
-		let target=$(this).attr('href');
+		let target='start /normal '+$(this).attr('href');
         $.ajax({
             type: 'GET',
             data: {target},
