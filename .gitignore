@@ -1,6 +1,4 @@
 ﻿*.idea
-*.bat
 test.*
 test/
 nav-server/node_modules/
-nav-server/myNav/bat
