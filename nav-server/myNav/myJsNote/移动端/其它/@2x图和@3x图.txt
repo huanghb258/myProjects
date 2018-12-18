@@ -1,0 +1,18 @@
+﻿1.通过mixin,动态修改图标的背景图片。通过@media (媒体查询)，判断设备的dpr。
+	@mixin bg-image($url) {
+    	   background-image: url($url + "@2x.png");
+    	   @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+        	background-image: url($url + "@3x.png");
+    	   }
+	}
+
+
+2.css样式中调用 bg-image 方法
+
+	div{
+  	   width:30px;
+  	   height:20px;
+  	   background-size:30px  20px;
+  	   background-repeat:no-repeat;
+  	   @include bg-image('special_1');     
+	}

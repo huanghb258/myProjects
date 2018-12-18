@@ -1,0 +1,37 @@
+﻿1.安装脚手架
+	npm install -g vue-cli
+
+2.下载模板：
+	vue init webpack vue_demo	//webpack模板，名称veu_demo
+	//安装过程中有些选项，根据需求选择
+
+3.cd vue_demo
+
+4.npm install
+
+5.npm run dev
+
+
+按照官方文档：
+		
+	1.安装脚手架
+		npm install -g @vue/cli		//旧版本vue-cli 改成了 @vue/cli
+		旧版本卸载：npm uninstall vue-cli -g
+
+	2.创建一个新项目
+		vue create hello-world	//hello-world自定义
+
+	3.cd hello-world
+
+	4.npm run serve
+
+
+vue管理模板：
+	//没用过
+	vue-element-admin	//vue后台管理模板,适合大型开发
+
+	vue-admin-template	###a github地址：https://github.com/PanJiaChen/vue-admin-template;   //简易板 
+		git clone --depth=1 https://github.com/PanJiaChen/vue-admin-template.git
+		//参数--depth=1 ：克隆最后一次的commit
+	
+		

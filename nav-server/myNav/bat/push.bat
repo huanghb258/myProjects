@@ -1,9 +1,10 @@
-title 一键 git push
 @echo off
+title 一键 git push
 
 cd ..
 
-echo 提交前请先确认git有没配制好
+echo 注意当前路径是：%~dp0
+
 echo 开始提交
 
 echo 开始执行:git add
