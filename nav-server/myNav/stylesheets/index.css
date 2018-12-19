@@ -94,7 +94,7 @@ body {
     border-right: 1px solid #ddd;
 }
 .local-list > .sub-list{
-    height: 300px;   
+    height: 300px;
     overflow-y: auto;
 }
 .local-list > .sub-list a{
@@ -104,7 +104,7 @@ body {
     padding:0 8px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;    
+    white-space: nowrap;
 }
 .local-list > .sub-list a:hover{
     background: #eee;
@@ -264,6 +264,7 @@ section.main {
     margin: 20px auto 0;
     padding-top: 5px;
     border-top: 1px solid #eee;
+    padding-bottom: 40px;
 }
 
 section.main a {
@@ -499,6 +500,7 @@ section.main a:hover {
     width: 600px;
     height: 64px;
     /*overflow: hidden;*/
+    margin: 8px 0;
     float: left;
 }
 
@@ -564,6 +566,7 @@ section.main a:hover {
 
 #group-docs {
     position: relative;
+    margin-top: 10px;
 }
 
 #examine {

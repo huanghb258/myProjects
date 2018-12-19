@@ -36,7 +36,6 @@ $(function () {
                 var url = forms[0].value;
                 //检测有没http
                 !(/https?/i).exec(url) && (url = 'http://' + url);
-
                 var data = {
                     url: url,
                     txt: forms[2].value || '没写',

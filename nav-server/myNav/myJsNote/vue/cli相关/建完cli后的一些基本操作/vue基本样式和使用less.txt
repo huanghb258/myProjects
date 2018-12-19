@@ -1,0 +1,35 @@
+﻿使vue支持less:
+
+1.安装:
+npm install less less-loader --save-dev
+
+2.webpack.config.js:
+	//脚手架在build下的webpack.base.config.js
+	{
+	   test: /\.less$/,
+	   use:[
+    	   'style-loader',
+   	   'less-loader'  
+	   ]
+
+	}
+
+3.style标签:
+	<style lang="less" scope>
+	//注意：scope作用是使样式私有化,慎用
+
+
+
+
+
+
+
+其它预编译器方法应该差不多
+
+混合等公共样式的引入：
+	//混合一般放在common目录下
+	style标签里引入混合：@import 'xx/xx'
+
+	
+	index.html 引入：reset.css	//样式重置，一般放在static下
+

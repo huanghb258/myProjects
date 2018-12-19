@@ -4,10 +4,14 @@
 1.main.js或专门配制路由的js模块，引入模块	
 	import Vue form 'vue'
 	import VueRouter from 'vue-router'
+	
+	//正常开发一般给路由单独一个文件夹，所有的路由和配置都放在里面
 
   引入路由页面
   	import About from '../views/About.vue'
 	import Home from '../views/Home.vue'
+	//正常开发一般给一个路由页面创一个文件夹,例：About(文件夹)-->About.vue,引入时引文件夹
+
 
 2.声明使用路由
 	Vue.use(VueRouter)
@@ -29,6 +33,8 @@
 			}
 		]
 	})
+
+	//路由配置应该放在router文件夹下的index.js里，专门管理路由配置
 
 4.入口main.js引入路由文件
 	import router from './router'

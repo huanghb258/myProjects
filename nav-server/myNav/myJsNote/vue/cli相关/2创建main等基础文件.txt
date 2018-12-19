@@ -7,7 +7,7 @@ main.js:
 		el:'#app',
 		components:{App},	//将App映射为标签
 		template:'<App/>'	//<App/>会自动添加到index.html	
-	})
+	})	//新写法：render:h=>h(App) 代替上面两句
 
 
 	
