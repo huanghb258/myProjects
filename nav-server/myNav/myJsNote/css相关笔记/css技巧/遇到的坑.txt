@@ -22,5 +22,13 @@ htm,body高度设为100%：
 z-index:
 	子元素和父元素都绝对定位，此时子元素的z-index只对父元素有效？
 	例如有个父元素同级的div,z-index比父元素高，子元素无法遮住这个div
+
+margin-top超出父元素：
+	<div class="d1">
+		<div class="d2"></div>
+	</div>	//直接给.d2设置margin-top,会跟父元素.d1的margin合并，即相当于直接给d1设置了margin
+
+	原因：d2与d1之间没任务东西阻隔，d2与d1紧贴触发magrin合并条件
+	解决：给d1边框 或padding 或overflow:hidden;
 	
 	

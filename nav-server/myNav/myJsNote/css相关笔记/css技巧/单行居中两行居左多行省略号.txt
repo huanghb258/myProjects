@@ -1,9 +1,9 @@
-µ¥ĞĞ¾ÓÖĞÁ½ĞĞ¾Ó×ó£º
-	<h2><p>µ¥ĞĞ¾ÓÖĞ£¬¶àĞĞ¾Ó×ó</p></h2>
+ï»¿å•è¡Œå±…ä¸­ä¸¤è¡Œå±…å·¦ï¼š
+	<h2><p>å•è¡Œå±…ä¸­ï¼Œå¤šè¡Œå±…å·¦</p></h2>
 	h2{text-align: center;}	p{display: inline-block;text-align: left;}
-	Ô­Àí£ºµ¥ĞĞÊ±pµÄ¿í¶ÈÎ´³ÅÂú£¬¶øp±»¾ÓÖĞ£¬¶àĞĞÊ±pÂú¿í£¬´ËÊ±pÏàµ±ÓÚÃ»¾ÓÖĞ£¬¶øpµÄÄÚÈİÊÇ×óµÄ
+	åŸç†ï¼šå•è¡Œæ—¶pçš„å®½åº¦æœªæ’‘æ»¡ï¼Œè€Œpè¢«å±…ä¸­ï¼Œå¤šè¡Œæ—¶pæ»¡å®½ï¼Œæ­¤æ—¶pç›¸å½“äºæ²¡å±…ä¸­ï¼Œè€Œpçš„å†…å®¹æ˜¯å·¦çš„
 
-¶àĞĞÊ¡ÂÔºÅ£º
+å¤šè¡Œçœç•¥å·ï¼š
 	<h2><p><em>Lorem ipsum dolor sit amet,</em></p></h2>
 	h2{text-align: center;}
 	p{display: inline-block;text-align: left;}
@@ -11,20 +11,20 @@
 		overflow : hidden;
 		text-overflow: ellipsis;
 		display: -webkit-box;
-		-webkit-line-clamp: 2;	/*2ÎªÖ¸¶¨ĞĞÊı*/
+		-webkit-line-clamp: 2;	/*2ä¸ºæŒ‡å®šè¡Œæ•°*/
 		-webkit-box-orient: vertical;
 	}
-	ÊÊÓÃ·¶Î§£º
-		ÒòÊ¹ÓÃÁËWebKitµÄCSSÀ©Õ¹ÊôĞÔ£¬¸Ã·½·¨ÊÊÓÃÓÚWebKitä¯ÀÀÆ÷¼°ÒÆ¶¯¶Ë£»	
+	é€‚ç”¨èŒƒå›´ï¼š
+		å› ä½¿ç”¨äº†WebKitçš„CSSæ‰©å±•å±æ€§ï¼Œè¯¥æ–¹æ³•é€‚ç”¨äºWebKitæµè§ˆå™¨åŠç§»åŠ¨ç«¯ï¼›	
 
 
 
 
 
-ÎÄ×Ö³¬³öÒş²Ø£º
-	1.ÎÄ×ÖÈİÆ÷ÉèÖÃ¸ß¶È 2.overflow:hidden 3.line-heightµÈÓÚÈİÆ÷¸ß¶È³ıÎÄ×ÖĞĞÊı
+æ–‡å­—è¶…å‡ºéšè—ï¼š
+	1.æ–‡å­—å®¹å™¨è®¾ç½®é«˜åº¦ 2.overflow:hidden 3.line-heightç­‰äºå®¹å™¨é«˜åº¦é™¤æ–‡å­—è¡Œæ•°
 
-ÊµÏÖµ¥ĞĞ³¬³öÏÔÊ¾Ê¡ÂÔºÅ£º
+å®ç°å•è¡Œè¶…å‡ºæ˜¾ç¤ºçœç•¥å·ï¼š
 	overflow: hidden;
 	text-overflow:ellipsis;
 	white-space: nowrap;
