@@ -1,45 +1,47 @@
-localStorage:ÓÀ¾Ã´æ´¢£¨IE8+£©5M
-	×¢Òâ£º1.ÖµÎªstringÀàĞÍ£¬ĞèÒªjson×ª»»	2.ÒşË½Ä£Ê½ÏÂ²»¿É¶Á
-	
-	Ğ´Èë£º  window.localStorage.setItem("c",data);
-	¶ÁÈ¡£º	window.localStorage.getItem("c")
-	Çå¿Õ£º	window.localStorage.clear();
-	É¾³ı£º	window.localStorage.removeItem("c")
+ï»¿###a HTTP-æœåŠ¡å™¨ç«¯CooKieä¸æµè§ˆå™¨ç«¯Cookie https://blog.csdn.net/qiqingjin/article/details/51760343;
 
-	Ê¹ÓÃÊ¾Àı£º
+localStorage:æ°¸ä¹…å­˜å‚¨ï¼ˆIE8+ï¼‰5M
+	æ³¨æ„ï¼š1.å€¼ä¸ºstringç±»å‹ï¼Œéœ€è¦jsonè½¬æ¢	2.éšç§æ¨¡å¼ä¸‹ä¸å¯è¯»
+	
+	å†™å…¥ï¼š  window.localStorage.setItem("c",data);
+	è¯»å–ï¼š	window.localStorage.getItem("c")
+	æ¸…ç©ºï¼š	window.localStorage.clear();
+	åˆ é™¤ï¼š	window.localStorage.removeItem("c")
+
+	ä½¿ç”¨ç¤ºä¾‹ï¼š
 		var storage=window.localStorage;
 		var data={
                 	name:'xiecanyong',
                 	sex:'man',
                 	hobby:'program'
            	 };
-       		storage.setItem("data",JSON.stringify(data))	//×ªjson
-        	console.log(JSON.parse(storage.getItem('data')));	//×ª³É¶ÔÏó
+       		storage.setItem("data",JSON.stringify(data))	//è½¬json
+        	console.log(JSON.parse(storage.getItem('data')));	//è½¬æˆå¯¹è±¡
 
 
- sessionStorage£º´°¿Ú¹Ø±Õ¼´ÏûÊ§
-	API¸úlocaStorageÒ»Ñù
+ sessionStorageï¼šçª—å£å…³é—­å³æ¶ˆå¤±
+	APIè·ŸlocaStorageä¸€æ ·
 	
 	
 cookie:4K
-	×¢Òâ£ºÈç¹ûÉ¾³ı»òĞŞ¸Ä²»³É¹¦£¬¿ÉÄÜÊÇ1.Â·¾¶²»¶Ô(Ò»°ã¶¨Òå path=/)	2.Óò(domain)
+	æ³¨æ„ï¼šå¦‚æœåˆ é™¤æˆ–ä¿®æ”¹ä¸æˆåŠŸï¼Œå¯èƒ½æ˜¯1.è·¯å¾„ä¸å¯¹(ä¸€èˆ¬å®šä¹‰ path=/)	2.åŸŸ(domain)
 
-	´´½¨£º
+	åˆ›å»ºï¼š
 		document.cookie="username=John Doe";
 
-	´´½¨Í¬Ê±ÉèÖÃ¹ıÆÚÊ±¼ä£¨ÒÔ UTC »ò GMT Ê±¼ä£©
+	åˆ›å»ºåŒæ—¶è®¾ç½®è¿‡æœŸæ—¶é—´ï¼ˆä»¥ UTC æˆ– GMT æ—¶é—´ï¼‰
 		var date=new Date();
-		date.setTime(date.getTime()+10*24*3600*1000);	//½«dateÉèÖÃÎª10ÌìÒÔºó
-		document.cookie="userId=John Doe; expires="+date.toGMTString();	//´´½¨
+		date.setTime(date.getTime()+10*24*3600*1000);	//å°†dateè®¾ç½®ä¸º10å¤©ä»¥å
+		document.cookie="userId=John Doe; expires="+date.toGMTString();	//åˆ›å»º
 
-	¶ÁÈ¡£º
-		x = document.cookie;	//µÃµ½ËùÓĞcookie(×Ö·û´®),ĞèÒª½ØÈ¡
+	è¯»å–ï¼š
+		x = document.cookie;	//å¾—åˆ°æ‰€æœ‰cookie(å­—ç¬¦ä¸²),éœ€è¦æˆªå–
 
-		·â×°ºÃµÄ·½·¨£º
+		å°è£…å¥½çš„æ–¹æ³•ï¼š
 
 		function get_cookie(Name) {
-   			var search = Name + "="//²éÑ¯¼ìË÷µÄÖµ
-   			var returnvalue = "";//·µ»ØÖµ
+   			var search = Name + "="//æŸ¥è¯¢æ£€ç´¢çš„å€¼
+   			var returnvalue = "";//è¿”å›å€¼
    			if (document.cookie.length > 0) {
      			  sd = document.cookie.indexOf(search);
      			  if (sd!= -1) {
@@ -47,57 +49,57 @@ cookie:4K
         			end = document.cookie.indexOf(";", sd);
        				if (end == -1)
          			  end = document.cookie.length;
-         			//unescape() º¯Êı¿É¶ÔÍ¨¹ı escape() ±àÂëµÄ×Ö·û´®½øĞĞ½âÂë¡£
+         			//unescape() å‡½æ•°å¯å¯¹é€šè¿‡ escape() ç¼–ç çš„å­—ç¬¦ä¸²è¿›è¡Œè§£ç ã€‚
         			returnvalue=unescape(document.cookie.substring(sd, end))
       			  }
   		 	} 
    			return returnvalue;
 		}
 
-		//Ê¹ÓÃ·½Ê½£º
+		//ä½¿ç”¨æ–¹å¼ï¼š
 		get_cookie("popped");
 
-	É¾³ıCookie:
-		½«¹ıÆÚÊ±¼äÉèÖÃÎªÒÔÇ°µÄÊ±¼ä¼´¿É£¬¸ú´´½¨Ê±Ò»Ñù
+	åˆ é™¤Cookie:
+		å°†è¿‡æœŸæ—¶é—´è®¾ç½®ä¸ºä»¥å‰çš„æ—¶é—´å³å¯ï¼Œè·Ÿåˆ›å»ºæ—¶ä¸€æ ·
 
 	
-	ĞŞ¸Ä£º
-		¸ú´´½¨Ò»Ñù£¬»á×Ô¶¯¸²¸Ç
+	ä¿®æ”¹ï¼š
+		è·Ÿåˆ›å»ºä¸€æ ·ï¼Œä¼šè‡ªåŠ¨è¦†ç›–
 
 	
-	ÍêÕûµÄ·â×°£º
+	å®Œæ•´çš„å°è£…ï¼š
 
 		var cookie = {
-    set:function(key,val,time){//ÉèÖÃcookie·½·¨
-        var date=new Date(); //»ñÈ¡µ±Ç°Ê±¼ä
-        var expiresDays=time;  //½«dateÉèÖÃÎªnÌìÒÔºóµÄÊ±¼ä
-        date.setTime(date.getTime()+expiresDays*24*3600*1000); //¸ñÊ½»¯ÎªcookieÊ¶±ğµÄÊ±¼ä
-        document.cookie=key + "=" + val +";expires="+date.toGMTString();  //ÉèÖÃcookie
+    set:function(key,val,time){//è®¾ç½®cookieæ–¹æ³•
+        var date=new Date(); //è·å–å½“å‰æ—¶é—´
+        var expiresDays=time;  //å°†dateè®¾ç½®ä¸ºnå¤©ä»¥åçš„æ—¶é—´
+        date.setTime(date.getTime()+expiresDays*24*3600*1000); //æ ¼å¼åŒ–ä¸ºcookieè¯†åˆ«çš„æ—¶é—´
+        document.cookie=key + "=" + val +";expires="+date.toGMTString();  //è®¾ç½®cookie
     },
-    get:function(key){//»ñÈ¡cookie·½·¨
-        /*»ñÈ¡cookie²ÎÊı*/
-        var getCookie = document.cookie.replace(/[ ]/g,"");  //»ñÈ¡cookie£¬²¢ÇÒ½«»ñµÃµÄcookie¸ñÊ½»¯£¬È¥µô¿Õ¸ñ×Ö·û
-        var arrCookie = getCookie.split(";")  //½«»ñµÃµÄcookieÒÔ"·ÖºÅ"Îª±êÊ¶ ½«cookie±£´æµ½arrCookieµÄÊı×éÖĞ
-        var tips;  //ÉùÃ÷±äÁ¿tips
-        for(var i=0;i<arrCookie.length;i++){   //Ê¹ÓÃforÑ­»·²éÕÒcookieÖĞµÄtips±äÁ¿
-            var arr=arrCookie[i].split("=");   //½«µ¥ÌõcookieÓÃ"µÈºÅ"Îª±êÊ¶£¬½«µ¥Ìõcookie±£´æÎªarrÊı×é
-            if(key==arr[0]){  //Æ¥Åä±äÁ¿Ãû³Æ£¬ÆäÖĞarr[0]ÊÇÖ¸µÄcookieÃû³Æ£¬Èç¹û¸ÃÌõ±äÁ¿ÎªtipsÔòÖ´ĞĞÅĞ¶ÏÓï¾äÖĞµÄ¸³Öµ²Ù×÷
-                tips=arr[1];   //½«cookieµÄÖµ¸³¸ø±äÁ¿tips
-                break;   //ÖÕÖ¹forÑ­»·±éÀú
+    get:function(key){//è·å–cookieæ–¹æ³•
+        /*è·å–cookieå‚æ•°*/
+        var getCookie = document.cookie.replace(/[ ]/g,"");  //è·å–cookieï¼Œå¹¶ä¸”å°†è·å¾—çš„cookieæ ¼å¼åŒ–ï¼Œå»æ‰ç©ºæ ¼å­—ç¬¦
+        var arrCookie = getCookie.split(";")  //å°†è·å¾—çš„cookieä»¥"åˆ†å·"ä¸ºæ ‡è¯† å°†cookieä¿å­˜åˆ°arrCookieçš„æ•°ç»„ä¸­
+        var tips;  //å£°æ˜å˜é‡tips
+        for(var i=0;i<arrCookie.length;i++){   //ä½¿ç”¨forå¾ªç¯æŸ¥æ‰¾cookieä¸­çš„tipså˜é‡
+            var arr=arrCookie[i].split("=");   //å°†å•æ¡cookieç”¨"ç­‰å·"ä¸ºæ ‡è¯†ï¼Œå°†å•æ¡cookieä¿å­˜ä¸ºarræ•°ç»„
+            if(key==arr[0]){  //åŒ¹é…å˜é‡åç§°ï¼Œå…¶ä¸­arr[0]æ˜¯æŒ‡çš„cookieåç§°ï¼Œå¦‚æœè¯¥æ¡å˜é‡ä¸ºtipsåˆ™æ‰§è¡Œåˆ¤æ–­è¯­å¥ä¸­çš„èµ‹å€¼æ“ä½œ
+                tips=arr[1];   //å°†cookieçš„å€¼èµ‹ç»™å˜é‡tips
+                break;   //ç»ˆæ­¢forå¾ªç¯éå†
             }
         }
         return tips;
     },
-	delete:function(key){ //É¾³ıcookie·½·¨
-         var date = new Date(); //»ñÈ¡µ±Ç°Ê±¼ä
-         date.setTime(date.getTime()-10000); //½«dateÉèÖÃÎª¹ıÈ¥µÄÊ±¼ä
-         document.cookie = key + "=v; expires =" +date.toGMTString();//ÉèÖÃcookie
+	delete:function(key){ //åˆ é™¤cookieæ–¹æ³•
+         var date = new Date(); //è·å–å½“å‰æ—¶é—´
+         date.setTime(date.getTime()-10000); //å°†dateè®¾ç½®ä¸ºè¿‡å»çš„æ—¶é—´
+         document.cookie = key + "=v; expires =" +date.toGMTString();//è®¾ç½®cookie
         }
 }
 
-	Ê¹ÓÃ·½Ê½£º
-		cookie.set("uesr","sss",24);//ÉèÖÃÎª24Ìì¹ıÆÚ
-		alert(cookie.get("uesr"));//»ñÈ¡cookie
+	ä½¿ç”¨æ–¹å¼ï¼š
+		cookie.set("uesr","sss",24);//è®¾ç½®ä¸º24å¤©è¿‡æœŸ
+		alert(cookie.get("uesr"));//è·å–cookie
 	
 
 	

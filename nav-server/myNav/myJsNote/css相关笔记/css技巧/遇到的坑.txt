@@ -1,34 +1,42 @@
-IE9���²���header�ȱ�ǩ����header��ǩ������ʽ��Ч���൱�ڣ�
-	<header><div>...</div></header> --> <div>...</div>  header��ǩ�߶�Ϊ0��divû��Ԫ��
+﻿IE9以下不认header等标签，给header标签添加样式无效，相当于：
+	<header><div>...</div></header> --> <div>...</div>  header标签高度为0，div没父元素
 
-img��Ԫ�ظ߶ȶ��3px��
-	ԭ��img��һ������text�ı�ǩԪ�أ��ڽ�����ʱ�򣬻���ĩβ����һ���հ׷��������ı���������ı�����
-	һ�������м����ӣ���Ĭ�ϵ�vertical-align��baseline�ģ�����������Ϊ����line-height��Ӱ�죬ʹ���и�
-	line-height���Ӷ�ʹ�����˸߶ȣ���Ϊbaseline�����ԭ������������Ӿͻ��³������³ſ�һЩ���룬��
-	�԰�a�Ÿ���
-	���������
-	1.�������������ӵĸ߶ȣ���a����line-height:0��font-size:0 
-	2.������vertical-align:top������top���룬������baseline���� 
-	3.��img��display:block�������������м����Ӳ���һ�������������У�Ҳ�Ͳ������м��еĶ�������
+img父元素高度多出3px：
+	原因：img是一种类似text的标签元素，在结束的时候，会在末尾加上一个空白符（匿名文本），这个文本外有
+	一个匿名行级盒子，它默认的vertical-align是baseline的，而且往往因为上文line-height的影响，使它有个
+	line-height，从而使其有了高度，因为baseline对齐的原因，这个匿名盒子就会下沉，往下撑开一些距离，所
+	以把a撑高了
+	解决方案：
+	1.消除掉匿名盒子的高度，给a设置line-height:0或font-size:0 
+	2.给两者vertical-align:top，让其top对齐，而不是baseline对齐 
+	3.给img以display:block，让它和匿名行级盒子不在一个布局上下文中，也就不存在行级盒的对齐问题
 
-��С���ڴ����ź�����˸���.d1{}. .d2{} .d3{},����.d2��ʧЧ����Ϊ.d3û���⣬һֱû���ⷽ���룬��ԭ���Һþ�
+不小心在大括号后面加了个点.：
+	d1{}. .d2{} .d3{},导致.d2的失效，因为.d3没问题，一直没往这方面想，找原因找好久
 
-���Զ�λ�����Ӹ�Ԫ�ص�padding��
-	������λ��Ԫ�ظ�100%����Ԫ�ظ�100�����ڱ߾�50�������Ԫ�ظ�150	//���ܸ������Ƿ�λ
+绝对定位后无视父元素的padding：
+	例：定位子元素高100%，父元素高100，上内边距50，结果子元素高150	//不管父容器是否定位
 
-htm,body�߶���Ϊ100%��
-	������Ӧ���ڸ߶ȣ������ݲ������߶ȵ�����²�����ֹ�����������������߾�ʱ���ǻ���ֹ�����
+htm,body高度设为100%：
+	即自适应窗口高度，在内容不超出高度的情况下不会出现滚动条，但是有内外边距时还是会出现滚动条
 
 z-index:
-	��Ԫ�غ͸�Ԫ�ض����Զ�λ����ʱ��Ԫ�ص�z-indexֻ�Ը�Ԫ����Ч��
-	�����и���Ԫ��ͬ����div,z-index�ȸ�Ԫ�ظߣ���Ԫ���޷���ס���div
+	子元素和父元素都绝对定位，此时子元素的z-index只对父元素有效？
+	例如有个父元素同级的div,z-index比父元素高，子元素无法遮住这个div
 
-margin-top������Ԫ�أ�
+margin-top超出父元素：
 	<div class="d1">
 		<div class="d2"></div>
-	</div>	//ֱ�Ӹ�.d2����margin-top,�����Ԫ��.d1��margin�ϲ������൱��ֱ�Ӹ�d1������margin
+	</div>	//直接给.d2设置margin-top,会跟父元素.d1的margin合并，即相当于直接给d1设置了margin
 
-	ԭ��d2��d1֮��û�����������d2��d1��������magrin�ϲ�����
-	�������d1�߿� ��padding ��overflow:hidden;
+	原因：d2与d1之间没任务东西阻隔，d2与d1紧贴触发magrin合并条件
+	解决：给d1边框 或padding 或overflow:hidden;
+
+
+左边固定右边自适应：
+	设右边容器左外边距等于左边的宽度	//注意点：右边容器不是设宽为100%,而是不设宽或auto
+
+绝对定位元素宽度设为100%时：
+	会无视父容器的padding,即等于父容器的内容宽加padding宽	//即使父元素也绝对定位
 	
 	
