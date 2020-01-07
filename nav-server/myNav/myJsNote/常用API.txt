@@ -127,6 +127,12 @@
 			[[0, 1], [2, 3], [4, 5]].reduce((a, b)=> a.concat(b), [])
 			\\[0, 1, 2, 3, 4, 5]	注意第二个参数[]
 
+		巧用3：数组去重
+			let newArr=arr.reduce((prev,cur)=>{    
+    				prev.indexOf(cur) === -1 && prev.push(cur);
+    				return prev;
+  			},[]);
+
 	.reduceRight():方法同上，区别在于从右往左累加
 
 	.forEach()
@@ -146,7 +152,12 @@ v==4&&arr.splice(i,1);v==5&&arr.splice(i,1);})
 		例：
 			var ages = [4, 12, 16, 20];
 			b=ages.find(function(a){return a>5})	//12 遇到第一个符合时直接return
+
+	.filter():筛选符合条件的值
+		arr.filter(val=>val.age>21)	//返回age大于21的数组
 		
+	.flat():数组扁平化		//高版本浏览器才兼容
+		var arr2=arr.flat(1);	//可选参数，指定扁平多少维数组，默认为1（扁平二维）
 		
 
 正则：RegExp  API

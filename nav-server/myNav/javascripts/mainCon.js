@@ -194,8 +194,8 @@ $(function () {
                     }else{
                         $.ajax({url: 'data/oftenUseUrl.json', success, error});
                         function success(data) {
-                            oftenUseUrlJson = data;
-                            that.URLS=oftenUseUrlJson.often;
+                            oftenUseUrlJson = data;                            
+                            that.URLS=oftenUseUrlJson.oftenUrl;
                             isReqJson = true;
                             resolve('JSON');
                         }

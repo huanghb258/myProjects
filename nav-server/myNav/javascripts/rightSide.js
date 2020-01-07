@@ -9,15 +9,16 @@ $(function(){
 		var tomorrow=$('#weather .w-tomorrow')[0];	
 		var isRain=$('#weather .isRain')[0];
 		var city_code=101230201;//默认为厦门	
-		var URL='http://t.weather.sojson.com/api/weather/city/';
+		var URL='http://wthrcdn.etouch.cn/weather_mini?citykey='+city_code;
 		function reqWeather(url,city){
 			$.ajax({					
-				// dataType:'JSONP',			
-				url:URL+city,
-				data:{},					
+				dataType:'JSONP',			
+				url:URL,
+				data:{city:'厦门'},					
 				// jsonp:'cb'
 			}).done((data,status,xhr)=>{
-				if(data.status!==200){console.warn('请求成功，但没得到想要的数据');return}
+				console.log(data);
+				if(data.status!==1000){console.warn('请求成功，但没得到想要的数据');return}
 				var datas=data.data.forecast;
 				// console.log(data)
 				var rain=datas[0].type.indexOf('雨')!==-1?true:false;
