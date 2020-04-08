@@ -1,4 +1,4 @@
-Generator函数
+﻿Generator函数
   概念：
     1、ES6提供的解决异步编程的方案之一
     2、Generator函数是一个状态机，内部封装了不同状态的数据，
@@ -18,7 +18,7 @@ Generator函数
     6、yield语句返回结果通常为undefined， 当调用next方法时传参内容会作为启动时yield语句的返回值。
 
  // 简单示例：
-    function* generatorTest() {//直接generatorTest()调用，里面的函数不会执行
+    function* generatorTest() {//直接generatorTest()调用，里面的函数不会执行,本直到.next时才开始打印并返回hello
       console.log('函数开始执行');
       yield 'hello';    
       yield 'generator';

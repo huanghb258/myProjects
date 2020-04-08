@@ -17,7 +17,7 @@ $(function(){
 				data:{city:'厦门'},					
 				// jsonp:'cb'
 			}).done((data,status,xhr)=>{
-				console.log(data);
+				// console.log(data);
 				if(data.status!==1000){console.warn('请求成功，但没得到想要的数据');return}
 				var datas=data.data.forecast;
 				// console.log(data)

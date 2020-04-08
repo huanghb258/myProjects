@@ -31,4 +31,11 @@
 	核心： :checked伪类   //兼容性不是很好
 	代码：.toggle:checked +label{color:red}   \\checkbox按钮改变兄弟元素
 	\\可以给按钮定位，然后opacity:0  
+
+
+
+
+
+一个cubic-bezier——是动画抛物曲线(贝塞尔曲线)的配置网站:https://cubic-bezier.com
+
 		

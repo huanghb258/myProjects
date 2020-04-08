@@ -5,6 +5,11 @@
 
 修改CLASS属性:
 	el.className = 'active div-1';  //为空''可以清除class
+	拓展：
+	.classList:返回一个数组-》['a','b',value:'a b']	//是真数据哦，value就等于className
+		它还有add / remove / contains 等方法
+		比如：el.classList.contains('d')	//检测是否包含类名'd',相当于jq的hasClass
+		//可惜ie10才开始兼容
 
 其它class增删改查操作：
 	1.查：

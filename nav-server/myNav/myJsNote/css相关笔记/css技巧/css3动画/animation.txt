@@ -10,7 +10,9 @@
 	
 	5.iteration-count：动画播放次数，默认1次   infinite代表无限
 
-	6.direction：是否应该轮流反向播放
+	6.direction：播放方向 默认normal，reverse：倒着播放	...
+
+	7.animation-fill-mode:forwards	//结束后保持动画最终效果
 	...后面的很少用到
 
 

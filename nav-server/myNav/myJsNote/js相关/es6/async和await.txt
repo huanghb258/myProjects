@@ -28,8 +28,9 @@
 await的返回值：
   let result=await foo();
   1.如果是普通函数(不是promise),就是函数return 的值
-	2.如果promise对象，返回的是resolve的参数，没传就是undefined
+  2.如果promise对象，返回的是resolve的参数，没传就是undefined
   3.如果promise失败，reject('失败了。。'),会出错：uncaught(in promise)失败了。。
+	//想要得到失败的值，只能用try{}catch来捕获
 
 实战示例：
   async function getNews(url) {
