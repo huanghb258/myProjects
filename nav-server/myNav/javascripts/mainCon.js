@@ -561,6 +561,7 @@ $(function () {
             $('.docs').on('click', '.toggle', function (e) {
                 e = e || event;
                 e.stopPropagation();
+                e.preventDefault();
                 var more = $(this).next('.more');
                 more.toggle();
                 more.on('click', function (e) {
